@@ -1,15 +1,41 @@
 {
+  "designApprovers": [
+    {
+      "github": "edwardchew-distyl",
+      "name": "Edward"
+    },
+    {
+      "github": "isarahchung",
+      "name": "Sarah"
+    }
+  ],
   "feedbackSources": {
     "edward-v1": {
+      "label": "v1 review",
       "title": "Cognition v1 design feedback (2026-07-06)",
       "url": "https://app.notion.com/p/3952c038ca3781a38029d66dd3d894d0"
+    },
+    "working-session": {
+      "label": "Session 09/23",
+      "title": "Folio working session decisions (2026-09-23)",
+      "url": "https://claude.ai/artifact/4bguks4JvDBgUFYUtNRRqb"
+    },
+    "migration-brief": {
+      "label": "Brief 09/24",
+      "title": "Folio migration brief (2026-09-24)",
+      "url": "https://claude.ai/artifact/BzKEDgmvv2ufG36qMgr7FX"
+    },
+    "migration-audit": {
+      "label": "Audit 09/24",
+      "title": "Folio migration audit (2026-09-24)",
+      "url": "https://claude.ai/artifact/Cdg1ca3HS9yTfzWWotEQxD"
     }
   },
   "components": [
     {
       "slug": "accordion",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -27,7 +53,7 @@
     {
       "slug": "alert",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -39,13 +65,23 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Decided: success and info variants; neutral body text"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Icon aligned to the first line"
         }
       ]
     },
     {
       "slug": "alert-dialog",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -57,13 +93,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "working-session",
+          "verdict": "changes",
+          "note": "Proposed: same action order and footer as Dialog"
         }
       ]
     },
     {
       "slug": "aspect-ratio",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -81,7 +122,7 @@
     {
       "slug": "avatar",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -99,7 +140,7 @@
     {
       "slug": "badge",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "pr-open",
@@ -113,13 +154,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Replace hardcoded palette colors with semantic tokens"
         }
       ]
     },
     {
       "slug": "box",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -137,7 +183,7 @@
     {
       "slug": "breadcrumb",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -155,7 +201,7 @@
     {
       "slug": "button",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "pr-open",
@@ -169,13 +215,23 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Open: height 36 to 32px; hover as background change or fade"
+        },
+        {
+          "source": "working-session",
+          "verdict": "changes",
+          "note": "Open: density and 4px radius with Input and Select"
         }
       ]
     },
     {
       "slug": "button-group",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -193,7 +249,7 @@
     {
       "slug": "calendar",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -211,7 +267,7 @@
     {
       "slug": "card",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "pr-open",
@@ -225,13 +281,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Decided: 1px footer top border. Radius is already 12px"
         }
       ]
     },
     {
       "slug": "carousel",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -375,7 +436,7 @@
     {
       "slug": "checkbox",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -393,7 +454,7 @@
     {
       "slug": "collapsible",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -411,7 +472,7 @@
     {
       "slug": "combobox",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -429,7 +490,7 @@
     {
       "slug": "command",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -447,7 +508,7 @@
     {
       "slug": "context-menu",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -465,7 +526,7 @@
     {
       "slug": "conversational-ui",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -483,7 +544,7 @@
     {
       "slug": "data-table",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -501,7 +562,7 @@
     {
       "slug": "date-picker",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -519,7 +580,7 @@
     {
       "slug": "dialog",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "pr-open",
@@ -533,13 +594,28 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Decided: opt-in pinned header and footer; 1px footer top border. Open: max width 512 to 425px"
+        },
+        {
+          "source": "working-session",
+          "verdict": "changes",
+          "note": "Proposed: bordered footer, right-aligned actions, primary last, ghost secondary"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Open: radius 8 to 16px; padding on container or parts"
         }
       ]
     },
     {
       "slug": "drawer",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -557,7 +633,7 @@
     {
       "slug": "dropdown-menu",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -569,13 +645,18 @@
         {
           "source": "edward-v1",
           "verdict": "good"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Decided: shortcut uses the muted color token"
         }
       ]
     },
     {
       "slug": "empty-state",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -593,7 +674,7 @@
     {
       "slug": "field",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -605,13 +686,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Open: field gap"
         }
       ]
     },
     {
       "slug": "file-tree",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -629,7 +715,7 @@
     {
       "slug": "grid",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -647,7 +733,7 @@
     {
       "slug": "hover-card",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -659,13 +745,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Decided: width 256 to 288px"
         }
       ]
     },
     {
       "slug": "input",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "pr-open",
@@ -679,13 +770,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Open: painted surface, radius, focus as ring or border tint, height same as Button"
         }
       ]
     },
     {
       "slug": "input-group",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -703,7 +799,7 @@
     {
       "slug": "input-otp",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -721,7 +817,7 @@
     {
       "slug": "item",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -739,7 +835,7 @@
     {
       "slug": "kbd",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -757,7 +853,7 @@
     {
       "slug": "label",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -769,13 +865,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Open: display flex"
         }
       ]
     },
     {
       "slug": "menubar",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -793,7 +894,7 @@
     {
       "slug": "navigation-menu",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -811,7 +912,7 @@
     {
       "slug": "pagination",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -829,7 +930,7 @@
     {
       "slug": "popover",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -871,7 +972,7 @@
     {
       "slug": "resizable",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -889,7 +990,7 @@
     {
       "slug": "scroll-area",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -907,7 +1008,7 @@
     {
       "slug": "select",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -919,13 +1020,18 @@
         {
           "source": "edward-v1",
           "verdict": "good"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Open: painted trigger, radius, height same as Button"
         }
       ]
     },
     {
       "slug": "separator",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -943,7 +1049,7 @@
     {
       "slug": "sheet",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -961,7 +1067,7 @@
     {
       "slug": "sidebar",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -973,13 +1079,23 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Decided: 1px footer top border. Items are already 32px"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Add --sidebar-border and --sidebar-accent tokens"
         }
       ]
     },
     {
       "slug": "skeleton",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -997,7 +1113,7 @@
     {
       "slug": "slider",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -1015,7 +1131,7 @@
     {
       "slug": "spinner",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -1027,13 +1143,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Decided: default size 16 to 24px"
         }
       ]
     },
     {
       "slug": "stack",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -1051,7 +1172,7 @@
     {
       "slug": "switch",
       "design": {
-        "state": "not-reviewed"
+        "state": "in-review"
       },
       "toolkit": {
         "state": "not-started"
@@ -1069,19 +1190,26 @@
     {
       "slug": "table",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
       },
       "pilot": {
         "state": "not-piloted"
-      }
+      },
+      "feedback": [
+        {
+          "source": "migration-brief",
+          "verdict": "changes",
+          "note": "Open: table inset"
+        }
+      ]
     },
     {
       "slug": "tabs",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -1093,13 +1221,18 @@
         {
           "source": "edward-v1",
           "verdict": "changes"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Seven implementations; candidate to merge into one"
         }
       ]
     },
     {
       "slug": "textarea",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -1111,13 +1244,18 @@
         {
           "source": "edward-v1",
           "verdict": "good"
+        },
+        {
+          "source": "migration-audit",
+          "verdict": "changes",
+          "note": "Open: painted surface and radius, as Input"
         }
       ]
     },
     {
       "slug": "toast",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -1135,7 +1273,7 @@
     {
       "slug": "toggle",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"
@@ -1153,7 +1291,7 @@
     {
       "slug": "toggle-group",
       "design": {
-        "state": "not-reviewed"
+        "state": "changes-requested"
       },
       "toolkit": {
         "state": "not-started"

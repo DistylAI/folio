@@ -12,6 +12,7 @@ import {
 } from "@/components/shadcn/table";
 import {
   getComponentStatuses,
+  getDesignApprovers,
   getFeedbackSources,
   type ComponentStatus,
   type DesignState,
@@ -26,12 +27,13 @@ export const metadata: Metadata = {
     "For each component: is the design approved in Folio, is it released in toolkit-ui, and did a pilot app use it?",
 };
 
-type BadgeColor = "default" | "success" | "warning";
+type BadgeColor = "default" | "success" | "warning" | "info";
 type StateBadge = { label: string; color: BadgeColor };
 
 const DESIGN_BADGE: Record<DesignState, StateBadge> = {
   "not-reviewed": { label: "Not reviewed", color: "default" },
-  "in-review": { label: "In review", color: "warning" },
+  "changes-requested": { label: "Changes requested", color: "warning" },
+  "in-review": { label: "In review", color: "info" },
   approved: { label: "Approved", color: "success" },
 };
 
@@ -48,14 +50,14 @@ const PILOT_BADGE: Record<PilotState, StateBadge> = {
 
 const FEEDBACK_LABEL: Record<FeedbackVerdict, string> = {
   good: "Good",
-  changes: "Changes asked",
+  changes: "Changes",
   skipped: "Skipped",
 };
 
 const GATES = [
   {
     title: "1. Design approved",
-    body: "Design reviewed the component in Folio and approved it. The approval is a merged Folio PR with a changelog entry. The row names the approver and the PR.",
+    body: "Every design approver reviewed the component in Folio and approved it. The approval is a merged Folio PR with a changelog entry. The row names each approver, the date, and the PR.",
   },
   {
     title: "2. Released in toolkit-ui",
@@ -73,7 +75,7 @@ function StateCell({ badge, detail }: { badge: StateBadge; detail?: string }) {
       <Badge variant="secondary" color={badge.color} className="whitespace-nowrap">
         {badge.label}
       </Badge>
-      {detail ? <span className="max-w-56 text-caption">{detail}</span> : null}
+      {detail ? <span className="max-w-40 text-caption">{detail}</span> : null}
     </div>
   );
 }
@@ -89,17 +91,34 @@ function FeedbackCell({ row }: { row: ComponentStatus }) {
   return (
     <ul className="space-y-1">
       {row.feedback.map((item) => (
-        <li key={item.source} className="whitespace-nowrap text-small text-foreground">
+        <li key={item.source} className="max-w-52 text-small text-foreground">
           <a
             href={sources[item.source]?.url}
-            className="underline underline-offset-2"
+            className="whitespace-nowrap underline underline-offset-2"
             target="_blank"
             rel="noreferrer"
           >
-            {FEEDBACK_LABEL[item.verdict]}
+            {sources[item.source]?.label}: {FEEDBACK_LABEL[item.verdict]}
           </a>
+          {item.note ? <p className="text-caption">{item.note}</p> : null}
         </li>
       ))}
+    </ul>
+  );
+}
+
+function ApprovedByCell({ row }: { row: ComponentStatus }) {
+  const approvals = row.design.approvals ?? [];
+  return (
+    <ul className="space-y-1">
+      {getDesignApprovers().map((approver) => {
+        const approval = approvals.find((item) => item.by === approver.github);
+        return (
+          <li key={approver.github} className="whitespace-nowrap text-caption">
+            <span className="text-foreground">{approver.name}</span>: {approval ? approval.date : "Pending"}
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -152,18 +171,20 @@ export default function ComponentStatusPage() {
       </div>
 
       <p className="mt-8 max-w-2xl text-small text-foreground">
-        The feedback column shows earlier design reviews. It is input for the
-        design gate, not an approval. Sources:{" "}
-        {sources.map((source) => (
-          <a
-            key={source.url}
-            href={source.url}
-            className="underline underline-offset-2"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {source.title}
-          </a>
+        The feedback column shows earlier design reviews and proposals. It is
+        input for the design gate, not an approval. Sources:{" "}
+        {sources.map((source, index) => (
+          <span key={source.url}>
+            {index ? "; " : null}
+            <a
+              href={source.url}
+              className="underline underline-offset-2"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {source.title}
+            </a>
+          </span>
         ))}
         . To change a row, edit <code>content/component-status.json</code> in a
         PR.
@@ -176,6 +197,7 @@ export default function ComponentStatusPage() {
               <TableHead>Component</TableHead>
               <TableHead>Earlier feedback</TableHead>
               <TableHead>Design</TableHead>
+              <TableHead>Approved by</TableHead>
               <TableHead>toolkit-ui</TableHead>
               <TableHead>Pilot</TableHead>
             </TableRow>
@@ -194,8 +216,11 @@ export default function ComponentStatusPage() {
                 <TableCell>
                   <StateCell
                     badge={DESIGN_BADGE[row.design.state]}
-                    detail={joinDetail(row.design.approver, row.design.date, row.design.pr, row.design.note)}
+                    detail={joinDetail(row.design.pr, row.design.note)}
                   />
+                </TableCell>
+                <TableCell>
+                  <ApprovedByCell row={row} />
                 </TableCell>
                 <TableCell>
                   <StateCell
