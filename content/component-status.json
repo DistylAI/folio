@@ -1,0 +1,1184 @@
+{
+  "feedbackSources": {
+    "edward-v1": {
+      "title": "Cognition v1 design feedback (2026-07-06)",
+      "url": "https://app.notion.com/p/3952c038ca3781a38029d66dd3d894d0"
+    }
+  },
+  "components": [
+    {
+      "slug": "accordion",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "alert",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "alert-dialog",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "aspect-ratio",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "avatar",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "badge",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "pr-open",
+        "pr": "toolkit#5299",
+        "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "box",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "breadcrumb",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "button",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "pr-open",
+        "pr": "toolkit#5299",
+        "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "button-group",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "calendar",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "card",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "pr-open",
+        "pr": "toolkit#5299",
+        "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "carousel",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "area-chart",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "skipped"
+        }
+      ]
+    },
+    {
+      "slug": "bar-chart",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "skipped"
+        }
+      ]
+    },
+    {
+      "slug": "chart-tooltip",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "skipped"
+        }
+      ]
+    },
+    {
+      "slug": "line-chart",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "skipped"
+        }
+      ]
+    },
+    {
+      "slug": "pie-chart",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "skipped"
+        }
+      ]
+    },
+    {
+      "slug": "radar-chart",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "skipped"
+        }
+      ]
+    },
+    {
+      "slug": "radial-chart",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "skipped"
+        }
+      ]
+    },
+    {
+      "slug": "checkbox",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "collapsible",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "combobox",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "command",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "context-menu",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "conversational-ui",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "data-table",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "date-picker",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "dialog",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "pr-open",
+        "pr": "toolkit#5299",
+        "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "drawer",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "dropdown-menu",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "empty-state",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "field",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "file-tree",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "grid",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "hover-card",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "input",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "pr-open",
+        "pr": "toolkit#5299",
+        "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "input-group",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "input-otp",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "item",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "kbd",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "label",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "menubar",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "navigation-menu",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "pagination",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "popover",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "progress",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      }
+    },
+    {
+      "slug": "radio-group",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      }
+    },
+    {
+      "slug": "resizable",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "scroll-area",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "select",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "separator",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "sheet",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "sidebar",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "skeleton",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "slider",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "spinner",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "stack",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "switch",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "table",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      }
+    },
+    {
+      "slug": "tabs",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "textarea",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "good"
+        }
+      ]
+    },
+    {
+      "slug": "toast",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "toggle",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "toggle-group",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      },
+      "feedback": [
+        {
+          "source": "edward-v1",
+          "verdict": "changes"
+        }
+      ]
+    },
+    {
+      "slug": "tooltip",
+      "design": {
+        "state": "not-reviewed"
+      },
+      "toolkit": {
+        "state": "not-started"
+      },
+      "pilot": {
+        "state": "not-piloted"
+      }
+    }
+  ]
+}

@@ -46,3 +46,16 @@ Standards for building on the Folio design system. These are non-negotiable.
 - Use the components in `components/shadcn/`; never import Radix directly.
 - Button, Tag, Badge, Link are semantically distinct — never interchangeable.
 - Icons: `lucide-react` only.
+
+## Component status
+
+- `content/component-status.json` holds one row for each component page, and
+  `/status/components` shows it. Each row has three gates: `design`
+  (`not-reviewed` → `in-review` → `approved`), `toolkit` (`not-started` →
+  `pr-open` → `released`), and `pilot` (`not-piloted` → `piloted`).
+- Change a row in the same PR that changes the state. An `approved` design
+  names the approver, the date, and the Folio PR. A `released` toolkit gate
+  names the toolkit PR and the toolkit-ui version. A `piloted` gate names the
+  app and the date. The build fails when a row lacks these fields or when the
+  rows and the component pages in `lib/nav.ts` do not match.
+- Do not copy a component into toolkit-ui before its design gate is `approved`.
