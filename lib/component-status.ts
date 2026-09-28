@@ -11,7 +11,8 @@ export type ToolkitState = (typeof TOOLKIT_STATES)[number];
 export type PilotState = (typeof PILOT_STATES)[number];
 export type FeedbackVerdict = (typeof FEEDBACK_VERDICTS)[number];
 
-export type Approval = { by: string; date: string };
+/** One approval. `pr` is the Folio PR it was given on; `source` is a feedback document id. One of the two is required. */
+export type Approval = { by: string; date: string; pr?: string; source?: string };
 export type DesignApprover = { github: string; name: string };
 export type DesignGate = {
   state: DesignState;
@@ -114,7 +115,7 @@ function checkRow(row: RawRow, file: RawFile): void {
   checkState(where, "design", row.design.state, DESIGN_STATES);
   checkState(where, "toolkit", row.toolkit.state, TOOLKIT_STATES);
   checkState(where, "pilot", row.pilot.state, PILOT_STATES);
-  checkApprovals(where, row.design, file.designApprovers.map((approver) => approver.github));
+  checkApprovals(where, row.design, file);
   if (row.toolkit.state === "pr-open") requireFields(where, "toolkit", row.toolkit, ["pr"]);
   if (row.toolkit.state === "released") {
     requireFields(where, "toolkit", row.toolkit, ["pr", "version"]);
@@ -126,7 +127,8 @@ function checkRow(row: RawRow, file: RawFile): void {
   }
 }
 
-function checkApprovals(where: string, design: DesignGate, approvers: string[]): void {
+function checkApprovals(where: string, design: DesignGate, file: RawFile): void {
+  const approvers = file.designApprovers.map((approver) => approver.github);
   const approvals = design.approvals ?? [];
   if (design.state === "not-reviewed" && approvals.length) {
     fail(`${where}: a not-reviewed design cannot have approvals`);
@@ -134,10 +136,13 @@ function checkApprovals(where: string, design: DesignGate, approvers: string[]):
   for (const approval of approvals) {
     if (!approvers.includes(approval.by)) fail(`${where}: "${approval.by}" is not a design approver`);
     if (!approval.date) fail(`${where}: the approval by "${approval.by}" needs a date`);
+    if (!approval.pr && !approval.source) fail(`${where}: the approval by "${approval.by}" needs a pr or a source`);
+    if (approval.source && !file.feedbackSources[approval.source]) {
+      fail(`${where}: unknown approval source "${approval.source}"`);
+    }
   }
   if (design.state !== "approved") return;
   if (!approvals.length) fail(`${where}: approved design needs an approval`);
-  requireFields(where, "design", design, ["pr"]);
 }
 
 function checkState(where: string, gate: string, value: string, allowed: readonly string[]): void {

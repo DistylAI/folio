@@ -14,6 +14,7 @@ import {
   getComponentStatuses,
   getDesignApprovers,
   getFeedbackSources,
+  type Approval,
   type ComponentStatus,
   type DesignState,
   type FeedbackVerdict,
@@ -57,7 +58,7 @@ const FEEDBACK_LABEL: Record<FeedbackVerdict, string> = {
 const GATES = [
   {
     title: "1. Design approved",
-    body: "A design approver reviewed the component in Folio and approved it. The approval is a merged Folio PR with a changelog entry. The row names the approver, the date, and the PR.",
+    body: "A design approver reviewed the component in Folio and approved it. The row names the approver, the date, and the evidence: a merged Folio PR, or a design review document.",
   },
   {
     title: "2. Released in toolkit-ui",
@@ -107,18 +108,25 @@ function FeedbackCell({ row }: { row: ComponentStatus }) {
   );
 }
 
+function approvalEvidence(approval: Approval): string | undefined {
+  if (approval.pr) return approval.pr;
+  if (approval.source) return getFeedbackSources()[approval.source]?.label;
+  return undefined;
+}
+
 function ApprovedByCell({ row }: { row: ComponentStatus }) {
   const approvals = row.design.approvals ?? [];
+  if (!approvals.length) return null;
+  const names = new Map(getDesignApprovers().map((approver) => [approver.github, approver.name]));
   return (
     <ul className="space-y-1">
-      {getDesignApprovers().map((approver) => {
-        const approval = approvals.find((item) => item.by === approver.github);
-        return (
-          <li key={approver.github} className="whitespace-nowrap text-caption">
-            <span className="text-foreground">{approver.name}</span>: {approval ? approval.date : "Pending"}
-          </li>
-        );
-      })}
+      {approvals.map((approval) => (
+        <li key={approval.by} className="flex flex-col">
+          <span className="text-small text-foreground">{names.get(approval.by)}</span>
+          <span className="whitespace-nowrap text-caption">{approval.date}</span>
+          <span className="whitespace-nowrap text-caption">{approvalEvidence(approval)}</span>
+        </li>
+      ))}
     </ul>
   );
 }
