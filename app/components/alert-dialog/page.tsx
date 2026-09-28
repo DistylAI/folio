@@ -10,8 +10,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/shadcn/alert-dialog";
+import { Button } from "@/components/shadcn/button";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
@@ -28,8 +28,8 @@ const composition = [
   { name: "AlertDialogFooter", desc: "Wraps the two actions, aligned right." },
   { name: "AlertDialogTitle", desc: "The required heading naming the decision." },
   { name: "AlertDialogDescription", desc: "Explains the consequence of the action." },
-  { name: "AlertDialogAction", desc: "The confirm button. Add the destructive style for danger." },
-  { name: "AlertDialogCancel", desc: "The cancel button. Always present." },
+  { name: "AlertDialogAction", desc: "The confirm button. Takes Button props: set variant=\"destructive\" for danger, loading and loadingText while it works." },
+  { name: "AlertDialogCancel", desc: "The cancel button. Takes Button props, variant defaults to outline. Always present." },
 ] as const;
 
 const doCode = `<AlertDialog>
@@ -45,7 +45,7 @@ const doCode = `<AlertDialog>
     </AlertDialogHeader>
     <AlertDialogFooter>
       <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Delete</AlertDialogAction>
+      <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`;
@@ -60,8 +60,8 @@ const installCode = `import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/shadcn/alert-dialog";
+import { Button } from "@/components/shadcn/button";
 
 export function ConfirmDelete() {
   return (
@@ -94,16 +94,16 @@ function MockAlert({
   destructive?: boolean;
   hover?: "confirm" | "cancel";
 }) {
-  const ring = "ring-2 ring-offset-2 ring-offset-background-subtle";
+  const ring = "ring-2 ring-offset-2 ring-offset-[--color-background-subtle]";
   return (
-    <div className="grid w-full max-w-sm gap-4 rounded-xl border border-border-default bg-background-default p-6 shadow-lg">
+    <div className="grid w-full max-w-sm gap-4 rounded-2xl border border-border bg-background p-6 shadow-lg">
       <div className="flex flex-col gap-2">
         {destructive && (
-          <span className="flex size-9 items-center justify-center rounded-full bg-background-danger">
-            <TriangleAlert className="size-4 text-text-danger" />
+          <span className="flex size-9 items-center justify-center rounded-full bg-destructive-subtle">
+            <TriangleAlert className="size-4 text-destructive" />
           </span>
         )}
-        <p className="text-lg font-semibold text-text-default">
+        <p className="text-lg font-semibold text-foreground">
           {destructive ? "Delete chat?" : "Discard changes?"}
         </p>
         <p className="text-description">
@@ -115,7 +115,7 @@ function MockAlert({
       <div className="flex justify-end gap-2">
         <Button
           variant="outline"
-          className={hover === "cancel" ? `${ring} ring-border-primary` : ""}
+          className={hover === "cancel" ? `${ring} ring-ring` : ""}
         >
           Cancel
         </Button>
@@ -123,7 +123,7 @@ function MockAlert({
           variant={destructive ? "destructive" : "default"}
           className={
             hover === "confirm"
-              ? `${ring} ${destructive ? "ring-border-danger" : "ring-border-primary"}`
+              ? `${ring} ${destructive ? "ring-destructive" : "ring-ring"}`
               : ""
           }
         >
@@ -138,15 +138,15 @@ export default function AlertDialogPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Alert Dialog</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Alert Dialog</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A modal that interrupts the reader with a critical decision. It blocks all
         other interaction and requires an explicit confirm or cancel before
         anything else can happen.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           Alert Dialog is for destructive or irreversible actions only. For
           general content, forms, and non-critical interactions, use Dialog. An
           Alert Dialog always carries two explicit actions, confirm and cancel.
@@ -156,8 +156,8 @@ export default function AlertDialogPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="outline">Show dialog</Button>
@@ -178,40 +178,38 @@ export default function AlertDialogPage() {
           </AlertDialog>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Press the button to open the real
+          Rendered with live Folio tokens. Press the button to open the real
           modal, no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <MockAlert />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<AlertDialogAction>Continue</AlertDialogAction>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <MockAlert destructive />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<AlertDialogAction
-  className={buttonVariants({ variant: "destructive" })}
->
+                code={`<AlertDialogAction variant="destructive">
   Delete
 </AlertDialogAction>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -225,23 +223,23 @@ export default function AlertDialogPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-8">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-8">
             <Button variant="outline">Delete account</Button>
             <p className="text-caption">Closed. Only the trigger shows.</p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-8">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-8">
             <MockAlert />
             <p className="text-caption">Open. The modal blocks the page.</p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-8">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-8">
             <MockAlert hover="confirm" />
             <p className="text-caption">
               Confirm hover (shown statically).
             </p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-8">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-8">
             <MockAlert hover="cancel" />
             <p className="text-caption">
               Cancel hover (shown statically).
@@ -256,20 +254,20 @@ export default function AlertDialogPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[560px]">
-            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Component</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {composition.map((c) => (
                 <div
                   key={c.name}
                   className="grid grid-cols-[1.8fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {c.name}
                   </div>
                   <div className="text-description">{c.desc}</div>
@@ -289,25 +287,25 @@ export default function AlertDialogPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t interrupt with an Alert Dialog for something reversible
               or low-stakes. Stopping the reader to confirm a harmless, undoable
               action trains them to dismiss the dialog without reading it. Use a
               Dialog for ordinary content, or a Toast to confirm after the fact.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -324,28 +322,12 @@ export default function AlertDialogPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

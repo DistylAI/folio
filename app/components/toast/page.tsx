@@ -7,7 +7,7 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import { CodeBlock } from "@/components/CodeBlock";
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/components/shadcn/spinner";
 import { ToastButton } from "./toast-demos";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ const api = [
     name: "toast.error(message)",
     type: "(message, options?) => id",
     def: "—",
-    desc: "Error toast with danger styling.",
+    desc: "Error toast with danger styling. It stays until dismissed and shows a close button. Pass duration to override.",
   },
   {
     name: "toast.warning(message)",
@@ -75,7 +75,7 @@ const api = [
     name: "options.duration",
     type: "number",
     def: "4000",
-    desc: "Milliseconds the toast stays before auto-dismiss.",
+    desc: "Milliseconds the toast stays before auto-dismiss. toast.error defaults to Infinity.",
   },
 ] as const;
 
@@ -87,19 +87,23 @@ toast("Workspace archived", {
 });`;
 
 const installCode = `// 1. Mount the Toaster once at the app root
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/shadcn/sonner";
+import { Spinner } from "@/components/shadcn/spinner";
 
 export default function RootLayout({ children }) {
   return (
     <body>
       {children}
-      <Toaster />
+      <Toaster
+        position="bottom-right"
+        icons={{ loading: <Spinner className="size-4" /> }}
+      />
     </body>
   );
 }
 
 // 2. Fire toasts imperatively from anywhere
-import { toast } from "sonner";
+import { toast } from "@/components/shadcn/sonner";
 
 toast.success("Changes saved");`;
 
@@ -113,9 +117,9 @@ function ToastMock({
   return (
     <div className="flex flex-col items-center gap-3">
       <div
-        className={`flex w-full items-start gap-3 rounded-lg border border-border-default bg-background-default p-4 shadow-lg ${className ?? ""}`}
+        className={`flex w-full items-start gap-3 rounded-xl border border-border bg-background p-4 shadow-lg ${className ?? ""}`}
       >
-        <CircleCheck className="mt-0.5 size-5 shrink-0 text-text-success" />
+        <CircleCheck className="mt-0.5 size-5 shrink-0 text-success" />
         <div className="flex-1">
           <p className="text-label">Changes saved</p>
           <p className="text-caption">Your workspace is up to date.</p>
@@ -173,36 +177,38 @@ const variantCells: { fire: FireKind; show: ToastKind; code: string }[] = [
   },
 ];
 
+type SurfaceKind = Exclude<ToastKind, "loading" | "action" | "description">;
+
 const toastVariants: Record<
-  string,
+  SurfaceKind,
   { surface: string; tone: string; title: string; icon?: LucideIcon }
 > = {
   default: {
-    surface: "border-border-default bg-background-default",
-    tone: "text-text-default",
+    surface: "border-border bg-background",
+    tone: "text-foreground",
     title: "Event scheduled",
   },
   success: {
-    surface: "border-feedback-success/30 bg-background-success",
-    tone: "text-text-success",
+    surface: "border-success/30 bg-success-subtle",
+    tone: "text-success",
     title: "Changes saved",
     icon: CircleCheck,
   },
   error: {
-    surface: "border-feedback-danger/30 bg-background-danger",
-    tone: "text-text-danger",
+    surface: "border-destructive/30 bg-destructive-subtle",
+    tone: "text-destructive",
     title: "Could not save changes",
     icon: CircleX,
   },
   warning: {
-    surface: "border-feedback-warning/30 bg-background-warning",
-    tone: "text-text-warning",
+    surface: "border-warning/30 bg-warning-subtle",
+    tone: "text-warning",
     title: "Your trial ends in 3 days",
     icon: TriangleAlert,
   },
   info: {
-    surface: "border-feedback-info/30 bg-background-info",
-    tone: "text-text-info",
+    surface: "border-info/30 bg-info-subtle",
+    tone: "text-info",
     title: "A new version is available",
     icon: Info,
   },
@@ -210,22 +216,22 @@ const toastVariants: Record<
 
 function VariantToast({ kind }: { kind: ToastKind }) {
   const base =
-    "flex w-full items-start gap-3 rounded-lg border p-4 text-sm shadow-md";
+    "flex w-full items-start gap-3 rounded-xl border p-4 text-sm shadow-md";
 
   if (kind === "loading") {
     return (
-      <div className={`${base} border-border-default bg-background-default`}>
-        <Spinner size="sm" className="mt-0.5" />
-        <p className="flex-1 font-medium text-text-default">Saving changes…</p>
+      <div className={`${base} border-border bg-background`}>
+        <Spinner className="mt-0.5 size-4" />
+        <p className="flex-1 font-medium text-foreground">Saving changes…</p>
       </div>
     );
   }
 
   if (kind === "action") {
     return (
-      <div className={`${base} border-border-default bg-background-default`}>
-        <p className="flex-1 font-medium text-text-default">Workspace archived</p>
-        <span className="shrink-0 rounded-md bg-background-secondary px-2 py-1 text-caption font-medium text-text-default">
+      <div className={`${base} border-border bg-background`}>
+        <p className="flex-1 font-medium text-foreground">Workspace archived</p>
+        <span className="shrink-0 rounded-lg bg-secondary px-2 py-1 text-caption font-medium text-foreground">
           Undo
         </span>
       </div>
@@ -234,9 +240,9 @@ function VariantToast({ kind }: { kind: ToastKind }) {
 
   if (kind === "description") {
     return (
-      <div className={`${base} border-border-default bg-background-default`}>
+      <div className={`${base} border-border bg-background`}>
         <div className="flex-1">
-          <p className="font-medium text-text-default">Changes saved</p>
+          <p className="font-medium text-foreground">Changes saved</p>
           <p className="mt-1 text-caption">
             Your workspace is up to date as of a moment ago.
           </p>
@@ -259,8 +265,8 @@ export default function ToastPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Toast</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Toast</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A transient notification that appears briefly and dismisses on its own.
         Use it for confirmations, errors, and status feedback that does not block
         the task at hand.
@@ -268,15 +274,15 @@ export default function ToastPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <ToastButton kind="default" variant="default" size="default">
             Show toast
           </ToastButton>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Fire a toast bottom-right here, or
-          hit <span className="font-medium text-text-default">Try it</span> on any
+          Rendered with live Folio tokens. Fire a toast bottom-right here, or
+          hit <span className="font-medium text-foreground">Try it</span> on any
           type in Variants below. No <code className="font-mono">dark:</code>{" "}
           classes.
         </p>
@@ -284,22 +290,22 @@ export default function ToastPage() {
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {variantCells.map((c) => (
             <div
               key={c.fire}
-              className="overflow-hidden rounded-lg border border-border-default"
+              className="overflow-hidden rounded-xl border border-border"
             >
-              <div className="flex items-center justify-center bg-background-subtle p-8">
+              <div className="flex items-center justify-center bg-muted p-8">
                 <VariantToast kind={c.show} />
               </div>
-              <div className="flex items-center gap-3 border-t border-border-default p-3">
+              <div className="flex items-center gap-3 border-t border-border p-3">
                 <div className="min-w-0 flex-1">
                   <CodeBlock
                     code={c.code}
                     size="sm"
-                    className="rounded-md border border-border-subtle bg-background-subtle"
+                    className="rounded-lg border border-border-subtle bg-muted"
                   />
                 </div>
                 <ToastButton kind={c.fire} variant="outline" size="sm">
@@ -311,17 +317,17 @@ export default function ToastPage() {
         </div>
         <p className="mt-2 text-small">
           Each type as it appears — hit{" "}
-          <span className="font-medium text-text-default">Try it</span> on any
+          <span className="font-medium text-foreground">Try it</span> on any
           tile to fire it live. Success, error, warning, and info take the
-          matching Cognition feedback tokens; loading is neutral (spinner, no
+          matching Folio feedback tokens; loading is neutral (spinner, no
           feedback color) since it is an in-progress state, not an outcome.
         </p>
       </section>
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
-        <div className="rounded-lg border border-border-default bg-background-subtle p-8">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
+        <div className="rounded-xl border border-border bg-muted p-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <ToastMock
               className="translate-y-2 opacity-60"
@@ -342,22 +348,22 @@ export default function ToastPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.6fr_1.6fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.6fr_1.6fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Call</div>
               <div>Signature</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {api.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.6fr_1.6fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -376,31 +382,40 @@ export default function ToastPage() {
           Toast is powered by Sonner. The{" "}
           <code className="font-mono">&lt;Toaster&gt;</code> component must be
           mounted once at the app root; individual toasts are fired imperatively
-          through the <code className="font-mono">toast()</code> function.
+          through the <code className="font-mono">toast()</code> function. Import
+          both from <code className="font-mono">@/components/shadcn/sonner</code>
+          , not from <code className="font-mono">sonner</code>, so{" "}
+          <code className="font-mono">toast.error</code> gets its sticky
+          default. <code className="font-mono">Toaster</code> takes every Sonner
+          prop, plus <code className="font-mono">variant</code>:{" "}
+          <code className="font-mono">&quot;default&quot;</code> (the Folio
+          surfaces above) or{" "}
+          <code className="font-mono">&quot;semantic&quot;</code> (Sonner rich
+          colors mapped to the same Folio tokens).
         </p>
       </section>
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t use a toast for an error that needs the reader to act. A
               toast dismisses itself, so anything that requires a decision or a
               fix will vanish before it is handled. Put those in inline validation
               next to the field, or in a Dialog that holds focus.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -416,28 +431,12 @@ export default function ToastPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

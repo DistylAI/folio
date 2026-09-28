@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/components/shadcn/table";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ const installCode = `import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/components/shadcn/table";
 
 export function Invoices({ rows }) {
   return (
@@ -86,15 +86,15 @@ export default function TablePage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Table</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Table</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A lightweight primitive for simple, static, structured data. It renders
-        plain HTML table elements with Cognition styling and no built-in
+        plain HTML table elements with Folio styling and no built-in
         interactivity.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           Table and Data Table serve different needs. Table is a layout
           primitive for straightforward content. Data Table is a full-featured
           datagrid with sorting, filtering, and pagination.
@@ -103,8 +103,8 @@ export default function TablePage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="rounded-lg border border-border-default bg-background-default p-6">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="rounded-xl border border-border bg-background p-6">
           <Table>
             <TableHeader>
               <TableRow>
@@ -127,18 +127,18 @@ export default function TablePage() {
           </Table>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Toggle the theme and it remaps,
+          Rendered with live Folio tokens. Toggle the theme and it remaps,
           no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4">
           {/* With caption */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-default p-6">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-background p-6">
               <Table>
                 <TableCaption>A list of recent invoices.</TableCaption>
                 <TableHeader>
@@ -159,17 +159,17 @@ export default function TablePage() {
                 </TableBody>
               </Table>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<TableCaption>A list of recent invoices.</TableCaption>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* With footer */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-default p-6">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-background p-6">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -195,7 +195,7 @@ export default function TablePage() {
                 </TableFooter>
               </Table>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<TableFooter>
   <TableRow>
@@ -204,13 +204,13 @@ export default function TablePage() {
   </TableRow>
 </TableFooter>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* Striped rows */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-default p-6">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-background p-6">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -220,7 +220,7 @@ export default function TablePage() {
                     <TableHead className="text-right">Amount</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody className="[&_tr:nth-child(even)]:bg-background-subtle">
+                <TableBody className="[&_tr:nth-child(even)]:bg-muted">
                   {invoices.map((row) => (
                     <TableRow key={row.id}>
                       <TableCell className="font-medium">{row.id}</TableCell>
@@ -232,11 +232,11 @@ export default function TablePage() {
                 </TableBody>
               </Table>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<TableBody className="[&_tr:nth-child(even)]:bg-background-subtle">`}
+                code={`<TableBody className="[&_tr:nth-child(even)]:bg-muted">`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -249,8 +249,8 @@ export default function TablePage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
-        <div className="rounded-lg border border-border-default bg-background-default p-6">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
+        <div className="rounded-xl border border-border bg-background p-6">
           <Table>
             <TableHeader>
               <TableRow>
@@ -277,21 +277,21 @@ export default function TablePage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[560px]">
-            <div className="grid grid-cols-[1.4fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Component</div>
               <div>Element</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {composition.map((c) => (
                 <div
                   key={c.name}
                   className="grid grid-cols-[1.4fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {c.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -313,25 +313,25 @@ export default function TablePage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t reach for Table when the data needs sorting, filtering,
               or pagination. Bolting that behavior onto a plain table rebuilds
               what Data Table already provides, and it tends to drift out of sync.
               Use Data Table for anything interactive.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -347,28 +347,12 @@ export default function TablePage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

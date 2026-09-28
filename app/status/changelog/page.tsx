@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/shadcn/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/shadcn/card";
 import { getGeneratedVersions } from "@/lib/changelog";
 
 export const metadata: Metadata = {
   title: "Changelog",
   description:
-    "Cognition version history: what shipped, what changed, and where the system is going.",
+    "Folio version history: what shipped, what changed, and where the system is going.",
 };
 
 type ReleaseStatus = "current" | "stable" | "foundation";
@@ -49,8 +49,8 @@ const legacyReleases: LegacyRelease[] = [
     changes: [
       "60+ components documented and live: all shadcn primitives plus Conversational UI, Graph Canvas Node, Charts, Field, Item, Spinner, and more",
       "Full sitewide compliance pass: em dashes removed from prose across all 19 component pages, Radix references removed from user-facing copy, ChatShell inline style replaced with utility class",
-      "Cognition skill rewritten as an agent briefing: distributed via ai-tools for use in Claude Code, Cursor, Copilot, and Windsurf",
-      "System vs Language distinction established: Cognition is the token and component infrastructure; the Language (Pro Blocks, motion, app shells, opinionated patterns) builds on top",
+      "Folio skill rewritten as an agent briefing: distributed via ai-tools for use in Claude Code, Cursor, Copilot, and Windsurf",
+      "System vs Language distinction established: Folio is the token and component infrastructure; the Language (Pro Blocks, motion, app shells, opinionated patterns) builds on top",
       "Roadmap expanded to 10 epics: Motion Foundations, ApiTable component, API accuracy pass, and Docs site copy sweep added",
       "Governance model defined: token changes versioned, all proposals go through design before landing",
       "New FE architect onboarded: system greenlit as platform infrastructure",
@@ -123,8 +123,8 @@ function Bullets({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2">
       {items.map((item, i) => (
-        <li key={i} className="flex gap-2 text-small text-text-default">
-          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-text-subtle" />
+        <li key={i} className="flex gap-2 text-small text-foreground">
+          <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-muted-foreground" />
           {item}
         </li>
       ))}
@@ -138,15 +138,15 @@ export default function ChangelogPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Status</p>
-      <h1 className="text-lead text-text-default">Changelog</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
-        Cognition version history. What shipped, what changed, and what the
+      <h1 className="text-lead text-foreground">Changelog</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
+        Folio version history. What shipped, what changed, and what the
         system has become.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
-          Cognition is currently in development. Goal is production
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
+          Folio is currently in development. Goal is production
           infrastructure for Distyl AI, distributed as a versioned skill across
           the team&apos;s AI toolchain.
         </p>
@@ -165,7 +165,7 @@ export default function ChangelogPage() {
                       {release.version} · {formatDate(release.date)}
                     </span>
                     <CardTitle className="text-lg">
-                      Cognition {release.version}
+                      Folio {release.version}
                     </CardTitle>
                   </div>
                   <Badge color={badge.color} variant={badge.variant}>
@@ -200,10 +200,10 @@ export default function ChangelogPage() {
                   <div className="flex flex-col gap-1">
                     <span className="text-caption font-medium uppercase tracking-wide">
                       v{release.version} · {release.date} ·{" "}
-                      <span className="text-text-subtle">Legacy</span>
+                      <span className="text-muted-foreground">Legacy</span>
                     </span>
                     <CardTitle className="text-lg">
-                      Cognition v{release.version}
+                      Folio v{release.version}
                     </CardTitle>
                   </div>
                   <Badge color={badge.color} variant={badge.variant}>
@@ -220,9 +220,8 @@ export default function ChangelogPage() {
         })}
       </div>
 
-      <p className="mt-8 text-small text-text-subtle">
-        Cognition v1.3 · June 2026 · Questions? Ask Tony Yates
-        #research-and-design
+      <p className="mt-8 text-small text-muted-foreground">
+        Folio v1.3 · June 2026
       </p>
     </div>
   );

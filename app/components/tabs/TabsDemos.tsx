@@ -6,7 +6,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs";
+} from "@/components/shadcn/tabs";
 
 type Variant = "default" | "underline" | "secondary";
 
@@ -29,7 +29,7 @@ export function VariantTabs({ variant }: { variant: Variant }) {
       </TabsList>
       {PANELS.map((p) => (
         <TabsContent key={p.value} value={p.value}>
-          <p className="text-sm text-text-subtle">{p.body}</p>
+          <p className="text-sm text-muted-foreground">{p.body}</p>
         </TabsContent>
       ))}
     </Tabs>
@@ -50,10 +50,10 @@ export function IconTabs() {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="preview">
-        <p className="text-sm text-text-subtle">The rendered component.</p>
+        <p className="text-sm text-muted-foreground">The rendered component.</p>
       </TabsContent>
       <TabsContent value="code">
-        <p className="text-sm text-text-subtle">The source snippet.</p>
+        <p className="text-sm text-muted-foreground">The source snippet.</p>
       </TabsContent>
     </Tabs>
   );

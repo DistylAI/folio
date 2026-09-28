@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/shadcn/button";
+import { Input } from "@/components/shadcn/input";
 import {
   Drawer,
   DrawerClose,
@@ -13,7 +13,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/components/shadcn/drawer";
 
 // Deterministic bar heights for the statistic chart (no Math.random -- keeps
 // server/client render stable).
@@ -46,10 +46,10 @@ export function StatisticDrawer() {
                 <Minus />
               </Button>
               <div className="text-center">
-                <div className="text-5xl font-bold tracking-tight text-text-default tabular-nums">
+                <div className="text-5xl font-bold tracking-tight text-foreground tabular-nums">
                   {goal}
                 </div>
-                <div className="text-[0.7rem] uppercase tracking-wide text-text-subtle">
+                <div className="text-[0.7rem] uppercase tracking-wide text-muted-foreground">
                   Calories/day
                 </div>
               </div>
@@ -67,7 +67,7 @@ export function StatisticDrawer() {
               {bars.map((h, i) => (
                 <div
                   key={i}
-                  className="w-full rounded-sm bg-background-primary/70"
+                  className="w-full rounded-sm bg-primary/70"
                   style={{ height: `${h}%` }}
                 />
               ))}
@@ -103,20 +103,20 @@ export function FormDrawer() {
             <div className="grid gap-2">
               <label
                 htmlFor="drawer-name"
-                className="text-sm font-medium text-text-default"
+                className="text-sm font-medium text-foreground"
               >
                 Name
               </label>
-              <Input id="drawer-name" defaultValue="Tony Yates" />
+              <Input id="drawer-name" placeholder="Name" />
             </div>
             <div className="grid gap-2">
               <label
                 htmlFor="drawer-username"
-                className="text-sm font-medium text-text-default"
+                className="text-sm font-medium text-foreground"
               >
                 Username
               </label>
-              <Input id="drawer-username" defaultValue="@tony" />
+              <Input id="drawer-username" placeholder="@username" />
             </div>
           </div>
           <DrawerFooter>
@@ -143,7 +143,7 @@ export function TextDrawer() {
             <DrawerTitle>Title Text</DrawerTitle>
             <DrawerDescription>This is a drawer description.</DrawerDescription>
           </DrawerHeader>
-          <div className="max-h-[50vh] overflow-y-auto px-4 text-sm text-text-subtle">
+          <div className="max-h-[50vh] overflow-y-auto px-4 text-sm text-muted-foreground">
             <p>
               A drawer slides content up from the bottom of the screen, keeping
               the page behind it in view. It&apos;s well suited to focused,

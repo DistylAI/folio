@@ -1,269 +1,34 @@
-@import "tailwindcss";
+@import "../content/folio-tokens.css";
 
-/* Safelist — always emit the full feedback utility family (bg/text/border ×
-   danger/success/warning/info), independent of JIT usage scanning. */
-@source inline("bg-feedback-danger text-feedback-danger border-feedback-danger bg-feedback-success text-feedback-success border-feedback-success bg-feedback-warning text-feedback-warning border-feedback-warning bg-feedback-info text-feedback-info border-feedback-info");
-
-/* Cognition v1.2 — Distyl AI Design System */
-/* Drop into globals.css at the app root */
-/*
-   Tailwind v4 note: color / radius / font tokens live in @theme so the
-   utilities (bg-*, text-*, border-*, rounded-*, font-*) are generated. The
-   light values below are canonical; dark mode remaps the same CSS variables
-   under [data-theme="dark"]. Token names and values are unchanged from spec.
-*/
-@theme {
-  /* Typography — Font Family */
-  --font-sans: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
-
-  /* Backgrounds */
-  --color-background-primary: #5D4EE7;
-  --color-background-accent: #EFEDFD;
-  --color-background-default: #FFFFFF;
-  --color-background-subtle: #F9FAFB;
-  --color-background-secondary: #F3F4F6;
-  --color-background-inverse: #0F1117;
-  --color-background-danger: #FEF2F2;
-  --color-background-success: #F0FDF4;
-  --color-background-warning: #FFFBEB;
-  --color-background-info: #EFF6FF;
-
-  /* Text */
-  --color-text-default: #0F1117;
-  --color-text-subtle: #6B7280;
-  --color-text-inverse: #FFFFFF;
-  --color-text-primary: #5D4EE7;
-  --color-text-disabled: #D1D5DB;
-  --color-text-danger: #B91C1C;
-  --color-text-success: #15803D;
-  --color-text-warning: #B45309;
-  --color-text-info: #1D4ED8;
-
-  /* Borders */
-  --color-border-default: #E5E7EB;
-  --color-border-subtle: #F3F4F6;
-  --color-border-strong: #9CA3AF;
-  --color-border-primary: #5D4EE7;
-  --color-border-danger: #EF4444;
-  --color-border-success: #15803D;
-
-  /* Feedback */
-  --color-feedback-danger: #EF4444;
-  --color-feedback-success: #15803D;
-  --color-feedback-warning: #B45309;
-  --color-feedback-info: #3B82F6;
-
-  /* Chart */
-  --color-chart-1: #7C6FF7;
-  --color-chart-2: #38BDF8;
-  --color-chart-3: #34D399;
-  --color-chart-4: #FB923C;
-  --color-chart-5: #EC4899;
-
-  /* Radius */
-  --radius-none: 0px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-full: 9999px;
-
-  /* Animation — Accordion expand/collapse (drives animate-accordion-* utilities) */
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-}
-
-:root {
-  /* Typography — Font Size (Tailwind scale) */
-  --font-size-xs:   0.75rem;    /* 12px */
-  --font-size-sm:   0.875rem;   /* 14px */
-  --font-size-base: 1rem;       /* 16px */
-  --font-size-lg:   1.125rem;   /* 18px */
-  --font-size-xl:   1.25rem;    /* 20px */
-  --font-size-2xl:  1.5rem;     /* 24px */
-  --font-size-3xl:  1.875rem;   /* 30px */
-  --font-size-4xl:  2.25rem;    /* 36px */
-  --font-size-5xl:  3rem;       /* 48px */
-
-  /* Typography — Font Weight */
-  --font-weight-normal:    400;
-  --font-weight-medium:    500;
-  --font-weight-semibold:  600;
-  --font-weight-bold:      700;
-  --font-weight-extrabold: 800;
-
-  /* Typography — Line Height */
-  --line-height-none:    1;
-  --line-height-tight:   1.25;
-  --line-height-snug:    1.375;
-  --line-height-normal:  1.5;
-  --line-height-relaxed: 1.625;
-  --line-height-loose:   2;
-
-  /* Typography — Letter Spacing */
-  --letter-spacing-tight:   -0.05em;
-  --letter-spacing-normal:   0em;
-  --letter-spacing-wide:     0.025em;
-  --letter-spacing-wider:    0.05em;
-  --letter-spacing-widest:   0.1em;
-
-  /* Typography — Named Text Styles
-     Source of truth: Cognition v1.2
-     Format: text-{size}/leading-{height}/{weight}
-  */
-
-  /* Caption — text-xs/leading-normal/normal, subtle */
-  --text-caption-size:        var(--font-size-xs);
-  --text-caption-weight:      var(--font-weight-normal);
-  --text-caption-line-height: var(--line-height-normal);
-  --text-caption-font:        var(--font-sans);
-  --text-caption-color:       var(--color-text-subtle);
-
-  /* Title — text-base/leading-normal/medium, default (component & section titles) */
-  --text-title-size:        var(--font-size-base);
-  --text-title-weight:      var(--font-weight-medium);
-  --text-title-line-height: var(--line-height-normal);
-  --text-title-font:        var(--font-sans);
-  --text-title-color:       var(--color-text-default);
-
-  /* Description — text-sm/leading-normal/normal, subtle (helper & description copy) */
-  --text-description-size:        var(--font-size-sm);
-  --text-description-weight:      var(--font-weight-normal);
-  --text-description-line-height: var(--line-height-normal);
-  --text-description-font:        var(--font-sans);
-  --text-description-color:       var(--color-text-subtle);
-
-  /* Label — text-xs/leading-normal/medium, default (compact form labels) */
-  --text-label-size:        var(--font-size-xs);
-  --text-label-weight:      var(--font-weight-medium);
-  --text-label-line-height: var(--line-height-normal);
-  --text-label-font:        var(--font-sans);
-  --text-label-color:       var(--color-text-default);
-
-  /* P (Body) — text-base/leading-normal/normal */
-  --text-body-size:        var(--font-size-base);
-  --text-body-weight:      var(--font-weight-normal);
-  --text-body-line-height: var(--line-height-normal);
-  --text-body-font:        var(--font-sans);
-  --text-body-color:       var(--color-text-default);
-
-  /* Lead — text-lg/leading-normal/semibold */
-  --text-lead-size:        var(--font-size-lg);
-  --text-lead-weight:      var(--font-weight-semibold);
-  --text-lead-line-height: var(--line-height-normal);
-  --text-lead-font:        var(--font-sans);
-
-  /* Large — text-xl/leading-normal/normal */
-  --text-large-size:        var(--font-size-xl);
-  --text-large-weight:      var(--font-weight-normal);
-  --text-large-line-height: var(--line-height-normal);
-  --text-large-font:        var(--font-sans);
-  --text-large-color:       var(--color-text-subtle);
-
-  /* Small / Muted — text-sm/leading-normal/medium */
-  --text-small-size:        var(--font-size-sm);
-  --text-small-weight:      var(--font-weight-medium);
-  --text-small-line-height: var(--line-height-normal);
-  --text-small-font:        var(--font-sans);
-  --text-small-color:       var(--color-text-subtle);
-
-  /* Blockquote — text-base/leading-normal/italic */
-  --text-blockquote-size:        var(--font-size-base);
-  --text-blockquote-weight:      var(--font-weight-normal);
-  --text-blockquote-line-height: var(--line-height-normal);
-  --text-blockquote-style:       italic;
-  --text-blockquote-font:        var(--font-sans);
-
-  /* List — text-base/leading-normal/normal, 8px list spacing */
-  --text-list-size:        var(--font-size-base);
-  --text-list-weight:      var(--font-weight-normal);
-  --text-list-line-height: var(--line-height-normal);
-  --text-list-spacing:     8px;
-  --text-list-font:        var(--font-sans);
-
-  /* InlineCode — text-sm/leading-normal/normal, mono */
-  --text-inline-code-size:        var(--font-size-sm);
-  --text-inline-code-weight:      var(--font-weight-normal);
-  --text-inline-code-line-height: var(--line-height-normal);
-  --text-inline-code-font:        var(--font-mono);
-
-  /* Code block — text-base/leading-normal/normal, mono */
-  --text-code-size:        var(--font-size-base);
-  --text-code-weight:      var(--font-weight-normal);
-  --text-code-line-height: var(--line-height-normal);
-  --text-code-font:        var(--font-mono);
-}
-
-[data-theme="dark"] {
-  /* Backgrounds */
-  --color-background-primary: #7C6FF7;
-  --color-background-accent: #06041B;
-  --color-background-default: #0F1117;
-  --color-background-subtle: #141820;
-  --color-background-secondary: #1F2937;
-  --color-background-inverse: #F9FAFB;
-  --color-background-danger: #450A0A;
-  --color-background-success: #052E16;
-  --color-background-warning: #431407;
-  --color-background-info: #172554;
-
-  /* Text */
-  --color-text-default: #F9FAFB;
-  --color-text-subtle: #9CA3AF;
-  --color-text-inverse: #0F1117;
-  --color-text-primary: #7C6FF7;
-  --color-text-disabled: #4B5563;
-  --color-text-danger: #F87171;
-  --color-text-success: #4ADE80;
-  --color-text-warning: #FBBF24;
-  --color-text-info: #60A5FA;
-
-  /* Borders */
-  --color-border-default: #374151;
-  --color-border-subtle: #1F2937;
-  --color-border-strong: #6B7280;
-  --color-border-primary: #7C6FF7;
-  --color-border-danger: #F87171;
-  --color-border-success: #4ADE80;
-
-  /* Feedback */
-  --color-feedback-danger: #F87171;
-  --color-feedback-success: #4ADE80;
-  --color-feedback-warning: #FBBF24;
-  --color-feedback-info: #60A5FA;
-
-  /* Chart */
-  --color-chart-1: #9089F9;
-  --color-chart-2: #7DD3FC;
-  --color-chart-3: #6EE7B7;
-  --color-chart-4: #FDBA74;
-  --color-chart-5: #F9A8D4;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Base element styling (the spec drop-in assumes the app provides this). */
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background-color: var(--color-background-default);
-  color: var(--color-text-default);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+  body {
+    background-color: var(--color-background-default);
+    color: var(--color-text-default);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-::selection {
-  background-color: var(--color-background-accent);
-  color: var(--color-text-primary);
+  ::selection {
+    background-color: var(--color-background-primary-subtle);
+    color: var(--color-text-primary);
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
-   Named text styles — the canonical Cognition typography roles.
-   Each class is composed entirely from the --text-* tokens above, so the
-   the Cognition spec drives every heading, paragraph, and code block.
-   Layout/color utilities (mt-*, border-b, text-text-danger, …) still compose.
+   Named text styles — the canonical Folio typography roles.
+   Each class is composed entirely from the --text-* tokens in
+   content/folio-tokens.css, so the Folio spec drives every heading, paragraph, and code block.
+   Layout/color utilities (mt-*, border-b, text-destructive, …) still compose.
    ────────────────────────────────────────────────────────────────────────── */
 @layer components {
   .text-caption {
@@ -367,7 +132,7 @@ body {
 
   /* Spinner — the Distyl logo mark as an animated stroke chase. Both paths use
      pathLength="1" so the dash maths are resolution-independent; stroke is
-     currentColor (set to a Cognition token by the component) so it remaps in
+     currentColor (set to a Folio token by the component) so it remaps in
      dark mode. The two paths share one keyframe but chase-2 is delayed 0.4s so
      they chase rather than sync. */
   .chase {

@@ -1,21 +1,20 @@
-# Cognition v1.2 Design System Audit
+# Folio v1.2 Design System Audit
 
 ## Distyl AI · June 2026
 
-Owner: Tony Yates · User Experience and Product Design
 Scope: `fe-distillery`, `distillery`, `distillery-platform`
-Method: Parallel subagent audit against the canonical Cognition v1.2 token set and hard-rule checklist.
+Method: Parallel subagent audit against the canonical Folio v1.2 token set and hard-rule checklist.
 
 ---
 
 ## 1. Executive Summary
 
-- **Cognition v1.2 is not implemented.** `fe-distillery` defines zero Cognition v1.2 tokens. No `--color-background-*`, `--color-text-*`, `--color-border-*`, `--color-feedback-*`, or `--radius-{none,sm,md,lg,xl,full}` exist anywhere. The repo is on the legacy shadcn NewYork HSL-triplet system: `--primary`, `--background`, `--foreground`, `--secondary`, `--muted`, `--accent`, `--destructive`, `--border`, `--input`, `--radius`, `--success`, `--warning`.
+- **Folio v1.2 is not implemented.** `fe-distillery` defines zero Folio v1.2 tokens. No `--color-background-*`, `--color-text-*`, `--color-border-*`, `--color-feedback-*`, or `--radius-{none,sm,md,lg,xl,full}` exist anywhere. The repo is on the legacy shadcn NewYork HSL-triplet system: `--primary`, `--background`, `--foreground`, `--secondary`, `--muted`, `--accent`, `--destructive`, `--border`, `--input`, `--radius`, `--success`, `--warning`.
 - **Dark mode is implemented incorrectly.** `fe-distillery` uses Tailwind's `darkMode: ['class']` strategy with a `.dark` selector, not `[data-theme="dark"]` on `<html>`. On top of that, 26 raw `dark:` Tailwind classes are scattered across impl code, bypassing tokens entirely. This is a structural fix.
 - **Color and utility drift is at scale.** `fe-distillery` has 344 hardcoded hex literals and 2,061 raw Tailwind palette utilities (`bg-gray-*`, `text-red-*`, etc.), including inside shadcn primitives: `components/ui/badge.tsx` bakes in 30+ raw palette variants and `components/ui/toast.tsx` uses `text-red-300/50`. The system is not being bypassed only by callers; the primitives themselves bypass the token system.
 - **`distillery` is out of scope.** It is a Python backend monorepo. The only FE surfaces are a Chrome-extension demo and a Flask eval dashboard, both off-spec and isolated. The expected customer-facing React surface does not live in this repo. Verify where it lives before drawing customer-rollout conclusions.
 - **`distillery-platform` is not relevant.** Pure Helm/IaC, no FE code, no token files.
-- The codebase is not ready to receive Cognition v1.2 token values. The brand purple `#5D4EE7` is already present in `fe-distillery` as `--primary` (`245.88 76.12% 60.59%`), so a rename plus dark-mode reshape preserves brand exactly. But the rename is full-stack: `tailwind.config.js`, every file in `components/ui/`, two parallel token blocks, six parallel MUI theme files, and dozens of consumers.
+- The codebase is not ready to receive Folio v1.2 token values. The brand purple `#5D4EE7` is already present in `fe-distillery` as `--primary` (`245.88 76.12% 60.59%`), so a rename plus dark-mode reshape preserves brand exactly. But the rename is full-stack: `tailwind.config.js`, every file in `components/ui/`, two parallel token blocks, six parallel MUI theme files, and dozens of consumers.
 
 ---
 
@@ -23,7 +22,7 @@ Method: Parallel subagent audit against the canonical Cognition v1.2 token set a
 
 | Repo                  | Implementation                                                                                                                  | Status                                                                    |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `fe-distillery`       | `darkMode: ['class']` in `tailwind.config.js:6` + `.dark` selector in `components/ui/base.css:101` and `impls/demos/App.css:48` | **Incorrect** — Cognition v1.2 requires `[data-theme="dark"]` on `<html>` |
+| `fe-distillery`       | `darkMode: ['class']` in `tailwind.config.js:6` + `.dark` selector in `components/ui/base.css:101` and `impls/demos/App.css:48` | **Incorrect** — Folio v1.2 requires `[data-theme="dark"]` on `<html>` |
 | `distillery`          | Not implemented                                                                                                                 | N/A (Python repo)                                                         |
 | `distillery-platform` | Not applicable                                                                                                                  | N/A (no FE)                                                               |
 
@@ -47,7 +46,7 @@ Method: Parallel subagent audit against the canonical Cognition v1.2 token set a
 
 ## 3. Token Inventory
 
-### Cognition v1.2 tokens correctly defined and in use
+### Folio v1.2 tokens correctly defined and in use
 
 **None.** Zero canonical tokens (`--color-*-*`, `--radius-{none,sm,md,lg,xl,full}`) are defined in any of the three repos.
 
@@ -61,18 +60,18 @@ All 32 canonical tokens are absent: 9 `--color-background-*`, 8 `--color-text-*`
 
 | Variable                                                                                                                                                                                                                    | Defined at                                                                                                                          | Notes                                                                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--background`, `--foreground`, `--primary`, `--secondary`, `--muted`, `--accent`, `--destructive`, `--success`, `--warning`, `--border`, `--input`, `--radius`                                                             | `components/ui/base.css:37–72` (light), `components/ui/base.css:102–125` (dark, under `.dark`)                                      | Canonical legacy set. HSL-triplet form. Brand `--primary` is `245.88 76.12% 60.59%` which resolves to `#5D4EE7` — matches Cognition's intended brand. |
+| `--background`, `--foreground`, `--primary`, `--secondary`, `--muted`, `--accent`, `--destructive`, `--success`, `--warning`, `--border`, `--input`, `--radius`                                                             | `components/ui/base.css:37–72` (light), `components/ui/base.css:102–125` (dark, under `.dark`)                                      | Canonical legacy set. HSL-triplet form. Brand `--primary` is `245.88 76.12% 60.59%` which resolves to `#5D4EE7` — matches Folio's intended brand. |
 | Same set, again                                                                                                                                                                                                             | `impls/demos/App.css:21–66`                                                                                                         | Duplicate purple-themed token block. Diverges slightly from `base.css`. Two sources of truth.                                                         |
 | `var(--primary)`, `var(--background)`, `var(--foreground)`, `var(--secondary)`, `var(--muted)`, `var(--accent)`, `var(--destructive)`, `var(--success)`, `var(--warning)`, `var(--border)`, `var(--input)`, `var(--radius)` | `tailwind.config.js:39–103`                                                                                                         | Composed via `hsl(var(--*))` into `theme.extend.colors`.                                                                                              |
 | `var(--primary)` with opacity                                                                                                                                                                                               | `impls/eagle/.../summaryConstants.ts:2–4`, `impls/eagle/.../ExecutionFlowChart.tsx:374`, `impls/platform/.../transformData.tsx:153` | Consumers read tokens directly past Tailwind.                                                                                                         |
 
-**`distillery`** — independent legacy-style variables (not Cognition's legacy set):
+**`distillery`** — independent legacy-style variables (not Folio's legacy set):
 
 | Variable                                                                                                                                                                        | File                                                 | Line |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ---- |
 | `--primary-color: #e20074` (T-Mobile magenta), `--secondary-color`, `--light-color`, `--dark-color`, `--border-color`, `--success-color`, `--error-color`, `--background-color` | `impls/tower/tower/evaluation/web/static/styles.css` | 2–9  |
 
-These are scoped to a Flask eval dashboard, not React and not Cognition-aware. The naming pattern (`--primary-color`) is one rename away from colliding with a Cognition migration.
+These are scoped to a Flask eval dashboard, not React and not Folio-aware. The naming pattern (`--primary-color`) is one rename away from colliding with a Folio migration.
 
 **`distillery-platform`** — none.
 
@@ -88,7 +87,7 @@ These are scoped to a Flask eval dashboard, not React and not Cognition-aware. T
 | Direct `@radix-ui/*` imports outside `components/ui/`          |                                     4 |                       0 |                     0 |
 | Spacing (off-4px-scale inline px)                              |                                   15+ |                      4+ |                     0 |
 | Typography (non-Geist / non-Geist-Mono)                        |              13 distinct declarations | 7 distinct declarations |                     0 |
-| Legacy Cognition variables (`--primary`, `--background`, etc.) | 50+ definitions/usages across 3 files |                       0 |                     0 |
+| Legacy Folio variables (`--primary`, `--background`, etc.) | 50+ definitions/usages across 3 files |                       0 |                     0 |
 
 **Notable callouts:**
 
@@ -102,7 +101,7 @@ Typography: `fe-distillery` declares Geist in `components/ui/base.css:7–12` an
 
 Spacing: recurring `margin: '6px 0'` in three `ReactMarkdownOverrides.tsx` files (penny and coffey), `width: '500px'` in `impls/genedit/.../LoginForm.tsx`, `height: '18px'` in `impls/coffey/.../DrawerHyperlink.tsx`.
 
-`distillery` hardcoded colors: `#e20074` (T-Mobile magenta) in the tower eval dashboard CSS. The Chrome extension demo uses a `#667eea` to `#764ba2` purple gradient that does not match Cognition's `#5D4EE7`. If this extension is shown to customers as a demo, it presents a different brand purple.
+`distillery` hardcoded colors: `#e20074` (T-Mobile magenta) in the tower eval dashboard CSS. The Chrome extension demo uses a `#667eea` to `#764ba2` purple gradient that does not match Folio's `#5D4EE7`. If this extension is shown to customers as a demo, it presents a different brand purple.
 
 ---
 
@@ -147,7 +146,7 @@ No design-system-relevant components. The CSS is bootstrap-flavored styling for 
 | `Chip`    |       9 |
 | `Tag`     |   **0** |
 
-Tag adoption is 0%. There is no canonical `Tag` primitive. The third-party `shadcn-io/tags` exists but is not imported under that name. A canonical `Tag` component must be built or promoted before Cognition Tag semantics can be enforced.
+Tag adoption is 0%. There is no canonical `Tag` primitive. The third-party `shadcn-io/tags` exists but is not imported under that name. A canonical `Tag` component must be built or promoted before Folio Tag semantics can be enforced.
 
 **Button-as-label misuse:**
 
@@ -163,7 +162,7 @@ Tag adoption is 0%. There is no canonical `Tag` primitive. The third-party `shad
 
 **Inside `fe-distillery`:**
 
-- `impls/demos/App.css` defines a second, divergent token block with its own purple-themed `--primary`, `--background`, `--radius`, and `.dark` selector. This must be reconciled or deleted before Cognition v1.2 lands.
+- `impls/demos/App.css` defines a second, divergent token block with its own purple-themed `--primary`, `--background`, `--radius`, and `.dark` selector. This must be reconciled or deleted before Folio v1.2 lands.
 - Six MUI theme files in `components/legacy/theme/` and `impls/{penny,tower,coffey,eagle,genedit}/theme/` run a Material UI palette and typography stack in parallel to shadcn. Inter as base font, separate color palettes, separate component overrides. This is the largest invisible drift surface.
 - `impls/eagle/legacySrc/` is the largest source of hardcoded values. Multiple CaseReview files (`CaseHeader.tsx`, `CaseBody.tsx`, `ToolResultsBody.tsx`, `index.tsx`) carry hardcoded hex literals (`#FAFAF9`, `#6366f1`, `#DFDCF8`, `#f3f2f1`, `#ffffff`) and a parallel theme file (`impls/eagle/legacySrc/app/theme/theme.ts:22`) hardcodes `#5D4EE7`. This directory contributes a large share of violation totals.
 - `tailwind.config.js:45–47` has three hardcoded hex literals (`#cde4f5`, `#3d76a0`, `#205c8d`) in `theme.extend.colors`. These are unnamed brand colors injected at config level and should be tokens.
@@ -172,7 +171,7 @@ Tag adoption is 0%. There is no canonical `Tag` primitive. The third-party `shad
 **Inside `distillery`:**
 
 - T-Mobile magenta `#e20074` is hardcoded in the tower eval dashboard CSS.
-- The Chrome extension demo uses a `#667eea` to `#764ba2` gradient that does not match Cognition's `#5D4EE7`.
+- The Chrome extension demo uses a `#667eea` to `#764ba2` gradient that does not match Folio's `#5D4EE7`.
 
 **Inside `distillery-platform`:** No drift. No FE.
 
@@ -187,8 +186,8 @@ Ranked by rebrand blocker status, then by reduction in token surface area, then 
 | #   | Item                                                                                                                                                                                                             | Repo            | Effort                | Blocks rebrand?                                   |
 | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | --------------------- | ------------------------------------------------- |
 | 1   | Switch dark mode from Tailwind `.dark` class strategy to `[data-theme="dark"]` on `<html>` (config + `base.css` selector + theme provider).                                                                      | `fe-distillery` | **S** (1–2 days)      | **Yes**                                           |
-| 2   | Introduce the full Cognition v1.2 token set in `components/ui/base.css` under `:root` and `[data-theme="dark"]`. Keep legacy `--primary` etc. as aliases pointing at the new tokens during the migration window. | `fe-distillery` | **M** (1 week)        | **Yes**                                           |
-| 3   | Update `tailwind.config.js` to expose Cognition tokens as semantic Tailwind colors (`bg-background-primary`, `text-text-subtle`, `border-border-default`, etc.).                                                 | `fe-distillery` | **S** (2–3 days)      | **Yes**                                           |
+| 2   | Introduce the full Folio v1.2 token set in `components/ui/base.css` under `:root` and `[data-theme="dark"]`. Keep legacy `--primary` etc. as aliases pointing at the new tokens during the migration window. | `fe-distillery` | **M** (1 week)        | **Yes**                                           |
+| 3   | Update `tailwind.config.js` to expose Folio tokens as semantic Tailwind colors (`bg-background-primary`, `text-text-subtle`, `border-border-default`, etc.).                                                 | `fe-distillery` | **S** (2–3 days)      | **Yes**                                           |
 | 4   | Delete or merge `impls/demos/App.css` duplicate token block. One source.                                                                                                                                         | `fe-distillery` | **S** (1 day)         | **Yes**                                           |
 | 5   | Rewrite `components/ui/badge.tsx` and `components/ui/toast.tsx` to use semantic tokens instead of raw Tailwind palette utilities. Fixing the primitives propagates to all 121 Badge consumers.                   | `fe-distillery` | **M** (3–5 days)      | **Yes** (silently breaks dark mode)               |
 | 6   | Remove all 26 `dark:` Tailwind classes from impl code.                                                                                                                                                           | `fe-distillery` | **M** (3–5 days)      | **Yes**                                           |
@@ -197,11 +196,11 @@ Ranked by rebrand blocker status, then by reduction in token surface area, then 
 | 9   | Replace 344 hardcoded hex literals with token references. Concentrated in `impls/eagle/legacySrc/`, `impls/apprentice/`, `impls/pennycai/`.                                                                      | `fe-distillery` | **L** (2 weeks)       | No                                                |
 | 10  | Move 4 direct `@radix-ui/*` imports onto shadcn wrappers.                                                                                                                                                        | `fe-distillery` | **S** (1 day)         | No                                                |
 | 11  | Set Geist as the actual `:root` body font in `components/ui/base.css:26` (currently Inter).                                                                                                                      | `fe-distillery` | **S** (hours)         | No (but brand typography is silently wrong today) |
-| 12  | Decide the fate of the six MUI theme.ts files. Either retire MUI from `impls/{penny,tower,coffey,eagle,genedit}` and `components/legacy/`, or extend Cognition tokens into MUI's theme.                          | `fe-distillery` | **L** (multi-quarter) | No (but largest invisible drift surface)          |
+| 12  | Decide the fate of the six MUI theme.ts files. Either retire MUI from `impls/{penny,tower,coffey,eagle,genedit}` and `components/legacy/`, or extend Folio tokens into MUI's theme.                          | `fe-distillery` | **L** (multi-quarter) | No (but largest invisible drift surface)          |
 | 13  | Replace hex literals in `impls/tower/.../web/static/styles.css` and `demos/peer/chrome-extension/*.css`.                                                                                                         | `distillery`    | **S** (1 day)         | No (isolated tooling)                             |
 | 14  | Standardize spacing in `impls/penny` and `impls/coffey` `ReactMarkdownOverrides.tsx` files.                                                                                                                      | `fe-distillery` | **S** (hours)         | No                                                |
 
-**Recommended sequence:** 1 → 4 → 2 → 3 → 5 → 6 ships a working Cognition v1.2 token system with correct dark mode. Items 7 through 14 can proceed on a rolling basis after the rebrand lands.
+**Recommended sequence:** 1 → 4 → 2 → 3 → 5 → 6 ships a working Folio v1.2 token system with correct dark mode. Items 7 through 14 can proceed on a rolling basis after the rebrand lands.
 
 ---
 
@@ -209,8 +208,8 @@ Ranked by rebrand blocker status, then by reduction in token surface area, then 
 
 | Repo                  | Ready?              | Blockers                                                                                                                                                                                                                                                                                             |
 | --------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `fe-distillery`       | **No**              | 1. No Cognition tokens exist (items 2, 3, 4 in section 8). 2. Dark mode uses the wrong implementation strategy (item 1). 3. Shadcn primitives `badge.tsx` and `toast.tsx` bypass the token system (item 5). 4. 26 `dark:` Tailwind classes will silently break under `[data-theme="dark"]` (item 6). |
-| `distillery`          | **N/A**             | Not a React FE consumer of `fe-distillery`. Has brand-color-divergent CSS in two isolated places, but those are not on the Cognition path.                                                                                                                                                           |
+| `fe-distillery`       | **No**              | 1. No Folio tokens exist (items 2, 3, 4 in section 8). 2. Dark mode uses the wrong implementation strategy (item 1). 3. Shadcn primitives `badge.tsx` and `toast.tsx` bypass the token system (item 5). 4. 26 `dark:` Tailwind classes will silently break under `[data-theme="dark"]` (item 6). |
+| `distillery`          | **N/A**             | Not a React FE consumer of `fe-distillery`. Has brand-color-divergent CSS in two isolated places, but those are not on the Folio path.                                                                                                                                                           |
 | `distillery-platform` | **Yes** (vacuously) | No FE surface.                                                                                                                                                                                                                                                                                       |
 
 **Minimum work before a brand refresh can land correctly in `fe-distillery`:**
@@ -219,7 +218,7 @@ Land items 1 through 6 from section 8 in order. Estimated 3 to 4 engineer-weeks 
 
 **Risk flags:**
 
-The six MUI theme files will not pick up new Cognition values automatically. Inventory which impl pages still render through MUI before declaring the refresh complete.
+The six MUI theme files will not pick up new Folio values automatically. Inventory which impl pages still render through MUI before declaring the refresh complete.
 
 The 2,061 raw Tailwind palette utilities and 344 hardcoded hex literals will also not pick up new values. Most are in `impls/eagle/legacySrc/` and similar paths. If those surfaces are user-visible, they must be in scope for the rebrand.
 

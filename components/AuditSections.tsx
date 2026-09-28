@@ -41,13 +41,13 @@ export function AuditSections({ sections }: { sections: AuditSection[] }) {
         <button
           type="button"
           onClick={() => setOpen(sections.map(() => !allOpen))}
-          className="rounded-md border border-border-default px-3 py-1.5 text-sm font-medium text-text-subtle transition-colors hover:border-border-strong hover:text-text-default"
+          className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
         >
           {allOpen ? "Collapse all" : "Expand all"}
         </button>
       </div>
 
-      <div className="divide-y divide-border-default overflow-hidden rounded-lg border border-border-default">
+      <div className="divide-y divide-border overflow-hidden rounded-xl border border-border">
         {sections.map((s, i) => {
           const isOpen = open[i];
           const id = slug(s.title);
@@ -60,15 +60,15 @@ export function AuditSections({ sections }: { sections: AuditSection[] }) {
                   onClick={() =>
                     setOpen((prev) => prev.map((v, j) => (j === i ? !v : v)))
                   }
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-background-subtle"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-muted"
                 >
-                  <span className="text-lead text-text-default">
+                  <span className="text-lead text-foreground">
                     {s.title}
                   </span>
                   <ChevronDown
                     aria-hidden
                     className={[
-                      "h-4 w-4 shrink-0 text-text-subtle transition-transform",
+                      "size-4 shrink-0 text-muted-foreground transition-transform",
                       isOpen ? "rotate-180" : "",
                     ].join(" ")}
                   />

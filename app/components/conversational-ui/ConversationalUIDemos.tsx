@@ -11,10 +11,10 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs";
+} from "@/components/shadcn/tabs";
 
 const panelClass =
-  "overflow-hidden rounded-b-lg rounded-tr-lg border border-border-default";
+  "overflow-hidden rounded-b-xl rounded-tr-xl border border-border";
 
 export function VariantShell() {
   const mockSend = async () => {
@@ -75,9 +75,9 @@ export function StatesDemo() {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       <div>
-        <p className="mb-3 text-sm font-medium text-text-default">Empty</p>
+        <p className="mb-3 text-sm font-medium text-foreground">Empty</p>
         <div
-          className="overflow-hidden rounded-lg border border-border-default"
+          className="overflow-hidden rounded-xl border border-border"
           style={{ height: 320 }}
         >
           <div className="flex h-full flex-col">
@@ -87,9 +87,9 @@ export function StatesDemo() {
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-text-default">Loading</p>
+        <p className="mb-3 text-sm font-medium text-foreground">Loading</p>
         <div
-          className="overflow-hidden rounded-lg border border-border-default"
+          className="overflow-hidden rounded-xl border border-border"
           style={{ height: 320 }}
         >
           <div className="flex h-full flex-col gap-5 overflow-y-auto px-5 py-6">
@@ -103,9 +103,9 @@ export function StatesDemo() {
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium text-text-default">Error</p>
+        <p className="mb-3 text-sm font-medium text-foreground">Error</p>
         <div
-          className="overflow-hidden rounded-lg border border-border-default"
+          className="overflow-hidden rounded-xl border border-border"
           style={{ height: 320 }}
         >
           <div className="flex h-full flex-col gap-5 overflow-y-auto px-5 py-6">
@@ -131,7 +131,7 @@ export function ChatInputDemo() {
           {log.map((m, i) => (
             <div
               key={i}
-              className="rounded-lg border border-border-default bg-background-subtle px-4 py-2.5 text-sm text-text-subtle"
+              className="rounded-xl border border-border bg-muted px-4 py-2.5 text-sm text-muted-foreground"
             >
               {m}
             </div>
@@ -175,7 +175,7 @@ export function MessageBubbleDemo() {
 export function EmptyStateDemo() {
   return (
     <div
-      className="overflow-hidden rounded-lg border border-border-default"
+      className="overflow-hidden rounded-xl border border-border"
       style={{ height: 280 }}
     >
       <div className="flex h-full flex-col">

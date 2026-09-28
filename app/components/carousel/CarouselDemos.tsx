@@ -8,18 +8,18 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/shadcn/carousel";
 import { cn } from "@/lib/utils";
 
 function Slide({ n, className }: { n: number; className?: string }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded-lg border border-border-default bg-background-secondary",
+        "flex items-center justify-center rounded-xl border border-border bg-secondary",
         className,
       )}
     >
-      <span className="text-3xl font-semibold text-text-subtle tabular-nums">
+      <span className="text-3xl font-semibold text-muted-foreground tabular-nums">
         {n}
       </span>
     </div>
@@ -56,7 +56,7 @@ export function BasicCarousel() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <p className="mt-4 text-center text-sm text-text-subtle">
+      <p className="mt-4 text-center text-sm text-muted-foreground">
         Item {current} of {count}
       </p>
     </div>

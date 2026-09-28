@@ -20,10 +20,11 @@ function frontmatter(text: string): Record<string, string> {
   const lines = text.split("\n");
   const out: Record<string, string> = {};
   if (lines[0]?.trim() !== "---") return out;
-  for (let i = 1; i < lines.length; i++) {
-    if (lines[i].trim() === "---") break;
-    const m = lines[i].match(/^([a-zA-Z_]+):\s*(.*)$/);
-    if (m) out[m[1]] = unquote(m[2].trim());
+  for (const line of lines.slice(1)) {
+    if (line.trim() === "---") break;
+    const m = line.match(/^([a-zA-Z_]+):\s*(.*)$/);
+    const key = m?.[1];
+    if (key) out[key] = unquote((m[2] ?? "").trim());
   }
   return out;
 }

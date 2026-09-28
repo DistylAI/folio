@@ -9,7 +9,7 @@ import {
 export const metadata: Metadata = {
   title: "Carousel",
   description:
-    "Carousel component -- a swipeable, motion-driven set of slides built on Embla. API matches fe-distillery components/ui/carousel.tsx.",
+    "Carousel component -- a swipeable, motion-driven set of slides built on Embla. API matches the @distylai/toolkit-ui Carousel.",
 };
 
 const parts = [
@@ -61,7 +61,7 @@ const installCode = `import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/shadcn/carousel";
 
 export function Gallery({ items }) {
   return (
@@ -85,15 +85,15 @@ function Cell({
   code: string;
 }) {
   return (
-    <div className="rounded-lg border border-border-default">
-      <div className="flex items-center justify-center bg-background-subtle p-14">
+    <div className="rounded-xl border border-border">
+      <div className="flex items-center justify-center bg-muted p-14">
         {children}
       </div>
-      <div className="border-t border-border-default p-3">
+      <div className="border-t border-border p-3">
         <CodeBlock
           code={code}
           size="sm"
-          className="rounded-md border border-border-subtle bg-background-subtle"
+          className="rounded-lg border border-border-subtle bg-muted"
         />
       </div>
     </div>
@@ -104,8 +104,8 @@ export default function CarouselDocsPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Carousel</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Carousel</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A swipeable, motion-driven set of slides built on Embla. Use it to page
         through media or cards -- with keyboard arrows, drag, and prev/next
         controls that disable at the ends.
@@ -113,12 +113,12 @@ export default function CarouselDocsPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-14">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-14">
           <BasicCarousel />
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens -- slides, borders, and the arrow
+          Rendered with live Folio tokens -- slides, borders, and the arrow
           controls remap on theme change, no{" "}
           <code className="font-mono">dark:</code> classes. Drag, use the arrows,
           or press the left/right keys.
@@ -127,7 +127,7 @@ export default function CarouselDocsPage() {
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Items per view</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Items per view</h3>
         <div className="grid grid-cols-1 gap-4">
           <Cell code={perViewCode}>
             <MultiCarousel per={2} />
@@ -148,7 +148,7 @@ export default function CarouselDocsPage() {
 
       {/* Orientation */}
       <section id="orientation" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Orientation</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Orientation</h3>
         <div className="grid grid-cols-1 gap-4">
           <Cell code={verticalCode}>
             <VerticalCarousel />
@@ -164,20 +164,20 @@ export default function CarouselDocsPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[560px]">
-            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Part</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {parts.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.8fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="text-description">{p.desc}</div>
@@ -190,13 +190,13 @@ export default function CarouselDocsPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Don&apos;t and Do</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Don&apos;t and Do</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t put content users must not miss in a carousel -- anything
               off-screen gets overlooked. And don&apos;t hand-roll arrow enabled
               state; <code className="font-mono">CarouselPrevious</code> /{" "}
@@ -204,10 +204,10 @@ export default function CarouselDocsPage() {
               carousel context.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {`<Carousel className="w-full max-w-xs">
   <CarouselContent>
     <CarouselItem>…</CarouselItem>
@@ -225,21 +225,20 @@ export default function CarouselDocsPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         API matches{" "}
-        <code className="font-mono text-text-default">
-          fe-distillery/components/ui/carousel.tsx
+        <code className="font-mono text-foreground">
+          @distylai/toolkit-ui
         </code>{" "}
-        -- <code className="font-mono text-text-default">Carousel</code> and its
-        Content / Item / Previous / Next parts (plus{" "}
-        <code className="font-mono text-text-default">useCarousel</code> and{" "}
-        <code className="font-mono text-text-default">CarouselApi</code>), built
-        on <code className="font-mono text-text-default">embla-carousel-react</code>.
-        The arrows are Button (outline), so it inherits Cognition tokens.
+        -- <code className="font-mono text-foreground">Carousel</code> and its
+        Content / Item / Previous / Next parts (plus the{" "}
+        <code className="font-mono text-foreground">CarouselApi</code> type), built
+        on <code className="font-mono text-foreground">embla-carousel-react</code>.
+        The arrows are Button (outline), so it inherits Folio tokens.
       </footer>
     </div>
   );

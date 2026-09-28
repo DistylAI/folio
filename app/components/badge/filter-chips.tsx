@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { Tag } from "@/components/ui/tag";
+import { Tag } from "@/components/folio/tag";
 
 // The canonical removable-Tag pattern: filter chips you can dismiss. Stateful,
 // so it lives in a client island; the Badge docs page stays a server component.
@@ -26,7 +26,7 @@ export function FilterChips() {
         <button
           type="button"
           onClick={() => setChips(FILTERS)}
-          className="text-small text-text-primary underline-offset-4 hover:underline"
+          className="text-small text-primary underline-offset-4 hover:underline"
         >
           Reset filters
         </button>

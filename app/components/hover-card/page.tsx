@@ -4,8 +4,8 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/components/shadcn/hover-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/shadcn/avatar";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
@@ -18,6 +18,7 @@ const api = [
   { name: "HoverCard", type: "component", def: "—", desc: "Root that wires the trigger to the card." },
   { name: "HoverCardTrigger", type: "component", def: "—", desc: "The element that opens the card on hover or focus." },
   { name: "HoverCardContent", type: "component", def: "—", desc: "The floating card surface." },
+  { name: "disabled", type: "boolean", def: "false", desc: "Keeps the card closed. Takes precedence over open." },
   { name: "openDelay", type: "number", def: "700", desc: "Milliseconds to wait on hover before opening." },
   { name: "closeDelay", type: "number", def: "300", desc: "Milliseconds to wait after leaving before closing." },
   { name: "side", type: '"top" | "right" | "bottom" | "left"', def: '"bottom"', desc: "Preferred side of the trigger to place the card." },
@@ -35,13 +36,13 @@ const installCode = `import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
+} from "@/components/shadcn/hover-card";
 
 export function HandlePreview() {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <button className="text-text-primary hover:underline">
+        <button className="text-primary hover:underline">
           @derekho
         </button>
       </HoverCardTrigger>
@@ -74,13 +75,13 @@ function MockCard({
   metadata?: boolean;
 }) {
   return (
-    <div className="w-full max-w-72 rounded-md border border-border-default bg-background-default p-4 text-text-default shadow-md">
+    <div className="w-full max-w-72 rounded-lg border border-border bg-background p-4 text-foreground shadow-md">
       <div className="flex gap-3">
         {avatar && <ProfileAvatar />}
         <div className="space-y-1">
-          <p className="text-sm font-semibold text-text-default">Derek Ho</p>
+          <p className="text-sm font-semibold text-foreground">Derek Ho</p>
           <p className="text-description">
-            Co-founder at Distyl. Building the team behind the Cognition design
+            Co-founder at Distyl. Building the team behind the Folio design
             system.
           </p>
         </div>
@@ -105,21 +106,21 @@ export default function HoverCardPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Hover Card</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Hover Card</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A card that appears on hover over a trigger, showing supplementary
         information without a click or navigation away from the current surface.
       </p>
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <HoverCard>
             <HoverCardTrigger asChild>
               <button
                 type="button"
-                className="rounded-sm text-sm font-medium text-text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-border-primary"
+                className="rounded-sm text-sm font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               >
                 @derekho
               </button>
@@ -128,11 +129,11 @@ export default function HoverCardPage() {
               <div className="flex gap-3">
                 <ProfileAvatar />
                 <div className="space-y-1">
-                  <p className="text-sm font-semibold text-text-default">
+                  <p className="text-sm font-semibold text-foreground">
                     Derek Ho
                   </p>
                   <p className="text-description">
-                    Co-founder at Distyl. Building the team behind the Cognition
+                    Co-founder at Distyl. Building the team behind the Folio
                     design system.
                   </p>
                   <div className="flex items-center gap-1 pt-1 text-caption">
@@ -145,24 +146,24 @@ export default function HoverCardPage() {
           </HoverCard>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Hover the handle to open the real
+          Rendered with live Folio tokens. Hover the handle to open the real
           card, no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <MockCard />
             <p className="text-caption">Default</p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <MockCard avatar />
             <p className="text-caption">With avatar</p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <MockCard avatar metadata />
             <p className="text-caption">With metadata</p>
           </div>
@@ -175,23 +176,23 @@ export default function HoverCardPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
-            <span className="text-sm font-medium text-text-primary underline-offset-4">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
+            <span className="text-sm font-medium text-primary underline-offset-4">
               @derekho
             </span>
             <p className="text-caption">
               Closed. Only the trigger shows.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <MockCard avatar />
             <p className="text-caption">
               Open. Appears after the hover delay.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <MockCard avatar metadata />
             <p className="text-caption">
               Open with delay. Tune via openDelay.
@@ -206,22 +207,22 @@ export default function HoverCardPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {api.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -237,7 +238,8 @@ export default function HoverCardPage() {
           </div>
         </div>
         <p className="mt-2 text-small">
-          <code className="font-mono">openDelay</code> and{" "}
+          <code className="font-mono">disabled</code>,{" "}
+          <code className="font-mono">openDelay</code>, and{" "}
           <code className="font-mono">closeDelay</code> are set on{" "}
           <code className="font-mono">HoverCard</code>;{" "}
           <code className="font-mono">side</code> and{" "}
@@ -248,25 +250,25 @@ export default function HoverCardPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t put actions inside a Hover Card. It is read-only
               supplementary content, and it dismisses as soon as the pointer
               leaves, so buttons and inputs are hard to reach. When the reader
               needs to interact with the content, use a Popover instead.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -282,28 +284,12 @@ export default function HoverCardPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

@@ -1,0 +1,247 @@
+/* Folio tokens — Distyl AI Design System.
+
+   This file is the token contract. Folio defines the tokens here, and
+   @distylai/toolkit-ui ports them. Color, radius, and space values were
+   copied one time from toolkit-ui (shared/ui/tokens, Distyl Light and
+   Distyl Dark themes, toolkit@df5dfcda89). Only canonical names are here:
+   no --dtk-* aliases and no ShadCN names.
+
+   Light is the default on :root. Dark remaps the color tokens under
+   [data-theme="dark"] on <html>. Chart, radius, and space tokens are fixed. */
+
+:root {
+  /* Typography — Font Family */
+  --font-sans: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+
+  /* Backgrounds */
+  --color-background-accent: #F3F4F6;
+  --color-background-danger: #FEF2F2;
+  --color-background-default: #FFFFFF;
+  --color-background-info: #EFF6FF;
+  --color-background-inverse: #0F1117;
+  --color-background-primary: #5D4EE7;
+  --color-background-primary-subtle: #EFEDFD;
+  --color-background-secondary: #F3F4F6;
+  --color-background-subtle: #F9FAFB;
+  --color-background-success: #F0FDF4;
+  --color-background-warning: #FFFBEB;
+
+  /* Text */
+  --color-text-danger: #B91C1C;
+  --color-text-default: #0F1117;
+  --color-text-disabled: #D1D5DB;
+  --color-text-info: #1D4ED8;
+  --color-text-inverse: #FFFFFF;
+  --color-text-primary: #5D4EE7;
+  --color-text-subtle: #6B7280;
+  --color-text-success: #15803D;
+  --color-text-warning: #B45309;
+
+  /* Borders */
+  --color-border-danger: #EF4444;
+  --color-border-default: #E5E7EB;
+  --color-border-info: #3B82F6;
+  --color-border-primary: #5D4EE7;
+  --color-border-strong: #9CA3AF;
+  --color-border-subtle: #F3F4F6;
+  --color-border-success: #15803D;
+  --color-border-warning: #B45309;
+
+  /* Feedback */
+  --color-feedback-danger: #EF4444;
+  --color-feedback-info: #3B82F6;
+  --color-feedback-success: #15803D;
+  --color-feedback-warning: #B45309;
+
+  /* Chart — fixed, the same in every theme */
+  --color-chart-1: #7C6FF7;
+  --color-chart-2: #38BDF8;
+  --color-chart-3: #34D399;
+  --color-chart-4: #FB923C;
+  --color-chart-5: #EC4899;
+  --color-chart-6: #2A9D90;
+  --color-chart-7: #16A249;
+  --color-chart-8: #E963A6;
+  --color-chart-9: #A855F7;
+  --color-chart-10: #2E4C6B;
+
+  /* Radius */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Space */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Typography — Font Size (Tailwind scale) */
+  --font-size-xs:   0.75rem;    /* 12px */
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-size-xl:   1.25rem;    /* 20px */
+  --font-size-2xl:  1.5rem;     /* 24px */
+  --font-size-3xl:  1.875rem;   /* 30px */
+  --font-size-4xl:  2.25rem;    /* 36px */
+  --font-size-5xl:  3rem;       /* 48px */
+
+  /* Typography — Font Weight */
+  --font-weight-normal:    400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+
+  /* Typography — Line Height */
+  --line-height-none:    1;
+  --line-height-tight:   1.25;
+  --line-height-snug:    1.375;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose:   2;
+
+  /* Typography — Letter Spacing */
+  --letter-spacing-tight:   -0.05em;
+  --letter-spacing-normal:   0em;
+  --letter-spacing-wide:     0.025em;
+  --letter-spacing-wider:    0.05em;
+  --letter-spacing-widest:   0.1em;
+
+  /* Typography — Named Text Styles
+     Source of truth: Folio v1.2
+     Format: text-{size}/leading-{height}/{weight}
+  */
+
+  /* Caption — text-xs/leading-normal/normal, subtle */
+  --text-caption-size:        var(--font-size-xs);
+  --text-caption-weight:      var(--font-weight-normal);
+  --text-caption-line-height: var(--line-height-normal);
+  --text-caption-font:        var(--font-sans);
+  --text-caption-color:       var(--color-text-subtle);
+
+  /* Title — text-base/leading-normal/medium, default (component & section titles) */
+  --text-title-size:        var(--font-size-base);
+  --text-title-weight:      var(--font-weight-medium);
+  --text-title-line-height: var(--line-height-normal);
+  --text-title-font:        var(--font-sans);
+  --text-title-color:       var(--color-text-default);
+
+  /* Description — text-sm/leading-normal/normal, subtle (helper & description copy) */
+  --text-description-size:        var(--font-size-sm);
+  --text-description-weight:      var(--font-weight-normal);
+  --text-description-line-height: var(--line-height-normal);
+  --text-description-font:        var(--font-sans);
+  --text-description-color:       var(--color-text-subtle);
+
+  /* Label — text-xs/leading-normal/medium, default (compact form labels) */
+  --text-label-size:        var(--font-size-xs);
+  --text-label-weight:      var(--font-weight-medium);
+  --text-label-line-height: var(--line-height-normal);
+  --text-label-font:        var(--font-sans);
+  --text-label-color:       var(--color-text-default);
+
+  /* P (Body) — text-base/leading-normal/normal */
+  --text-body-size:        var(--font-size-base);
+  --text-body-weight:      var(--font-weight-normal);
+  --text-body-line-height: var(--line-height-normal);
+  --text-body-font:        var(--font-sans);
+  --text-body-color:       var(--color-text-default);
+
+  /* Lead — text-lg/leading-normal/semibold */
+  --text-lead-size:        var(--font-size-lg);
+  --text-lead-weight:      var(--font-weight-semibold);
+  --text-lead-line-height: var(--line-height-normal);
+  --text-lead-font:        var(--font-sans);
+
+  /* Large — text-xl/leading-normal/normal */
+  --text-large-size:        var(--font-size-xl);
+  --text-large-weight:      var(--font-weight-normal);
+  --text-large-line-height: var(--line-height-normal);
+  --text-large-font:        var(--font-sans);
+  --text-large-color:       var(--color-text-subtle);
+
+  /* Small / Muted — text-sm/leading-normal/medium */
+  --text-small-size:        var(--font-size-sm);
+  --text-small-weight:      var(--font-weight-medium);
+  --text-small-line-height: var(--line-height-normal);
+  --text-small-font:        var(--font-sans);
+  --text-small-color:       var(--color-text-subtle);
+
+  /* Blockquote — text-base/leading-normal/italic */
+  --text-blockquote-size:        var(--font-size-base);
+  --text-blockquote-weight:      var(--font-weight-normal);
+  --text-blockquote-line-height: var(--line-height-normal);
+  --text-blockquote-style:       italic;
+  --text-blockquote-font:        var(--font-sans);
+
+  /* List — text-base/leading-normal/normal, 8px list spacing */
+  --text-list-size:        var(--font-size-base);
+  --text-list-weight:      var(--font-weight-normal);
+  --text-list-line-height: var(--line-height-normal);
+  --text-list-spacing:     8px;
+  --text-list-font:        var(--font-sans);
+
+  /* InlineCode — text-sm/leading-normal/normal, mono */
+  --text-inline-code-size:        var(--font-size-sm);
+  --text-inline-code-weight:      var(--font-weight-normal);
+  --text-inline-code-line-height: var(--line-height-normal);
+  --text-inline-code-font:        var(--font-mono);
+
+  /* Code block — text-base/leading-normal/normal, mono */
+  --text-code-size:        var(--font-size-base);
+  --text-code-weight:      var(--font-weight-normal);
+  --text-code-line-height: var(--line-height-normal);
+  --text-code-font:        var(--font-mono);
+}
+
+[data-theme="dark"] {
+  /* Backgrounds */
+  --color-background-accent: #1E1B4B;
+  --color-background-danger: #450A0A;
+  --color-background-default: #0F1117;
+  --color-background-info: #172554;
+  --color-background-inverse: #F9FAFB;
+  --color-background-primary: #7C6FF7;
+  --color-background-primary-subtle: #1A1733;
+  --color-background-secondary: #1F2937;
+  --color-background-subtle: #141820;
+  --color-background-success: #052E16;
+  --color-background-warning: #451A03;
+
+  /* Text */
+  --color-text-danger: #F87171;
+  --color-text-default: #F9FAFB;
+  --color-text-disabled: #4B5563;
+  --color-text-info: #60A5FA;
+  --color-text-inverse: #0F1117;
+  --color-text-primary: #7C6FF7;
+  --color-text-subtle: #9CA3AF;
+  --color-text-success: #4ADE80;
+  --color-text-warning: #FBBF24;
+
+  /* Borders */
+  --color-border-danger: #F87171;
+  --color-border-default: #374151;
+  --color-border-info: #60A5FA;
+  --color-border-primary: #7C6FF7;
+  --color-border-strong: #6B7280;
+  --color-border-subtle: #1F2937;
+  --color-border-success: #4ADE80;
+  --color-border-warning: #FBBF24;
+
+  /* Feedback */
+  --color-feedback-danger: #F87171;
+  --color-feedback-info: #60A5FA;
+  --color-feedback-success: #4ADE80;
+  --color-feedback-warning: #FBBF24;
+}

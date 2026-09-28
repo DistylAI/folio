@@ -4,25 +4,26 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
+  SidebarProvider,
+} from "@/components/shadcn/sidebar";
 import { FileTreeDemo } from "./FileTreeDemo";
 
 export const metadata: Metadata = {
   title: "File Tree",
   description:
-    "File Tree -- an interactive, collapsible hierarchy of folders and files, composed from the Sidebar primitives and themed with Cognition tokens.",
+    "File Tree -- an interactive, collapsible hierarchy of folders and files, composed from the Sidebar primitives and themed with Folio tokens.",
 };
 
 const doCode = `<SidebarMenu>
   <SidebarMenuItem>
     <SidebarMenuButton className="h-8">
-      <Folder className="size-4 text-text-subtle" />
+      <Folder className="size-4 text-muted-foreground" />
       <span>app</span>
     </SidebarMenuButton>
     <SidebarMenuSub>
       <SidebarMenuSubItem>
         <SidebarMenuSubButton>
-          <File className="size-4 text-text-subtle" />
+          <File className="size-4 text-muted-foreground" />
           <span>page.tsx</span>
         </SidebarMenuSubButton>
       </SidebarMenuSubItem>
@@ -34,8 +35,8 @@ export default function FileTreePage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">File Tree</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">File Tree</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A file tree presents nested folders and files as an interactive,
         collapsible hierarchy -- the pattern behind source-control panels and
         project explorers. It composes from the Sidebar primitives, so every row
@@ -44,26 +45,26 @@ export default function FileTreePage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex justify-center rounded-lg border border-border-default bg-background-subtle p-6">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex justify-center rounded-xl border border-border bg-muted p-6">
           <FileTreeDemo />
         </div>
         <p className="mt-2 text-small">
           Click a folder to expand or collapse it, and a file to select it. Switch
           the theme -- every surface and the selected-row highlight remap from
-          Cognition tokens, no <code className="font-mono">dark:</code> classes.
+          Folio tokens, no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <p className="mb-2 text-caption font-medium">
               With icons (default)
             </p>
-            <div className="flex justify-center rounded-lg border border-border-default bg-background-subtle p-6">
+            <div className="flex justify-center rounded-xl border border-border bg-muted p-6">
               <FileTreeDemo variant="default" />
             </div>
           </div>
@@ -71,13 +72,13 @@ export default function FileTreePage() {
             <p className="mb-2 text-caption font-medium">
               Without icons
             </p>
-            <div className="flex justify-center rounded-lg border border-border-default bg-background-subtle p-6">
+            <div className="flex justify-center rounded-xl border border-border bg-muted p-6">
               <FileTreeDemo variant="no-icons" />
             </div>
           </div>
           <div>
             <p className="mb-2 text-caption font-medium">Checkbox</p>
-            <div className="flex justify-center rounded-lg border border-border-default bg-background-subtle p-6">
+            <div className="flex justify-center rounded-xl border border-border bg-muted p-6">
               <FileTreeDemo variant="checkbox" />
             </div>
             <p className="mt-2 text-caption">
@@ -95,64 +96,72 @@ export default function FileTreePage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <p className="mb-2 text-caption font-medium">Default</p>
-            <div className="rounded-lg border border-border-default bg-background-subtle p-2">
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton className="h-8">
-                    <File className="size-4 text-text-subtle" />
-                    <span>page.tsx</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
+            <div className="rounded-xl border border-border bg-muted p-2">
+              <SidebarProvider className="block min-h-0 w-auto">
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton className="h-8">
+                      <File className="size-4 text-muted-foreground" />
+                      <span>page.tsx</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarProvider>
             </div>
           </div>
           <div>
             <p className="mb-2 text-caption font-medium">Selected</p>
-            <div className="rounded-lg border border-border-default bg-background-subtle p-2">
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton className="h-8" isActive>
-                    <File className="size-4 text-text-subtle" />
-                    <span>page.tsx</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
+            <div className="rounded-xl border border-border bg-muted p-2">
+              <SidebarProvider className="block min-h-0 w-auto">
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton className="h-8" isActive>
+                      <File className="size-4 text-muted-foreground" />
+                      <span>page.tsx</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarProvider>
             </div>
           </div>
           <div>
             <p className="mb-2 text-caption font-medium">
               Folder -- collapsed
             </p>
-            <div className="rounded-lg border border-border-default bg-background-subtle p-2">
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton className="h-8">
-                    <ChevronRight className="size-4 text-text-subtle" />
-                    <Folder className="size-4 text-text-subtle" />
-                    <span>app</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
+            <div className="rounded-xl border border-border bg-muted p-2">
+              <SidebarProvider className="block min-h-0 w-auto">
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton className="h-8">
+                      <ChevronRight className="size-4 text-muted-foreground" />
+                      <Folder className="size-4 text-muted-foreground" />
+                      <span>app</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarProvider>
             </div>
           </div>
           <div>
             <p className="mb-2 text-caption font-medium">
               Folder -- expanded
             </p>
-            <div className="rounded-lg border border-border-default bg-background-subtle p-2">
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton className="h-8">
-                    <ChevronRight className="size-4 rotate-90 text-text-subtle" />
-                    <Folder className="size-4 text-text-subtle" />
-                    <span>app</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
+            <div className="rounded-xl border border-border bg-muted p-2">
+              <SidebarProvider className="block min-h-0 w-auto">
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton className="h-8">
+                      <ChevronRight className="size-4 rotate-90 text-muted-foreground" />
+                      <Folder className="size-4 text-muted-foreground" />
+                      <span>app</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarProvider>
             </div>
           </div>
         </div>
@@ -167,10 +176,10 @@ export default function FileTreePage() {
 
       {/* Props */}
       <section id="props" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Props</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Props</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
@@ -216,12 +225,12 @@ export default function FileTreePage() {
             ].map((row) => (
               <div
                 key={row.prop}
-                className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default px-4 py-3 text-small last:border-0"
+                className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border px-4 py-3 text-small last:border-0"
               >
-                <code className="font-mono text-text-primary">{row.prop}</code>
-                <code className="font-mono text-text-subtle">{row.type}</code>
-                <span className="text-text-subtle">{row.def}</span>
-                <span className="text-text-default">{row.desc}</span>
+                <code className="font-mono text-primary">{row.prop}</code>
+                <code className="font-mono text-muted-foreground">{row.type}</code>
+                <span className="text-muted-foreground">{row.def}</span>
+                <span className="text-foreground">{row.desc}</span>
               </div>
             ))}
           </div>
@@ -235,23 +244,23 @@ export default function FileTreePage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Don&apos;t and Do</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Don&apos;t and Do</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t rebuild the tree from raw{" "}
               <code className="font-mono">div</code>s with hardcoded indentation
               and palette colors. Hand-rolled rows drift from the menu styling,
               lose their hover and selected states, and break on rebrand.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -259,11 +268,11 @@ export default function FileTreePage() {
         </div>
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         Composed entirely from the Sidebar primitives and{" "}
-        <code className="font-mono text-text-default">lucide-react</code> icons,
-        themed with Cognition tokens -- no hardcoded colors and no{" "}
-        <code className="font-mono text-text-default">dark:</code> classes. The
+        <code className="font-mono text-foreground">lucide-react</code> icons,
+        themed with Folio tokens -- no hardcoded colors and no{" "}
+        <code className="font-mono text-foreground">dark:</code> classes. The
         file names shown are placeholders for documentation only.
       </footer>
     </div>

@@ -9,7 +9,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@/components/shadcn/pagination";
 
 // Build the windowed page list: first, last, current ± 1, ellipsis for the gaps.
 function getPages(current: number, total: number): (number | "gap-l" | "gap-r")[] {

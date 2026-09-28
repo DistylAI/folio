@@ -13,10 +13,10 @@ import {
   type ChartConfig,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/components/shadcn/chart";
 
 // Each bar carries its own fill, pointing at a --color-<name> var the config
-// defines. Colors are the Cognition chart tokens (chart-1 through chart-5) -- never hardcoded
+// defines. Colors are the Folio chart tokens (chart-1 through chart-5) -- never hardcoded
 // hex, and never the brand primary (purple).
 const catData = [
   { source: "organic", visitors: 275, fill: "var(--color-organic)" },
@@ -35,12 +35,13 @@ const catConfig = {
   direct: { label: "Direct", color: "var(--color-chart-5)" },
 } satisfies ChartConfig;
 
-const stackData = [{ period: "H1", desktop: 1260, mobile: 570 }];
+const stackPeriod = { period: "H1", desktop: 1260, mobile: 570 };
+const stackData = [stackPeriod];
 const stackConfig = {
   desktop: { label: "Desktop", color: "var(--color-chart-1)" },
   mobile: { label: "Mobile", color: "var(--color-chart-2)" },
 } satisfies ChartConfig;
-const stackTotal = stackData[0].desktop + stackData[0].mobile;
+const stackTotal = stackPeriod.desktop + stackPeriod.mobile;
 
 export function BasicRadial() {
   return (
@@ -74,7 +75,7 @@ export function LabelRadial() {
           <LabelList
             position="insideStart"
             dataKey="source"
-            className="fill-text-inverse capitalize"
+            className="fill-[--color-text-inverse] capitalize"
             fontSize={11}
           />
         </RadialBar>
@@ -117,14 +118,14 @@ export function StackedRadial() {
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) - 12}
-                      className="fill-text-default text-2xl font-bold"
+                      className="fill-foreground text-2xl font-bold"
                     >
                       {stackTotal.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 8}
-                      className="fill-text-subtle text-xs"
+                      className="fill-muted-foreground text-xs"
                     >
                       Visitors
                     </tspan>

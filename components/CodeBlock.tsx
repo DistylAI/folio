@@ -36,12 +36,12 @@ export function CopyButton({
       onClick={handleCopy}
       aria-label={copied ? "Copied" : "Copy code"}
       className={cn(
-        "rounded-md p-1.5 text-text-subtle transition-colors hover:text-text-default",
+        "rounded-lg p-1.5 text-muted-foreground transition-colors hover:text-foreground",
         className,
       )}
     >
       {copied ? (
-        <Check className="size-4 text-text-primary" aria-hidden />
+        <Check className="size-4 text-primary" aria-hidden />
       ) : (
         <Copy className="size-4" aria-hidden />
       )}
@@ -69,7 +69,7 @@ export function CodeBlock({
     return (
       <div className={cn("flex items-center gap-1", className)}>
         <pre className={cn("min-w-0 flex-1 overflow-hidden", pad)}>
-          <code className="block truncate font-mono text-text-default">
+          <code className="block truncate font-mono text-foreground">
             {code}
           </code>
         </pre>
@@ -85,7 +85,7 @@ export function CodeBlock({
         <CopyButton value={code} />
       </div>
       <pre className={cn("overflow-x-auto", body)}>
-        <code className="font-mono text-text-default">{code}</code>
+        <code className="font-mono text-foreground">{code}</code>
       </pre>
     </div>
   );

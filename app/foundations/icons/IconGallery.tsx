@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/shadcn/input";
 import { icons } from "./iconData";
 
 // Searchable grid of common Lucide icons. Filters by name; clicking an icon
@@ -32,7 +32,7 @@ export function IconGallery() {
     <div>
       <div className="relative max-w-sm">
         <Search
-          className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-subtle"
+          className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
           aria-hidden
         />
         <Input
@@ -54,9 +54,9 @@ export function IconGallery() {
               type="button"
               onClick={() => copy(name)}
               title={`Copy import for ${name}`}
-              className="flex flex-col items-center gap-2 rounded-lg border border-border-default bg-background-default p-3 text-center transition-colors hover:border-border-primary hover:bg-background-subtle focus:outline-none focus-visible:border-border-primary"
+              className="flex flex-col items-center gap-2 rounded-xl border border-border bg-background p-3 text-center transition-colors hover:border-primary hover:bg-muted focus:outline-none focus-visible:border-primary"
             >
-              <Icon className="size-6 text-text-subtle" aria-hidden />
+              <Icon className="size-6 text-muted-foreground" aria-hidden />
               <span className="w-full truncate text-caption">
                 {copied === name ? "Copied!" : name}
               </span>

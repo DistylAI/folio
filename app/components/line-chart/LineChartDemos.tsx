@@ -8,7 +8,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/components/shadcn/chart";
 
 const data = [
   { month: "Jan", desktop: 186, mobile: 80 },
@@ -19,7 +19,7 @@ const data = [
   { month: "Jun", desktop: 264, mobile: 140 },
 ];
 
-// Series colors come from the Cognition chart tokens (chart-1 through chart-5) -- never hardcoded hex, and
+// Series colors come from the Folio chart tokens (chart-1 through chart-5) -- never hardcoded hex, and
 // never feedback or primary tokens for neutral data series.
 const config = {
   desktop: { label: "Desktop", color: "var(--color-chart-1)" },

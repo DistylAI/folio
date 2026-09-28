@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { ChevronRight, File, Folder, SquareTerminal } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from "@/components/shadcn/checkbox";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -12,7 +12,8 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar";
+  SidebarProvider,
+} from "@/components/shadcn/sidebar";
 import { cn } from "@/lib/utils";
 
 export type FileNode = {
@@ -129,8 +130,8 @@ function StatusBadge({ children }: { children: ReactNode }) {
 
 const rowClass = (selected: boolean) =>
   cn(
-    "flex items-center gap-2 rounded-md hover:bg-background-secondary",
-    selected && "bg-background-secondary",
+    "flex items-center gap-2 rounded-lg hover:bg-secondary",
+    selected && "bg-secondary",
   );
 
 export function FileTreeDemo({
@@ -189,12 +190,12 @@ export function FileTreeDemo({
         {showIcons && (
           <ChevronRight
             className={cn(
-              "size-4 text-text-subtle transition-transform",
+              "size-4 text-muted-foreground transition-transform",
               isOpen && "rotate-90",
             )}
           />
         )}
-        {showIcons && <Folder className="size-4 text-text-subtle" />}
+        {showIcons && <Folder className="size-4 text-muted-foreground" />}
         <span className="min-w-0 flex-1 truncate text-left">{node.name}</span>
       </>
     );
@@ -241,7 +242,7 @@ export function FileTreeDemo({
     const Icon = fileIcon(node.kind);
     const inner = (
       <>
-        {showIcons && <Icon className="size-4 text-text-subtle" />}
+        {showIcons && <Icon className="size-4 text-muted-foreground" />}
         <span className="min-w-0 flex-1 truncate">{node.name}</span>
       </>
     );
@@ -338,7 +339,7 @@ export function FileTreeDemo({
     return renderLeafTop(
       node,
       node.name,
-      showIcons ? <Icon className="size-4 text-text-subtle" /> : null,
+      showIcons ? <Icon className="size-4 text-muted-foreground" /> : null,
     );
   }
 
@@ -346,23 +347,26 @@ export function FileTreeDemo({
     return renderLeafTop(
       node,
       `changes/${node.name}`,
-      showIcons ? <File className="size-4 text-text-subtle" /> : null,
+      showIcons ? <File className="size-4 text-muted-foreground" /> : null,
       node.badge != null ? <StatusBadge>{node.badge}</StatusBadge> : undefined,
     );
   }
 
+  // The toolkit-ui menu parts read sidebar state, so they need a provider.
   return (
-    <div className="w-64 shrink-0 rounded-lg border border-border-default bg-background-subtle p-2">
-      <div className="flex flex-col gap-4">
-        <SidebarGroup>
-          <SidebarGroupLabel>Changes</SidebarGroupLabel>
-          <SidebarMenu>{changes.map(renderChange)}</SidebarMenu>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Files</SidebarGroupLabel>
-          <SidebarMenu>{files.map(renderTop)}</SidebarMenu>
-        </SidebarGroup>
+    <SidebarProvider className="block min-h-0 w-auto">
+      <div className="w-64 shrink-0 rounded-xl border border-border bg-muted p-2">
+        <div className="flex flex-col gap-4">
+          <SidebarGroup>
+            <SidebarGroupLabel>Changes</SidebarGroupLabel>
+            <SidebarMenu>{changes.map(renderChange)}</SidebarMenu>
+          </SidebarGroup>
+          <SidebarGroup>
+            <SidebarGroupLabel>Files</SidebarGroupLabel>
+            <SidebarMenu>{files.map(renderTop)}</SidebarMenu>
+          </SidebarGroup>
+        </div>
       </div>
-    </div>
+    </SidebarProvider>
   );
 }

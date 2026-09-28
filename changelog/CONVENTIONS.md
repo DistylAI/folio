@@ -1,6 +1,6 @@
 # Changelog conventions
 
-How changelog entries in this repo are authored. Every change to the Cognition
+How changelog entries in this repo are authored. Every change to the Folio
 design system gets an entry — an intentional alteration with a receipt.
 
 Entries live one-per-file under `changelog/entries/`. Each is a Markdown file
@@ -109,13 +109,13 @@ cover the remaining rules above
 (filename/`date` agreement, filled-in `pr`), which stay enforced by author
 discipline and review. This is a documented interim state, not an oversight.
 
-## Scope: Cognition only
+## Scope: Folio only
 
-Entries in this changelog apply to **Cognition (this repo)** only. If a change
+Entries in this changelog apply to **Folio (this repo)** only. If a change
 to the toolkit design system (`@distylai/toolkit-ui`) is ever logged here, it
 **must be explicitly labeled toolkit-scoped** — never assume an entry applies
 to both systems. The two are separate systems with separate components (e.g.
-both have an `Alert`); an unlabeled entry means Cognition.
+both have an `Alert`); an unlabeled entry means Folio.
 
 ## Example
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Label } from "@/components/shadcn/label";
+import { Input } from "@/components/shadcn/input";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
@@ -17,22 +17,22 @@ const props = [
     desc: "id of the control this label names. Required to wire label to control.",
   },
   {
-    name: "required",
-    type: "boolean",
-    def: "false",
-    desc: "Appends a danger-colored asterisk to mark the field as required.",
-  },
-  {
-    name: "disabled",
-    type: "boolean",
-    def: "false",
-    desc: "Dims the label and sets cursor-not-allowed, for a disabled control.",
-  },
-  {
     name: "children",
     type: "ReactNode",
     def: "required",
-    desc: "The label text.",
+    desc: "The label text. Add a required asterisk as a child span.",
+  },
+  {
+    name: "className",
+    type: "string",
+    def: "undefined",
+    desc: "Extra classes. Use cursor-not-allowed opacity-50 to dim the label for a disabled control.",
+  },
+  {
+    name: "...props",
+    type: "Radix Label props",
+    def: "—",
+    desc: "All Radix Label and native label attributes pass through.",
   },
 ] as const;
 
@@ -41,13 +41,16 @@ const doCode = `<div className="space-y-1.5">
   <Input id="email" type="email" />
 </div>`;
 
-const installCode = `import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+const installCode = `import { Label } from "@/components/shadcn/label";
+import { Input } from "@/components/shadcn/input";
 
 export function EmailField() {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor="email" required>Email</Label>
+      <Label htmlFor="email">
+        Email
+        <span aria-hidden className="ml-0.5 text-destructive">*</span>
+      </Label>
       <Input id="email" type="email" />
     </div>
   );
@@ -57,15 +60,15 @@ export default function LabelPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Label</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Label</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         An accessible label associated with a form control via{" "}
         <code className="font-mono">htmlFor</code>. Clicking the label focuses
         its control, and assistive tech reads them together.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           Label is a form primitive. It appears composed inside Input, Checkbox,
           and other form components. This page documents it as a standalone
           building block.
@@ -74,8 +77,8 @@ export default function LabelPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <div className="w-full max-w-xs space-y-1.5">
             <Label htmlFor="preview-email">Email</Label>
             <Input id="preview-email" type="email" placeholder="you@distyl.ai" />
@@ -85,98 +88,117 @@ export default function LabelPage() {
           </div>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Toggle the theme and it remaps,
+          Rendered with live Folio tokens. Toggle the theme and it remaps,
           no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <Label htmlFor="v-default">Email</Label>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<Label htmlFor="email">Email</Label>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
-              <Label htmlFor="v-required" required>
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
+              <Label htmlFor="v-required">
                 Email
+                <span aria-hidden className="ml-0.5 text-destructive">
+                  *
+                </span>
               </Label>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Label htmlFor="email" required>Email</Label>`}
+                code={`<Label htmlFor="email">
+  Email
+  <span aria-hidden className="ml-0.5 text-destructive">*</span>
+</Label>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
-              <Label htmlFor="v-disabled" disabled>
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
+              <Label
+                htmlFor="v-disabled"
+                className="cursor-not-allowed opacity-50"
+              >
                 Email
               </Label>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Label htmlFor="email" disabled>Email</Label>`}
+                code={`<Label htmlFor="email" className="cursor-not-allowed opacity-50">
+  Email
+</Label>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
         </div>
         <p className="mt-2 text-small">
-          The required variant appends a{" "}
-          <code className="font-mono">text-danger</code> asterisk; disabled dims
-          the label.
+          Label has no variant props. For a required field, add a{" "}
+          <code className="font-mono">text-destructive</code> asterisk as a
+          child. For a disabled control, dim the label with{" "}
+          <code className="font-mono">opacity-50</code>. A label placed after a{" "}
+          <code className="font-mono">peer</code> control dims on its own when
+          the control is disabled.
         </p>
       </section>
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <div className="w-full max-w-[220px] space-y-1.5">
                 <Label htmlFor="s-default">Username</Label>
                 <Input id="s-default" placeholder="distyl" />
               </div>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<Label htmlFor="username">Username</Label>
 <Input id="username" />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <div className="w-full max-w-[220px] space-y-1.5">
-                <Label htmlFor="s-disabled" disabled>
+                <Label
+                  htmlFor="s-disabled"
+                  className="cursor-not-allowed opacity-50"
+                >
                   Username
                 </Label>
                 <Input id="s-disabled" placeholder="distyl" disabled />
               </div>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Label htmlFor="username" disabled>Username</Label>
+                code={`<Label htmlFor="username" className="cursor-not-allowed opacity-50">
+  Username
+</Label>
 <Input id="username" disabled />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -189,22 +211,22 @@ export default function LabelPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.4fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1.4fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_1.4fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -223,24 +245,24 @@ export default function LabelPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t use a Label as a heading or section title. It names a
               single form control, not a region of the page. For titles, use the
               heading styles instead.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -257,28 +279,12 @@ export default function LabelPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

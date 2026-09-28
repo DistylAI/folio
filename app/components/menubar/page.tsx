@@ -14,7 +14,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/components/ui/menubar";
+} from "@/components/shadcn/menubar";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
@@ -58,7 +58,7 @@ const installCode = `import {
   MenubarMenu,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/components/ui/menubar";
+} from "@/components/shadcn/menubar";
 
 export function AppMenubar() {
   return (
@@ -81,11 +81,11 @@ const itemClass =
 
 function MenuBarMock({ open }: { open?: string }) {
   return (
-    <div className="flex h-9 items-center gap-1 rounded-md border border-border-default bg-background-default p-1 shadow-sm">
+    <div className="flex h-9 items-center gap-1 rounded-lg border border-border bg-background p-1 shadow">
       {["File", "Edit", "View"].map((label) => (
         <span
           key={label}
-          className={`rounded-sm px-3 py-1 text-label ${open === label ? "bg-background-secondary" : ""}`}
+          className={`rounded-sm px-3 py-1 text-label ${open === label ? "bg-secondary" : ""}`}
         >
           {label}
         </span>
@@ -103,7 +103,7 @@ function MenuPanel({
 }) {
   return (
     <div
-      className={`w-56 rounded-md border border-border-default bg-background-default p-1 text-text-default shadow-md ${className ?? ""}`}
+      className={`w-56 rounded-lg border border-border bg-background p-1 text-foreground shadow-md ${className ?? ""}`}
     >
       {children}
     </div>
@@ -130,7 +130,7 @@ function MItem({
   const usesIndicator = checked !== undefined || radio !== undefined;
   return (
     <div
-      className={`${itemClass} ${usesIndicator ? "pl-8" : "px-2"} ${highlighted ? "bg-background-secondary" : ""} ${disabled ? "opacity-50" : ""}`}
+      className={`${itemClass} ${usesIndicator ? "pl-8" : "px-2"} ${highlighted ? "bg-secondary" : ""} ${disabled ? "opacity-50" : ""}`}
     >
       {checked && (
         <Check className="absolute left-2 top-1/2 size-4 -translate-y-1/2" />
@@ -150,21 +150,21 @@ function MItem({
 }
 
 function MSeparator() {
-  return <div className="-mx-1 my-1 h-px bg-border-default" />;
+  return <div className="-mx-1 my-1 h-px bg-border" />;
 }
 
 export default function MenubarPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Menubar</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Menubar</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A persistent horizontal command bar, the kind that sits at the top of a
         desktop application. Each item opens a dropdown of grouped commands.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           Menubar is for application commands, not navigation. For moving around
           a site or app, use Navigation Menu or Sidebar.
         </p>
@@ -172,8 +172,8 @@ export default function MenubarPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex min-h-[160px] items-start justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex min-h-[160px] items-start justify-center rounded-xl border border-border bg-muted p-10">
           <Menubar>
             <MenubarMenu>
               <MenubarTrigger>File</MenubarTrigger>
@@ -230,16 +230,16 @@ export default function MenubarPage() {
           </Menubar>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Open a menu and arrow across the
+          Rendered with live Folio tokens. Open a menu and arrow across the
           bar, no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem>New Tab</MItem>
               <MItem>New Window</MItem>
@@ -247,7 +247,7 @@ export default function MenubarPage() {
             </MenuPanel>
             <p className="text-caption">Default</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem shortcut="⌘T">New Tab</MItem>
               <MItem shortcut="⌘N">New Window</MItem>
@@ -255,7 +255,7 @@ export default function MenubarPage() {
             </MenuPanel>
             <p className="text-caption">With keyboard shortcuts</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem>Open</MItem>
               <MItem chevron>Share</MItem>
@@ -263,7 +263,7 @@ export default function MenubarPage() {
             </MenuPanel>
             <p className="text-caption">With submenus</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem>Cut</MItem>
               <MItem>Copy</MItem>
@@ -272,14 +272,14 @@ export default function MenubarPage() {
             </MenuPanel>
             <p className="text-caption">With separators</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem checked>Always Show Bookmarks</MItem>
               <MItem checked={false}>Always Show Full URLs</MItem>
             </MenuPanel>
             <p className="text-caption">With checkboxes</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem radio>Derek Ho</MItem>
               <MItem radio={false}>Arjun Prakash</MItem>
@@ -295,13 +295,13 @@ export default function MenubarPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuBarMock />
             <p className="text-caption">Closed. The resting bar.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <div className="flex flex-col items-center gap-1">
               <MenuBarMock open="File" />
               <MenuPanel>
@@ -311,7 +311,7 @@ export default function MenubarPage() {
             </div>
             <p className="text-caption">Item open.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6 sm:col-span-2">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6 sm:col-span-2">
             <div className="flex items-start">
               <MenuPanel>
                 <MItem>Open</MItem>
@@ -327,7 +327,7 @@ export default function MenubarPage() {
             </div>
             <p className="text-caption">Nested item hover.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem>Cut</MItem>
               <MItem disabled>Paste</MItem>
@@ -335,14 +335,14 @@ export default function MenubarPage() {
             </MenuPanel>
             <p className="text-caption">Item disabled.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem checked>Always Show Bookmarks</MItem>
               <MItem checked={false}>Always Show Full URLs</MItem>
             </MenuPanel>
             <p className="text-caption">Checkbox checked.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MenuPanel>
               <MItem radio>Derek Ho</MItem>
               <MItem radio={false}>Arjun Prakash</MItem>
@@ -358,20 +358,20 @@ export default function MenubarPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[560px]">
-            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Component</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {composition.map((c) => (
                 <div
                   key={c.name}
                   className="grid grid-cols-[1.8fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {c.name}
                   </div>
                   <div className="text-description">{c.desc}</div>
@@ -384,25 +384,25 @@ export default function MenubarPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t use a Menubar to move between pages or sections. It reads
               as an application command surface, so filling it with destinations
               confuses commands with navigation. Use Navigation Menu or Sidebar
               for getting around.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -418,28 +418,12 @@ export default function MenubarPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

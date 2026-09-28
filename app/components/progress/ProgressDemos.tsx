@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@/components/shadcn/progress";
 
 // Climbs to a target once on mount, so the indicator's transition is visible.
 export function AnimatedProgress() {
@@ -13,7 +13,7 @@ export function AnimatedProgress() {
   return (
     <div className="w-full max-w-sm space-y-2">
       <Progress value={value} />
-      <p className="text-right text-sm tabular-nums text-text-subtle">
+      <p className="text-right text-sm tabular-nums text-muted-foreground">
         {value}%
       </p>
     </div>

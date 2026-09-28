@@ -55,11 +55,11 @@ export function MobileNav() {
 
   return (
     <>
-      <header className="sticky top-0 z-20 flex items-center justify-between border-b border-border-default bg-background-subtle/95 px-4 py-3 backdrop-blur md:hidden">
+      <header className="sticky top-0 z-20 flex items-center justify-between border-b border-border bg-muted/95 px-4 py-3 backdrop-blur md:hidden">
         <Link href="/" className="flex items-center gap-2">
-          <span className="inline-block h-5 w-5 rounded-full bg-background-primary" />
-          <span className="font-bold tracking-tight text-text-default">
-            Cognition
+          <span className="inline-block size-5 rounded-full bg-primary" />
+          <span className="font-bold tracking-tight text-foreground">
+            Folio
           </span>
         </Link>
         <div className="flex items-center gap-1">
@@ -69,7 +69,7 @@ export function MobileNav() {
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}
-            className="inline-flex size-9 items-center justify-center rounded-md text-text-default transition-colors hover:bg-background-secondary [&>svg]:size-5"
+            className="inline-flex size-9 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-secondary [&>svg]:size-5"
           >
             <Menu />
           </button>
@@ -83,26 +83,26 @@ export function MobileNav() {
             type="button"
             aria-label="Close menu"
             onClick={() => setOpen(false)}
-            className="absolute inset-0 bg-background-inverse/50"
+            className="absolute inset-0 bg-inverse/50"
           />
           {/* Drawer */}
-          <div className="absolute inset-y-0 left-0 flex w-72 max-w-[85%] flex-col border-r border-border-default bg-background-subtle">
-            <div className="flex items-center justify-between border-b border-border-default px-4 py-3">
+          <div className="absolute inset-y-0 left-0 flex w-72 max-w-[85%] flex-col border-r border-border bg-muted">
+            <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2"
               >
-                <span className="inline-block h-5 w-5 rounded-full bg-background-primary" />
-                <span className="font-bold tracking-tight text-text-default">
-                  Cognition
+                <span className="inline-block size-5 rounded-full bg-primary" />
+                <span className="font-bold tracking-tight text-foreground">
+                  Folio
                 </span>
               </Link>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="inline-flex size-9 items-center justify-center rounded-md text-text-subtle transition-colors hover:bg-background-secondary hover:text-text-default [&>svg]:size-5"
+                className="inline-flex size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground [&>svg]:size-5"
               >
                 <X />
               </button>
@@ -112,7 +112,7 @@ export function MobileNav() {
               <div className="relative">
                 <Search
                   aria-hidden
-                  className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-subtle"
+                  className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
                 />
                 <input
                   type="text"
@@ -120,14 +120,14 @@ export function MobileNav() {
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search…"
                   aria-label="Search navigation"
-                  className="h-9 w-full rounded-lg border border-border-default bg-background-default pl-9 pr-3 text-sm text-text-default transition-colors placeholder:text-text-subtle focus-visible:border-border-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-border-primary"
+                  className="h-9 w-full rounded-xl border border-border bg-background pl-9 pr-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus-visible:border-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 />
               </div>
             </div>
 
             <nav className="flex-1 space-y-6 overflow-y-auto px-4 pb-6">
               {filteredNav.length === 0 ? (
-                <p className="px-1 text-sm text-text-subtle">
+                <p className="px-1 text-sm text-muted-foreground">
                   No matches for &ldquo;{query.trim()}&rdquo;.
                 </p>
               ) : (
@@ -158,7 +158,7 @@ export function MobileNav() {
                                   }))
                                 }
                                 aria-expanded={grpOpen}
-                                className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-text-subtle transition-colors hover:bg-background-secondary hover:text-text-default"
+                                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
                               >
                                 <span>{item.label}</span>
                                 <ChevronRight
@@ -167,7 +167,7 @@ export function MobileNav() {
                                 />
                               </button>
                               {grpOpen && (
-                                <ul className="mt-1 space-y-px border-l border-border-default pl-3">
+                                <ul className="mt-1 space-y-px border-l border-border pl-3">
                                   {item.children.map((c) => {
                                     const cActive = pathname === c.href;
                                     return (
@@ -179,10 +179,10 @@ export function MobileNav() {
                                             cActive ? "page" : undefined
                                           }
                                           className={[
-                                            "block rounded-md px-3 py-1.5 text-[13px] transition-colors",
+                                            "block rounded-lg px-3 py-1.5 text-[13px] transition-colors",
                                             cActive
-                                              ? "font-semibold text-text-default"
-                                              : "font-medium text-text-subtle hover:text-text-default",
+                                              ? "font-semibold text-foreground"
+                                              : "font-medium text-muted-foreground hover:text-foreground",
                                           ].join(" ")}
                                         >
                                           {c.label}
@@ -203,10 +203,10 @@ export function MobileNav() {
                               href={item.href ?? "#"}
                               onClick={() => setOpen(false)}
                               className={[
-                                "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                                "block rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                                 active
-                                  ? "bg-background-secondary text-text-default"
-                                  : "text-text-subtle hover:bg-background-secondary hover:text-text-default",
+                                  ? "bg-secondary text-foreground"
+                                  : "text-muted-foreground hover:bg-secondary hover:text-foreground",
                               ].join(" ")}
                             >
                               {item.label}

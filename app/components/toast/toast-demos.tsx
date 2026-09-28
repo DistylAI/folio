@@ -1,7 +1,7 @@
 "use client";
 
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { toast } from "@/components/shadcn/sonner";
+import { Button } from "@/components/shadcn/button";
 
 // Toasts are fired on click, never on mount, so the demos stay inert at rest.
 type ToastKind =

@@ -1,12 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/shadcn/button";
+import { Input } from "@/components/shadcn/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/components/shadcn/popover";
 
 const dimensions = [
   { id: "width", label: "Width" },
@@ -24,10 +24,10 @@ export function DimensionsPopover() {
       <PopoverContent className="w-80">
         <div className="grid gap-4">
           <div className="space-y-1">
-            <h4 className="font-medium leading-none text-text-default">
+            <h4 className="font-medium leading-none text-foreground">
               Dimensions
             </h4>
-            <p className="text-sm text-text-subtle">
+            <p className="text-sm text-muted-foreground">
               Set the dimensions for the layer.
             </p>
           </div>
@@ -39,7 +39,7 @@ export function DimensionsPopover() {
               >
                 <label
                   htmlFor={d.id}
-                  className="text-sm font-medium text-text-default"
+                  className="text-sm font-medium text-foreground"
                 >
                   {d.label}
                 </label>
@@ -65,10 +65,10 @@ export function SimplePopover() {
       </PopoverTrigger>
       <PopoverContent>
         <div className="space-y-1">
-          <h4 className="font-medium leading-none text-text-default">
+          <h4 className="font-medium leading-none text-foreground">
             Activity log
           </h4>
-          <p className="text-sm text-text-subtle">
+          <p className="text-sm text-muted-foreground">
             Rich content lives in a portal above the page, dismissed by clicking
             outside or pressing Escape.
           </p>
@@ -91,9 +91,9 @@ export function AlignPopover({
         </Button>
       </PopoverTrigger>
       <PopoverContent align={align} className="w-56">
-        <p className="text-sm text-text-subtle">
+        <p className="text-sm text-muted-foreground">
           Aligned to the{" "}
-          <span className="font-medium text-text-default">{align}</span> edge of
+          <span className="font-medium text-foreground">{align}</span> edge of
           the trigger.
         </p>
       </PopoverContent>

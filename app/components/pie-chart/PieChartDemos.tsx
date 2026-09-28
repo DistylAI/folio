@@ -8,10 +8,10 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/components/shadcn/chart";
 
 // Each slice carries its own fill, pointing at a --color-<name> var that the
-// config defines. Colors are the Cognition chart tokens (chart-1 through chart-5) -- never
+// config defines. Colors are the Folio chart tokens (chart-1 through chart-5) -- never
 // hardcoded hex, and never the brand primary (purple).
 const pieData = [
   { source: "organic", visitors: 275, fill: "var(--color-organic)" },
@@ -79,14 +79,14 @@ export function DonutTextPie() {
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className="fill-text-default text-2xl font-bold"
+                      className="fill-foreground text-2xl font-bold"
                     >
                       {total.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 22}
-                      className="fill-text-subtle text-xs"
+                      className="fill-muted-foreground text-xs"
                     >
                       Visitors
                     </tspan>

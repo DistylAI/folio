@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronRight, Search, X } from "lucide-react";
-import { Kbd } from "@/components/ui/kbd";
+import { Kbd } from "@/components/shadcn/kbd";
 import { nav, type NavSection } from "@/lib/nav";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -92,15 +92,15 @@ export function Sidebar() {
   }, []);
 
   return (
-    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-y-auto border-r border-border-default bg-background-subtle md:flex">
+    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-y-auto border-r border-border bg-muted md:flex">
       {/* Sticky header -- logo + search stay pinned; the nav scrolls under. */}
-      <div className="sticky top-0 z-10 bg-background-subtle px-6 pt-8 pb-4">
+      <div className="sticky top-0 z-10 bg-muted px-6 pt-8 pb-4">
       <div className="mb-6 flex items-center justify-between gap-2">
         <Link href="/" className="group">
           <div className="flex items-center gap-2">
-            <span className="inline-block h-6 w-6 rounded-full bg-background-primary" />
-            <span className="text-lg font-bold tracking-tight text-text-default">
-              Cognition
+            <span className="inline-block size-6 rounded-full bg-primary" />
+            <span className="text-lg font-bold tracking-tight text-foreground">
+              Folio
             </span>
           </div>
         </Link>
@@ -111,7 +111,7 @@ export function Sidebar() {
       <div className="relative">
         <Search
           aria-hidden
-          className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-subtle"
+          className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
         />
         <input
           ref={searchRef}
@@ -126,7 +126,7 @@ export function Sidebar() {
           }}
           placeholder="Search…"
           aria-label="Search navigation"
-          className="h-9 w-full rounded-lg border border-border-default bg-background-default pl-9 pr-9 text-sm text-text-default transition-colors placeholder:text-text-subtle focus-visible:border-border-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-border-primary"
+          className="h-9 w-full rounded-xl border border-border bg-background pl-9 pr-9 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus-visible:border-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         />
         {searching ? (
           <button
@@ -136,7 +136,7 @@ export function Sidebar() {
               searchRef.current?.focus();
             }}
             aria-label="Clear search"
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-1 text-text-subtle transition-colors hover:text-text-default"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-1 text-muted-foreground transition-colors hover:text-foreground"
           >
             <X className="size-4" />
           </button>
@@ -153,7 +153,7 @@ export function Sidebar() {
 
       <nav className="flex-1 space-y-7 px-6">
         {filteredNav.length === 0 ? (
-          <p className="px-1 text-sm text-text-subtle">
+          <p className="px-1 text-sm text-muted-foreground">
             No matches for &ldquo;{query.trim()}&rdquo;.
           </p>
         ) : (
@@ -181,7 +181,7 @@ export function Sidebar() {
                             }))
                           }
                           aria-expanded={open}
-                          className="-mx-3 flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-text-subtle transition-colors hover:bg-background-secondary hover:text-text-default"
+                          className="-mx-3 flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
                         >
                           <span>{item.label}</span>
                           <ChevronRight
@@ -190,7 +190,7 @@ export function Sidebar() {
                           />
                         </button>
                         {open && (
-                          <ul className="mt-1 space-y-px border-l border-border-default pl-3">
+                          <ul className="mt-1 space-y-px border-l border-border pl-3">
                             {item.children.map((c) => {
                               const cActive = pathname === c.href;
                               return (
@@ -201,8 +201,8 @@ export function Sidebar() {
                                     className={[
                                       "block rounded-sm py-1 text-[13px] transition-colors",
                                       cActive
-                                        ? "font-semibold text-text-default"
-                                        : "font-medium text-text-subtle hover:text-text-default",
+                                        ? "font-semibold text-foreground"
+                                        : "font-medium text-muted-foreground hover:text-foreground",
                                     ].join(" ")}
                                   >
                                     {c.label}
@@ -222,10 +222,10 @@ export function Sidebar() {
                       <Link
                         href={item.href ?? "#"}
                         className={[
-                          "-mx-3 block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                          "-mx-3 block rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                           active
-                            ? "bg-background-secondary text-text-default"
-                            : "text-text-subtle hover:bg-background-secondary hover:text-text-default",
+                            ? "bg-secondary text-foreground"
+                            : "text-muted-foreground hover:bg-secondary hover:text-foreground",
                         ].join(" ")}
                       >
                         {item.label}
@@ -234,7 +234,7 @@ export function Sidebar() {
                       {/* Sub-navigation: only under the active page, and not
                           while filtering (keeps results flat). */}
                       {!searching && active && item.sections && (
-                        <ul className="mt-1 space-y-px border-l border-border-default pl-3">
+                        <ul className="mt-1 space-y-px border-l border-border pl-3">
                           {item.sections.map((s) => {
                             const current = activeSection === s.id;
                             return (
@@ -245,8 +245,8 @@ export function Sidebar() {
                                   className={[
                                     "block rounded-sm py-1 text-[13px] transition-colors",
                                     current
-                                      ? "font-semibold text-text-default"
-                                      : "font-medium text-text-subtle hover:text-text-default",
+                                      ? "font-semibold text-foreground"
+                                      : "font-medium text-muted-foreground hover:text-foreground",
                                   ].join(" ")}
                                 >
                                   {s.label}
@@ -265,25 +265,9 @@ export function Sidebar() {
         )}
       </nav>
 
-      <div className="mt-8 border-t border-border-default px-6 pb-8 pt-6">
+      <div className="mt-8 border-t border-border px-6 pb-8 pt-6">
         <div className="flex flex-col gap-1 text-caption">
-          <span>Cognition v1.2</span>
-          <a
-            href="https://distylai.slack.com/archives/C0A22RR2N6P"
-            target="_blank"
-            rel="noreferrer"
-            className="text-text-default transition-colors hover:text-text-primary"
-          >
-            #research-and-design
-          </a>
-          <a
-            href="https://distylai.slack.com/archives/C079VBDTJLA"
-            target="_blank"
-            rel="noreferrer"
-            className="text-text-default transition-colors hover:text-text-primary"
-          >
-            #engineering-fe
-          </a>
+          <span>Folio v1.2</span>
         </div>
       </div>
     </aside>

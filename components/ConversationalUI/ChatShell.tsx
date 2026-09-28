@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/shadcn/button";
 import { ChatInput } from "./ChatInput";
 import { MessageBubble } from "./MessageBubble";
 import { LoadingBubble } from "./LoadingBubble";
@@ -92,19 +92,19 @@ export function ChatShell({
   return (
     <div
       className={cn(
-        "flex h-[560px] flex-col overflow-hidden rounded-xl bg-background-default",
-        hasContent && "border border-border-default",
+        "flex h-[560px] flex-col overflow-hidden rounded-2xl bg-background",
+        hasContent && "border border-border",
       )}
     >
       <header
         className={cn(
           "flex shrink-0 items-center justify-between px-4 py-3",
-          hasContent && "border-b border-border-default",
+          hasContent && "border-b border-border",
         )}
       >
         <div className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-background-primary" />
-          <span className="text-sm font-medium text-text-default">
+          <div className="size-2 rounded-full bg-primary" />
+          <span className="text-sm font-medium text-foreground">
             Context view
           </span>
         </div>
@@ -112,7 +112,7 @@ export function ChatShell({
           variant="outline"
           size="sm"
           onClick={() => setMessages([])}
-          className="gap-1.5 text-text-subtle"
+          className="gap-1.5 text-muted-foreground"
         >
           <Plus size={12} aria-hidden /> New chat
         </Button>
@@ -137,7 +137,7 @@ export function ChatShell({
         {loading && <LoadingBubble />}
       </div>
 
-      <div className="shrink-0 border-t border-border-default px-4 py-3">
+      <div className="shrink-0 border-t border-border px-4 py-3">
         <ChatInput
           onSend={handleSend}
           disabled={loading}

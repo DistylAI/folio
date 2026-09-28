@@ -6,24 +6,24 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from "@/components/shadcn/card";
+import { Badge } from "@/components/shadcn/badge";
+import { Button } from "@/components/shadcn/button";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
   title: "Card",
   description:
-    "Card component -- a surface that groups a header, content, and footer. API matches fe-distillery components/ui/card.tsx.",
+    "Card component -- a surface that groups a header, content, and footer. API matches toolkit-ui components/shadcn/card.",
 };
 
 // Illustrative input -- the design system has no Input component yet, so the
-// playground renders the field shells with tokens to match the Cognition Input.
+// playground renders the field shells with tokens to match the Folio Input.
 function FieldShell({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-2">
       <span className="text-label">{label}</span>
-      <div className="flex h-9 items-center rounded-lg border border-border-default bg-background-default px-3 text-description">
+      <div className="flex h-9 items-center rounded-xl border border-border bg-background px-3 text-description">
         {value}
       </div>
     </div>
@@ -57,7 +57,7 @@ const installCode = `import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/shadcn/card";
 
 export function EventCard() {
   return (
@@ -79,16 +79,16 @@ export default function CardPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Card</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Card</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         Displays a card with header, content, and footer. Use it to group
         related content and actions on a single bordered surface.
       </p>
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <Card className="w-full max-w-sm">
             <CardHeader className="flex-row items-start justify-between space-y-0">
               <div className="flex flex-col gap-1">
@@ -114,7 +114,7 @@ export default function CardPage() {
           </Card>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens -- toggle the theme and the surface,
+          Rendered with live Folio tokens -- toggle the theme and the surface,
           border, and footer tint remap, no{" "}
           <code className="font-mono">dark:</code> classes.
         </p>
@@ -122,16 +122,16 @@ export default function CardPage() {
 
       {/* API */}
       <section id="anatomy" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <div className="flex items-start justify-center rounded-lg border border-border-default bg-background-subtle p-8">
+          <div className="flex items-start justify-center rounded-xl border border-border bg-muted p-8">
             <Card className="w-full max-w-sm">
               <CardHeader>
                 <CardTitle>Title</CardTitle>
                 <CardDescription>Supporting copy.</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-text-default">Body content.</p>
+                <p className="text-sm text-foreground">Body content.</p>
               </CardContent>
               <CardFooter>
                 <Button className="w-full">Action</Button>
@@ -140,7 +140,7 @@ export default function CardPage() {
           </div>
           <CodeBlock
             code={anatomyCode}
-            className="rounded-lg border border-border-default bg-background-subtle"
+            className="rounded-xl border border-border bg-muted"
           />
         </div>
         <p className="mt-2 text-small">
@@ -154,11 +154,11 @@ export default function CardPage() {
 
       {/* Examples */}
       <section id="examples" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Examples</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Examples</h3>
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
           {/* Featured event card with media + badge */}
           <Card className="w-full">
-            <div className="aspect-[16/10] w-full bg-background-secondary" />
+            <div className="aspect-[16/10] w-full bg-secondary" />
             <CardHeader className="flex-row items-start justify-between space-y-0">
               <div className="flex flex-col gap-1">
                 <CardTitle>Design systems meetup</CardTitle>
@@ -174,23 +174,22 @@ export default function CardPage() {
             </CardFooter>
           </Card>
 
-          {/* Small size variant */}
-          <Card size="sm" className="w-full">
-            <CardHeader>
-              <CardTitle>Small Card</CardTitle>
+          {/* Compact card: tighter padding on each part */}
+          <Card className="w-full">
+            <CardHeader className="p-3">
+              <CardTitle>Compact Card</CardTitle>
               <CardDescription>
-                This card uses the small size variant.
+                This card uses tighter padding.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-sm text-text-default">
-                The card component supports a{" "}
-                <code className="font-mono">size</code> prop that can be set to{" "}
-                <code className="font-mono">&quot;sm&quot;</code> for a more
-                compact appearance.
+            <CardContent className="px-3 pb-3">
+              <p className="text-sm text-foreground">
+                Pass <code className="font-mono">p-3</code> to the header and
+                footer and <code className="font-mono">px-3 pb-3</code> to the
+                content for a more compact appearance.
               </p>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="p-3">
               <Button variant="outline" className="w-full">
                 Action
               </Button>
@@ -199,23 +198,23 @@ export default function CardPage() {
         </div>
         <p className="mt-2 text-small">
           The featured card pairs the surface with media and a{" "}
-          <code className="font-mono">Badge</code>; the compact one is{" "}
-          <code className="font-mono">size=&quot;sm&quot;</code>, which tightens
-          padding and the title throughout the compound parts.
+          <code className="font-mono">Badge</code>; the compact one tightens the
+          padding with a <code className="font-mono">className</code> on each
+          compound part.
         </p>
       </section>
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t reach for a Card as a generic{" "}
               <code className="font-mono">div</code> wrapper or hardcode{" "}
               <code className="font-mono">bg-white</code> /{" "}
@@ -223,10 +222,10 @@ export default function CardPage() {
               breaks dark mode and the rebrand.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -238,30 +237,29 @@ export default function CardPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
         <p className="mt-2 text-small">
           Drop-in ready. The surface, border, shadow, and footer tint are baked
-          into the component as Cognition tokens -- no{" "}
+          into the component as Folio tokens -- no{" "}
           <code className="font-mono">className</code> needed for standard usage.
         </p>
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         API matches{" "}
-        <code className="font-mono text-text-default">
-          fe-distillery/components/ui/card.tsx
+        <code className="font-mono text-foreground">
+          toolkit-ui/components/shadcn/card
         </code>{" "}
-        -- <code className="font-mono text-text-default">Card</code>,{" "}
-        <code className="font-mono text-text-default">CardHeader</code>,{" "}
-        <code className="font-mono text-text-default">CardTitle</code>,{" "}
-        <code className="font-mono text-text-default">CardDescription</code>,{" "}
-        <code className="font-mono text-text-default">CardContent</code>,{" "}
-        <code className="font-mono text-text-default">CardFooter</code>. The raw
-        <code className="font-mono text-text-default"> bg-card</code> /{" "}
-        <code className="font-mono text-text-default">text-muted-foreground</code>{" "}
-        utilities are replaced with Cognition tokens, and a{" "}
-        <code className="font-mono text-text-default">size</code> prop is added.
+        -- <code className="font-mono text-foreground">Card</code>,{" "}
+        <code className="font-mono text-foreground">CardHeader</code>,{" "}
+        <code className="font-mono text-foreground">CardTitle</code>,{" "}
+        <code className="font-mono text-foreground">CardDescription</code>,{" "}
+        <code className="font-mono text-foreground">CardContent</code>,{" "}
+        <code className="font-mono text-foreground">CardFooter</code>. The raw
+        <code className="font-mono text-foreground"> bg-card</code> /{" "}
+        <code className="font-mono text-foreground">text-muted-foreground</code>{" "}
+        utilities are replaced with Folio tokens.
       </footer>
     </div>
   );

@@ -7,14 +7,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from "@/components/shadcn/breadcrumb";
 import { CodeBlock } from "@/components/CodeBlock";
 import { BreadcrumbCollapsed } from "./BreadcrumbDemos";
 
 export const metadata: Metadata = {
   title: "Breadcrumb",
   description:
-    "Breadcrumb component: displays the path to the current resource using a hierarchy of links. API matches fe-distillery components/ui/breadcrumb.tsx.",
+    "Breadcrumb component: displays the path to the current resource using a hierarchy of links. API matches toolkit-ui components/shadcn/breadcrumb.",
 };
 
 const parts = [
@@ -88,7 +88,7 @@ const installCode = `import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from "@/components/shadcn/breadcrumb";
 
 export function PageBreadcrumb() {
   return (
@@ -154,8 +154,8 @@ export default function BreadcrumbDocsPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Breadcrumb</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Breadcrumb</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         Displays the path to the current resource using a hierarchy of links.
         Ancestors are links; the final item is the current page, rendered
         non-interactively with <code className="font-mono">aria-current</code>.
@@ -163,12 +163,12 @@ export default function BreadcrumbDocsPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <ChevronTrail />
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens: link, hover, and current-page
+          Rendered with live Folio tokens: link, hover, and current-page
           colors remap on theme change, no{" "}
           <code className="font-mono">dark:</code> classes.
         </p>
@@ -176,41 +176,41 @@ export default function BreadcrumbDocsPage() {
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Separators</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Separators</h3>
         <div className="grid grid-cols-1 gap-4">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ChevronTrail />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={chevronCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <DotTrail />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={dotCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <BreadcrumbCollapsed />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={collapsedCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -226,10 +226,10 @@ export default function BreadcrumbDocsPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem>
@@ -238,16 +238,16 @@ export default function BreadcrumbDocsPage() {
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<BreadcrumbLink href="…">…</BreadcrumbLink>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem>
@@ -256,11 +256,11 @@ export default function BreadcrumbDocsPage() {
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<BreadcrumbPage>…</BreadcrumbPage>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -276,20 +276,20 @@ export default function BreadcrumbDocsPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[560px]">
-            <div className="grid grid-cols-[1.4fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Part</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {parts.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="text-description">{p.desc}</div>
@@ -302,13 +302,13 @@ export default function BreadcrumbDocsPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Don&apos;t and Do</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Don&apos;t and Do</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t make the current page a link, and don&apos;t use a
               breadcrumb as primary navigation: it reflects hierarchy, it
               doesn&apos;t replace a nav. The last item is a{" "}
@@ -316,10 +316,10 @@ export default function BreadcrumbDocsPage() {
               <code className="font-mono">BreadcrumbLink</code>.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {`<BreadcrumbItem>
   <BreadcrumbLink href="/">Home</BreadcrumbLink>
 </BreadcrumbItem>
@@ -337,23 +337,23 @@ export default function BreadcrumbDocsPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         API matches{" "}
-        <code className="font-mono text-text-default">
-          fe-distillery/components/ui/breadcrumb.tsx
+        <code className="font-mono text-foreground">
+          toolkit-ui/components/shadcn/breadcrumb
         </code>{" "}
-        <code className="font-mono text-text-default">Breadcrumb</code>,{" "}
-        <code className="font-mono text-text-default">BreadcrumbList</code>,{" "}
-        <code className="font-mono text-text-default">BreadcrumbItem</code>,{" "}
-        <code className="font-mono text-text-default">BreadcrumbLink</code>,{" "}
-        <code className="font-mono text-text-default">BreadcrumbPage</code>,{" "}
-        <code className="font-mono text-text-default">BreadcrumbSeparator</code>,{" "}
-        <code className="font-mono text-text-default">BreadcrumbEllipsis</code>.
-        The raw muted-foreground / foreground colors are replaced with Cognition
+        <code className="font-mono text-foreground">Breadcrumb</code>,{" "}
+        <code className="font-mono text-foreground">BreadcrumbList</code>,{" "}
+        <code className="font-mono text-foreground">BreadcrumbItem</code>,{" "}
+        <code className="font-mono text-foreground">BreadcrumbLink</code>,{" "}
+        <code className="font-mono text-foreground">BreadcrumbPage</code>,{" "}
+        <code className="font-mono text-foreground">BreadcrumbSeparator</code>,{" "}
+        <code className="font-mono text-foreground">BreadcrumbEllipsis</code>.
+        The raw muted-foreground / foreground colors are replaced with Folio
         tokens.
       </footer>
     </div>

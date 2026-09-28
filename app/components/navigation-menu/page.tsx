@@ -7,13 +7,13 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from "@/components/shadcn/navigation-menu";
 import { CodeBlock } from "@/components/CodeBlock";
 
 // Inlined here rather than calling navigationMenuTriggerStyle(): that cva lives
 // in a "use client" module and cannot be invoked from this server component.
 const navLinkClass =
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background-default px-4 py-2 text-label transition-colors hover:bg-background-secondary hover:text-text-default focus:bg-background-secondary focus:text-text-default focus:outline-none";
+  "group inline-flex h-9 w-max items-center justify-center rounded-lg bg-background px-4 py-2 text-label transition-colors hover:bg-secondary hover:text-foreground focus:bg-secondary focus:text-foreground focus:outline-none";
 
 export const metadata: Metadata = {
   title: "Navigation Menu",
@@ -48,7 +48,7 @@ const installCode = `import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from "@/components/shadcn/navigation-menu";
 
 export function PrimaryNav() {
   return (
@@ -72,21 +72,20 @@ export function PrimaryNav() {
 }`;
 
 const triggerClass =
-  "inline-flex h-9 items-center justify-center rounded-md px-4 text-label";
+  "inline-flex h-9 items-center justify-center rounded-lg px-4 text-label";
 
 function MockBar({
   state,
 }: {
   state?: "hover" | "active" | "focus";
 }) {
+  const toneByState = {
+    hover: "bg-secondary",
+    active: "bg-primary-subtle",
+    focus: "ring-1 ring-ring",
+  } as const;
   const tone = (target: string) =>
-    state && target === "Resources"
-      ? state === "hover"
-        ? "bg-background-secondary"
-        : state === "active"
-          ? "bg-background-accent"
-          : "ring-1 ring-border-primary"
-      : "";
+    state && target === "Resources" ? toneByState[state] : "";
   return (
     <div className="flex items-center gap-1">
       <span className={`${triggerClass} ${tone("Resources")}`}>Resources</span>
@@ -109,15 +108,15 @@ function MockPanel({
     { title: "Guidelines", desc: "How and when to use each piece.", icon: <FileText /> },
   ];
   return (
-    <div className="w-full max-w-[380px] rounded-md border border-border-default bg-background-default p-2 shadow-md">
+    <div className="w-full max-w-[380px] rounded-lg border border-border bg-background p-2 shadow-md">
       <ul className="grid gap-1 md:grid-cols-2">
         {items.map((item, i) => (
           <li key={item.title}>
             <div
-              className={`flex gap-3 rounded-md p-3 ${i === 0 ? "bg-background-secondary" : ""}`}
+              className={`flex gap-3 rounded-lg p-3 ${i === 0 ? "bg-secondary" : ""}`}
             >
               {variant === "icons" && (
-                <span className="mt-0.5 shrink-0 text-text-primary [&>svg]:size-5">
+                <span className="mt-0.5 shrink-0 text-primary [&>svg]:size-5">
                   {item.icon}
                 </span>
               )}
@@ -141,14 +140,14 @@ export default function NavigationMenuPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Navigation Menu</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Navigation Menu</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A horizontal menu for top-level navigation. Items can open rich dropdown
         panels on hover or keyboard focus.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           Navigation Menu is distinct from Sidebar navigation. It is horizontal,
           sits at the top of a surface, and is tuned for mouse and keyboard
           interaction.
@@ -157,8 +156,8 @@ export default function NavigationMenuPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex min-h-[220px] items-start justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex min-h-[220px] items-start justify-center rounded-xl border border-border bg-muted p-10">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -168,7 +167,7 @@ export default function NavigationMenuPage() {
                     <li>
                       <NavigationMenuLink
                         href="#"
-                        className="block rounded-md p-3 transition-colors hover:bg-background-secondary"
+                        className="block rounded-lg p-3 transition-colors hover:bg-secondary"
                       >
                         <p className="text-label">
                           Components
@@ -181,7 +180,7 @@ export default function NavigationMenuPage() {
                     <li>
                       <NavigationMenuLink
                         href="#"
-                        className="block rounded-md p-3 transition-colors hover:bg-background-secondary"
+                        className="block rounded-lg p-3 transition-colors hover:bg-secondary"
                       >
                         <p className="text-label">
                           Tokens
@@ -194,7 +193,7 @@ export default function NavigationMenuPage() {
                     <li>
                       <NavigationMenuLink
                         href="#"
-                        className="block rounded-md p-3 transition-colors hover:bg-background-secondary"
+                        className="block rounded-lg p-3 transition-colors hover:bg-secondary"
                       >
                         <p className="text-label">
                           Icons
@@ -207,7 +206,7 @@ export default function NavigationMenuPage() {
                     <li>
                       <NavigationMenuLink
                         href="#"
-                        className="block rounded-md p-3 transition-colors hover:bg-background-secondary"
+                        className="block rounded-lg p-3 transition-colors hover:bg-secondary"
                       >
                         <p className="text-label">
                           Guidelines
@@ -234,28 +233,28 @@ export default function NavigationMenuPage() {
           </NavigationMenu>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Hover or focus &quot;Resources&quot;
+          Rendered with live Folio tokens. Hover or focus &quot;Resources&quot;
           to open its panel, no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockBar />
             <p className="text-caption">Default (links only)</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockPanel variant="links" />
             <p className="text-caption">With dropdowns</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockPanel variant="icons" />
             <p className="text-caption">With icons</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockPanel variant="descriptions" />
             <p className="text-caption">With descriptions</p>
           </div>
@@ -268,25 +267,25 @@ export default function NavigationMenuPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockBar />
             <p className="text-caption">Default. Resting items.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockBar state="hover" />
             <p className="text-caption">Item hover.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockBar state="active" />
             <p className="text-caption">Item active (current page).</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6">
             <MockBar state="focus" />
             <p className="text-caption">Keyboard focused.</p>
           </div>
-          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-lg border border-border-default bg-background-subtle p-6 lg:col-span-2">
+          <div className="flex h-auto flex-col items-center gap-3 overflow-hidden rounded-xl border border-border bg-muted p-6 lg:col-span-2">
             <MockPanel variant="descriptions" />
             <p className="text-caption">
               Dropdown open, with the first item hovered.
@@ -301,20 +300,20 @@ export default function NavigationMenuPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[560px]">
-            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.8fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Component</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {composition.map((c) => (
                 <div
                   key={c.name}
                   className="grid grid-cols-[1.8fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {c.name}
                   </div>
                   <div className="text-description">{c.desc}</div>
@@ -327,25 +326,25 @@ export default function NavigationMenuPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t use a Navigation Menu to move between sections of a
               single page. Jumping around within one view is the job of Tabs or
               an anchor list. A Navigation Menu is for moving across the app or
               site, not within a page.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -361,28 +360,12 @@ export default function NavigationMenuPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

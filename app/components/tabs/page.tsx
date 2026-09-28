@@ -5,14 +5,14 @@ import { IconTabs, VariantTabs } from "./TabsDemos";
 export const metadata: Metadata = {
   title: "Tabs",
   description:
-    "Tabs component: layered sections of content shown one at a time. API matches fe-distillery components/ui/tabs.tsx.",
+    "Tabs component: layered sections of content shown one at a time. API matches toolkit-ui components/shadcn/tabs.",
 };
 
 const variants = [
   {
     key: "secondary" as const,
     label: "secondary",
-    note: "Segmented pill: the Cognition default.",
+    note: "Segmented pill: the Folio default.",
     code: `<Tabs defaultValue="overview">
   <TabsList variant="secondary">
     <TabsTrigger variant="secondary" value="overview">Overview</TabsTrigger>
@@ -39,7 +39,7 @@ const variants = [
   },
 ];
 
-const installCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+const installCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/shadcn/tabs";
 
 export function ProjectTabs() {
   return (
@@ -58,14 +58,14 @@ export default function TabsPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Tabs</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Tabs</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A set of layered sections of content, known as tab panels, displayed
         one at a time. Use for switching views within a single context.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           Tabs swap <em>panels of content</em>. For a compact one-of control
           that doesn&apos;t swap a panel (a mode or filter), reach for a
           single-select <strong className="font-semibold">Toggle Group</strong>;
@@ -76,13 +76,13 @@ export default function TabsPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <VariantTabs variant="secondary" />
         </div>
         <p className="mt-2 text-small">
           Live and interactive: switch tabs, then toggle the theme. The track,
-          active pill, and text all remap from Cognition tokens, no{" "}
+          active pill, and text all remap from Folio tokens, no{" "}
           <code className="font-mono">dark:</code> classes (the fix for the
           source file&apos;s <code className="font-mono">dark:</code> violations).
         </p>
@@ -90,21 +90,21 @@ export default function TabsPage() {
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="space-y-4">
           {variants.map((v) => (
             <div
               key={v.key}
-              className="overflow-hidden rounded-lg border border-border-default"
+              className="overflow-hidden rounded-xl border border-border"
             >
-              <div className="flex items-center justify-center bg-background-subtle p-8">
+              <div className="flex items-center justify-center bg-muted p-8">
                 <VariantTabs variant={v.key} />
               </div>
-              <div className="border-t border-border-default p-3">
+              <div className="border-t border-border p-3">
                 <CodeBlock
                   code={v.code}
                   size="sm"
-                  className="rounded-md border border-border-subtle bg-background-subtle"
+                  className="rounded-lg border border-border-subtle bg-muted"
                 />
               </div>
             </div>
@@ -122,8 +122,8 @@ export default function TabsPage() {
 
       {/* With icons */}
       <section id="with-icons" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">With icons</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">With icons</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <IconTabs />
         </div>
         <p className="mt-2 text-small">
@@ -134,14 +134,14 @@ export default function TabsPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[560px]">
-            <div className="grid grid-cols-[1.6fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.6fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Part</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {[
                 { name: "Tabs", desc: "Root. Holds value / defaultValue / onValueChange." },
                 { name: "TabsList", desc: "The row of triggers. variant: \"default\" | \"underline\" | \"secondary\"." },
@@ -152,7 +152,7 @@ export default function TabsPage() {
                   key={p.name}
                   className="grid grid-cols-[1.6fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">{p.name}</div>
+                  <div className="font-mono text-sm text-foreground">{p.name}</div>
                   <div className="text-description">{p.desc}</div>
                 </div>
               ))}
@@ -163,13 +163,13 @@ export default function TabsPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Don&apos;t and Do</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Don&apos;t and Do</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t style the active tab with{" "}
               <code className="font-mono">
                 dark:data-[state=active]:bg-input/30
@@ -178,10 +178,10 @@ export default function TabsPage() {
               between routes; that&apos;s a nav, not a tab set.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {`// Token-driven active state, theme-agnostic
 <TabsTrigger variant="secondary" value="overview">
   Overview
@@ -196,7 +196,7 @@ export default function TabsPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
         <p className="mt-2 text-small">
           Keyboard navigation and roving focus come for free. Set{" "}
@@ -206,18 +206,18 @@ export default function TabsPage() {
         </p>
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         API matches{" "}
-        <code className="font-mono text-text-default">
-          fe-distillery/components/ui/tabs.tsx
+        <code className="font-mono text-foreground">
+          toolkit-ui/components/shadcn/tabs
         </code>{" "}
-        <code className="font-mono text-text-default">Tabs</code>,{" "}
-        <code className="font-mono text-text-default">TabsList</code>,{" "}
-        <code className="font-mono text-text-default">TabsTrigger</code>,{" "}
-        <code className="font-mono text-text-default">TabsContent</code> with the{" "}
-        <code className="font-mono text-text-default">variant</code> axis. The{" "}
-        <code className="font-mono text-text-default">dark:</code> class
-        violations and raw palette colors are replaced with Cognition tokens.
+        <code className="font-mono text-foreground">Tabs</code>,{" "}
+        <code className="font-mono text-foreground">TabsList</code>,{" "}
+        <code className="font-mono text-foreground">TabsTrigger</code>,{" "}
+        <code className="font-mono text-foreground">TabsContent</code> with the{" "}
+        <code className="font-mono text-foreground">variant</code> axis. The{" "}
+        <code className="font-mono text-foreground">dark:</code> class
+        violations and raw palette colors are replaced with Folio tokens.
       </footer>
     </div>
   );

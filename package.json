@@ -2,7 +2,7 @@
   "name": "design-dot-distyl",
   "version": "1.0.0",
   "private": true,
-  "description": "Cognition design system documentation — Distyl AI",
+  "description": "Folio design system documentation — Distyl AI",
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/check-tokens.mjs && cp CLAUDE.md public/CLAUDE.md && next build",
@@ -50,20 +50,24 @@
     "react": "19.1.0",
     "react-day-picker": "^9.14.0",
     "react-dom": "19.1.0",
+    "react-hook-form": "^7.88.0",
     "react-markdown": "9.0.1",
-    "react-resizable-panels": "^2.1.9",
+    "react-resizable-panels": "^4.13.3",
     "recharts": "^2.15.4",
     "remark-gfm": "4.0.0",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.6.0",
+    "tailwind-merge": "^2.6.1",
     "vaul": "^1.1.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.1.13",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "22.10.0",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.0",
-    "tailwindcss": "4.1.13",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.17",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "5.7.3"
   }
 }

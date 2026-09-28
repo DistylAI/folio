@@ -17,7 +17,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command";
+} from "@/components/shadcn/command";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
@@ -82,11 +82,11 @@ const installCode = `import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
+} from "@/components/shadcn/command";
 
 export function Palette() {
   return (
-    <Command className="rounded-lg border border-border-default">
+    <Command className="rounded-xl border border-border">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -103,8 +103,8 @@ export default function CommandPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Command</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Command</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A keyboard-first command palette. It supports search, grouped results,
         icons, full keyboard navigation, and empty states. Command is the
         primitive that Combobox is built on. Combobox wraps this list in a
@@ -113,11 +113,11 @@ export default function CommandPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <Command
             defaultValue={NO_AUTOSELECT}
-            className="w-full max-w-md rounded-lg border border-border-default shadow-md"
+            className="w-full max-w-md rounded-xl border border-border shadow-md"
           >
             <CommandInput placeholder="Type a command or search..." />
             <CommandList>
@@ -158,19 +158,19 @@ export default function CommandPage() {
           </Command>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Type to filter and use the arrow
+          Rendered with live Folio tokens. Type to filter and use the arrow
           keys, no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {/* Default */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="Search..." />
                 <CommandList>
                   <CommandEmpty>No results found.</CommandEmpty>
@@ -182,20 +182,20 @@ export default function CommandPage() {
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<CommandGroup>
   <CommandItem>New file</CommandItem>
 </CommandGroup>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* With groups */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="Search..." />
                 <CommandList>
                   <CommandEmpty>No results found.</CommandEmpty>
@@ -211,20 +211,20 @@ export default function CommandPage() {
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<CommandGroup heading="Pages">...</CommandGroup>
 <CommandSeparator />
 <CommandGroup heading="Help">...</CommandGroup>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* With icons */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="Search..." />
                 <CommandList>
                   <CommandEmpty>No results found.</CommandEmpty>
@@ -245,21 +245,21 @@ export default function CommandPage() {
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<CommandItem>
   <User />
   <span>Profile</span>
 </CommandItem>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* Inline */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="Filter results..." />
                 <CommandList>
                   <CommandEmpty>No results found.</CommandEmpty>
@@ -276,7 +276,7 @@ export default function CommandPage() {
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Inline. Rendered in place rather than inside a dialog. Wrap it in
                 a Dialog for a modal palette.
@@ -294,12 +294,12 @@ export default function CommandPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {/* Default */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="Search..." />
                 <CommandList>
                   <CommandEmpty>No results found.</CommandEmpty>
@@ -311,16 +311,16 @@ export default function CommandPage() {
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Default. The full list, first item highlighted.
               </p>
             </div>
           </div>
           {/* Searching */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="deploy" />
                 <CommandList>
                   <CommandEmpty>No results found.</CommandEmpty>
@@ -330,32 +330,32 @@ export default function CommandPage() {
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Searching. The list narrows to matches as you type.
               </p>
             </div>
           </div>
           {/* Empty */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="xyz" />
                 <CommandList>
                   <CommandEmpty>No results found.</CommandEmpty>
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Empty. No command matches the query.
               </p>
             </div>
           </div>
           {/* Loading */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="bg-background-subtle p-8">
-              <Command defaultValue={NO_AUTOSELECT} className="rounded-md border border-border-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="bg-muted p-8">
+              <Command defaultValue={NO_AUTOSELECT} className="rounded-lg border border-border">
                 <CommandInput placeholder="Search..." />
                 <CommandList>
                   <div className="flex items-center justify-center gap-2 py-6 text-description">
@@ -365,7 +365,7 @@ export default function CommandPage() {
                 </CommandList>
               </Command>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Loading. Results are being fetched, often with{" "}
                 <code className="font-mono">shouldFilter=false</code>.
@@ -382,22 +382,22 @@ export default function CommandPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -424,25 +424,25 @@ export default function CommandPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t use Command for plain option selection. Picking one value
               from a field is the job of a Select, or a Combobox when the list is
               long. Command carries the weight of a full palette, which is more
               than a single choice needs.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -458,28 +458,12 @@ export default function CommandPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

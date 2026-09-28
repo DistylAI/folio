@@ -1,5 +1,5 @@
 // Generated: curated set of common Lucide icons, verified against the installed
-// lucide-react package. Lucide is the only icon library used in Cognition.
+// lucide-react package. Lucide is the only icon library used in Folio.
 import type { LucideIcon } from "lucide-react";
 import {
   Activity,

@@ -4,20 +4,20 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/shadcn/accordion";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
+} from "@/components/shadcn/card";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
   title: "Accordion",
   description:
-    "Accordion component: a vertically stacked set of interactive headings that each reveal a section of content. API matches fe-distillery components/ui/accordion.tsx.",
+    "Accordion component: a vertically stacked set of interactive headings that each reveal a section of content. API matches toolkit-ui components/shadcn/accordion.",
 };
 
 const faqs = [
@@ -79,7 +79,7 @@ const basicCode = `<Accordion type="single" collapsible defaultValue="item-0">
 const borderedCode = `<Accordion
   type="single"
   collapsible
-  className="rounded-lg border border-border-default"
+  className="rounded-xl border border-border"
 >
   <AccordionItem value="item-0" className="px-4 last:border-b-0">
     <AccordionTrigger>How does billing work?</AccordionTrigger>
@@ -112,7 +112,7 @@ const installCode = `import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/shadcn/accordion";
 
 export function Faq() {
   return (
@@ -138,7 +138,7 @@ function BasicAccordion() {
       {faqs.map((f, i) => (
         <AccordionItem key={f.q} value={`item-${i}`}>
           <AccordionTrigger>{f.q}</AccordionTrigger>
-          <AccordionContent className="text-text-subtle">
+          <AccordionContent className="text-muted-foreground">
             {f.a}
           </AccordionContent>
         </AccordionItem>
@@ -151,8 +151,8 @@ export default function AccordionDocsPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Accordion</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Accordion</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A vertically stacked set of interactive headings that each reveal a
         section of content. Keyboard accessible, focus managed, and screen
         reader compatible. <code className="font-mono">type</code> controls
@@ -161,12 +161,12 @@ export default function AccordionDocsPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-start justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-start justify-center rounded-xl border border-border bg-muted p-10">
           <BasicAccordion />
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens: item borders, the chevron, and
+          Rendered with live Folio tokens: item borders, the chevron, and
           text remap on theme change, no{" "}
           <code className="font-mono">dark:</code> classes. Expand/collapse uses
           the <code className="font-mono">animate-accordion-*</code> utilities.
@@ -175,27 +175,27 @@ export default function AccordionDocsPage() {
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-start justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-start justify-center bg-muted p-8">
               <BasicAccordion />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={basicCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-start justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-start justify-center bg-muted p-8">
               <Accordion
                 type="single"
                 collapsible
                 defaultValue="b-0"
-                className="w-full max-w-md rounded-lg border border-border-default"
+                className="w-full max-w-md rounded-xl border border-border"
               >
                 {faqs.map((f, i) => (
                   <AccordionItem
@@ -204,23 +204,23 @@ export default function AccordionDocsPage() {
                     className="px-4 last:border-b-0"
                   >
                     <AccordionTrigger>{f.q}</AccordionTrigger>
-                    <AccordionContent className="text-text-subtle">
+                    <AccordionContent className="text-muted-foreground">
                       {f.a}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={borderedCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-start justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-start justify-center bg-muted p-8">
               <Card className="w-full max-w-md">
                 <CardHeader>
                   <CardTitle>Subscription &amp; Billing</CardTitle>
@@ -237,7 +237,7 @@ export default function AccordionDocsPage() {
                         className="last:border-b-0"
                       >
                         <AccordionTrigger>{f.q}</AccordionTrigger>
-                        <AccordionContent className="text-text-subtle">
+                        <AccordionContent className="text-muted-foreground">
                           {f.a}
                         </AccordionContent>
                       </AccordionItem>
@@ -246,11 +246,11 @@ export default function AccordionDocsPage() {
                 </CardContent>
               </Card>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={cardCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -264,10 +264,10 @@ export default function AccordionDocsPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-start justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-start justify-center bg-muted p-8">
               <Accordion
                 type="multiple"
                 defaultValue={["m-0", "m-1"]}
@@ -276,23 +276,23 @@ export default function AccordionDocsPage() {
                 {faqs.map((f, i) => (
                   <AccordionItem key={f.q} value={`m-${i}`}>
                     <AccordionTrigger>{f.q}</AccordionTrigger>
-                    <AccordionContent className="text-text-subtle">
+                    <AccordionContent className="text-muted-foreground">
                       {f.a}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={multipleCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-start justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-start justify-center bg-muted p-8">
               <Accordion
                 type="single"
                 collapsible
@@ -300,7 +300,7 @@ export default function AccordionDocsPage() {
               >
                 <AccordionItem value="d-0">
                   <AccordionTrigger>How do I reset my password?</AccordionTrigger>
-                  <AccordionContent className="text-text-subtle">
+                  <AccordionContent className="text-muted-foreground">
                     {faqs[0].a}
                   </AccordionContent>
                 </AccordionItem>
@@ -308,17 +308,17 @@ export default function AccordionDocsPage() {
                   <AccordionTrigger>
                     Can I change my subscription plan?
                   </AccordionTrigger>
-                  <AccordionContent className="text-text-subtle">
+                  <AccordionContent className="text-muted-foreground">
                     {faqs[1].a}
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={disabledCode}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -333,22 +333,22 @@ export default function AccordionDocsPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.6fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1.6fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_1.6fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -367,23 +367,23 @@ export default function AccordionDocsPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Don&apos;t and Do</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Don&apos;t and Do</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t hide content a user always needs behind an accordion,
               and don&apos;t nest interactive controls in the trigger. The whole
               header is the toggle. Reach for it to condense long, optional
               sections like an FAQ, not to bury primary content.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {`<Accordion type="single" collapsible>
   <AccordionItem value="reset">
     <AccordionTrigger>How do I reset?</AccordionTrigger>
@@ -400,20 +400,20 @@ export default function AccordionDocsPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         API matches{" "}
-        <code className="font-mono text-text-default">
-          fe-distillery/components/ui/accordion.tsx
+        <code className="font-mono text-foreground">
+          toolkit-ui/components/shadcn/accordion
         </code>{" "}
-        <code className="font-mono text-text-default">Accordion</code>,{" "}
-        <code className="font-mono text-text-default">AccordionItem</code>,{" "}
-        <code className="font-mono text-text-default">AccordionTrigger</code>,{" "}
-        <code className="font-mono text-text-default">AccordionContent</code>.
-        The bare border and muted chevron are replaced with Cognition tokens; the
+        <code className="font-mono text-foreground">Accordion</code>,{" "}
+        <code className="font-mono text-foreground">AccordionItem</code>,{" "}
+        <code className="font-mono text-foreground">AccordionTrigger</code>,{" "}
+        <code className="font-mono text-foreground">AccordionContent</code>.
+        The bare border and muted chevron are replaced with Folio tokens; the
         bordered and in-card layouts are compositions.
       </footer>
     </div>

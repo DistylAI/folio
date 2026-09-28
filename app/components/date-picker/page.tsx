@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { DatePicker, DateRangePicker } from "@/components/ui/date-picker";
-import { Calendar } from "@/components/ui/calendar";
-import { Button } from "@/components/ui/button";
+import { DatePicker, DateRangePicker } from "@/components/folio/date-picker";
+import { Calendar } from "@/components/shadcn/calendar";
+import { Button } from "@/components/shadcn/button";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
@@ -37,16 +37,16 @@ const props = [
     desc: "Shows a clear control on the trigger once a date is chosen.",
   },
   {
-    name: "Calendar props",
-    type: "mode | selected | onSelect | disabled",
+    name: "ref",
+    type: "Ref<HTMLDivElement | HTMLButtonElement>",
     def: "—",
-    desc: "Passed through to the embedded Calendar via composition.",
+    desc: "DatePicker forwards it to its wrapper div, DateRangePicker to its trigger button.",
   },
 ] as const;
 
 const doCode = `<DatePicker placeholder="Due date" />`;
 
-const installCode = `import { DatePicker } from "@/components/ui/date-picker";
+const installCode = `import { DatePicker } from "@/components/folio/date-picker";
 
 export function DueDateField() {
   return <DatePicker placeholder="Due date" clearable />;
@@ -58,14 +58,14 @@ export default function DatePickerPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Date Picker</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Date Picker</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A compact date input that opens a calendar in a popover on click. It fits
         forms and toolbars where a full inline grid would take too much room.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           Date Picker is a higher-order pattern, composed from Calendar, Popover,
           and Button. The Popover holds the Calendar primitive; the Button shows
           the chosen date and opens it.
@@ -74,65 +74,65 @@ export default function DatePickerPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <DatePicker />
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Click to open the calendar, no{" "}
+          Rendered with live Folio tokens. Click to open the calendar, no{" "}
           <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <DatePicker />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<DatePicker />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <DateRangePicker />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<DateRangePicker />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <DatePicker placeholder="Select your start date" />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<DatePicker placeholder="Select your start date" />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <DatePicker clearable placeholder="Pick a date" />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<DatePicker clearable />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -145,13 +145,13 @@ export default function DatePickerPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <DatePicker />
             <p className="text-caption">Closed. Just the trigger.</p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <Button
               variant="outline"
               className="w-[240px] justify-start text-left font-normal"
@@ -163,7 +163,7 @@ export default function DatePickerPage() {
               Date selected. The trigger shows the value.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <Button
               variant="outline"
               className="w-[280px] justify-start text-left font-normal"
@@ -175,13 +175,13 @@ export default function DatePickerPage() {
               Range selected. Both ends are shown.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6">
             <DatePicker disabled placeholder="Pick a date" />
             <p className="text-caption">
               Disabled. The calendar cannot open.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-3 rounded-lg border border-border-default bg-background-subtle p-6 lg:col-span-2">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-muted p-6 lg:col-span-2">
             <div className="flex flex-col items-center gap-2">
               <Button
                 variant="outline"
@@ -190,7 +190,7 @@ export default function DatePickerPage() {
                 <CalendarIcon className="mr-2 size-4 shrink-0" />
                 June 12, 2026
               </Button>
-              <div className="w-fit rounded-md border border-border-default bg-background-default shadow-md">
+              <div className="w-fit rounded-lg border border-border bg-background shadow-md">
                 <Calendar mode="single" selected={JUNE_12} defaultMonth={JUNE_12} />
               </div>
             </div>
@@ -208,22 +208,22 @@ export default function DatePickerPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -246,25 +246,25 @@ export default function DatePickerPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t hide date selection behind a Date Picker when choosing a
               date is the main thing the reader came to do. Making them open a
               popover to reach the grid adds a step. When date selection is the
               primary action, show a Calendar directly.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -280,28 +280,12 @@ export default function DatePickerPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

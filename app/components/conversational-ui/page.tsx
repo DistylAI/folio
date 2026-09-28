@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Conversational UI",
   description:
-    "The canonical AI conversation surface for Distyl products -- ChatShell, MessageBubble, ChatInput, and LoadingBubble composed from Cognition components.",
+    "The canonical AI conversation surface for Distyl products -- ChatShell, MessageBubble, ChatInput, and LoadingBubble composed from Folio components.",
 };
 
 const props = [
@@ -61,7 +61,7 @@ const parts = [
 ];
 
 const doCode = `// Panel -- does not block the canvas
-<div className="w-96 border-l border-border-default">
+<div className="w-96 border-l border-border">
   <ChatShell
     systemPrompt="You are analyzing Tower pipeline data."
     placeholder="Ask about this pipeline…"
@@ -80,7 +80,7 @@ const installCode = `import { ChatShell } from "@/components/ConversationalUI";
 
 export function ContextPanel() {
   return (
-    <div className="flex h-full flex-col border-l border-border-default">
+    <div className="flex h-full flex-col border-l border-border">
       <ChatShell
         systemPrompt="You are analyzing Distyl pipeline data."
         placeholder="Ask about this context…"
@@ -178,21 +178,21 @@ function PropsTable({
   rows: { name: string; type: string; def: string; desc: string }[];
 }) {
   return (
-    <div className="mt-4 overflow-x-auto rounded-lg border border-border-default">
+    <div className="mt-4 overflow-x-auto rounded-xl border border-border">
       <div className="min-w-[640px]">
-        <div className="grid grid-cols-[1.2fr_2fr_1.2fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+        <div className="grid grid-cols-[1.2fr_2fr_1.2fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
           <div>Prop</div>
           <div>Type</div>
           <div>Default</div>
           <div>Description</div>
         </div>
-        <div className="divide-y divide-border-default">
+        <div className="divide-y divide-border">
           {rows.map((r) => (
             <div
               key={r.name}
               className="grid grid-cols-[1.2fr_2fr_1.2fr_3fr] gap-4 px-4 py-3"
             >
-              <div className="font-mono text-sm text-text-default">
+              <div className="font-mono text-sm text-foreground">
                 {r.name}
               </div>
               <div className="font-mono text-caption">{r.type}</div>
@@ -211,16 +211,16 @@ export default function ConversationalUIPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Conversational UI</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Conversational UI</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         The canonical AI conversation surface for Distyl products. Composed from
         ChatShell, MessageBubble, ChatInput, and LoadingBubble -- each
         independently usable. Not a modal or a drawer. A panel or inline surface
         that supports a full turn-based AI exchange.
       </p>
 
-      <div className="mt-4 rounded-lg border border-border-default bg-background-accent p-4">
-        <p className="text-small text-text-default">
+      <div className="mt-4 rounded-xl border border-border bg-primary-subtle p-4">
+        <p className="text-small text-foreground">
           <span className="font-semibold">Distyl-specific.</span> This component
           has no external library counterpart or design-tool source yet. It is
           the canonical pattern for AI chat surfaces across Distyl products --
@@ -230,29 +230,29 @@ export default function ConversationalUIPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
         <p className="mb-3 text-small">
-          This preview is live -- it&apos;s running Meno, Cognition&apos;s
+          This preview is live -- it&apos;s running Meno, Folio&apos;s
           built-in assistant. Ask it anything about tokens, components, or system
           rules.
         </p>
-        <div className="overflow-hidden rounded-lg border border-border-default">
+        <div className="overflow-hidden rounded-xl border border-border">
           <ChatShell
             systemPrompt={menoPrompt}
-            placeholder="Ask Meno about Cognition..."
+            placeholder="Ask Meno about Folio..."
           />
         </div>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <VariantShell />
       </section>
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <StatesDemo />
         <p className="mt-3 text-small">
           The error state is a danger-styled{" "}
@@ -265,23 +265,23 @@ export default function ConversationalUIPage() {
 
       {/* API */}
       <section id="anatomy" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
 
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.2fr_2fr_1.2fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.2fr_2fr_1.2fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.2fr_2fr_1.2fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -297,10 +297,10 @@ export default function ConversationalUIPage() {
           </div>
         </div>
 
-        <div className="mt-4 divide-y divide-border-default rounded-lg border border-border-default">
+        <div className="mt-4 divide-y divide-border rounded-xl border border-border">
           {parts.map((p) => (
             <div key={p.name} className="px-4 py-3">
-              <span className="font-mono text-sm text-text-default">
+              <span className="font-mono text-sm text-foreground">
                 {p.name}
               </span>
               <span className="ml-2 text-description">-- {p.desc}</span>
@@ -311,61 +311,61 @@ export default function ConversationalUIPage() {
 
       {/* Sub-components */}
       <section id="sub-components" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Sub-components</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Sub-components</h3>
 
-        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-text-default">
+        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-foreground">
           ChatInput
         </h4>
         <p className="mb-4 text-description">
           Auto-resizing message input with keyboard shortcuts. Composes Textarea
           and Button.
         </p>
-        <div className="rounded-lg border border-border-default bg-background-subtle p-6">
+        <div className="rounded-xl border border-border bg-muted p-6">
           <ChatInputDemo />
         </div>
         <PropsTable rows={chatInputProps} />
         <CodeBlock
           code={chatInputCode}
-          className="mt-4 rounded-lg border border-border-default bg-background-subtle"
+          className="mt-4 rounded-xl border border-border bg-muted"
         />
 
-        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-text-default">
+        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-foreground">
           MessageBubble
         </h4>
         <p className="mb-4 text-description">
           Renders a single conversation turn. User turns are plain text.
           Assistant turns parse markdown and fenced code blocks.
         </p>
-        <div className="flex flex-col gap-5 rounded-lg border border-border-default bg-background-subtle p-6">
+        <div className="flex flex-col gap-5 rounded-xl border border-border bg-muted p-6">
           <MessageBubbleDemo />
         </div>
         <PropsTable rows={messageBubbleProps} />
         <CodeBlock
           code={messageBubbleCode}
-          className="mt-4 rounded-lg border border-border-default bg-background-subtle"
+          className="mt-4 rounded-xl border border-border bg-muted"
         />
 
-        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-text-default">
+        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-foreground">
           LoadingBubble
         </h4>
         <p className="mb-4 text-description">
           Assistant thinking state. Uses the Distyl Spinner. No props -- render it
           while awaiting a response.
         </p>
-        <div className="rounded-lg border border-border-default bg-background-subtle p-6">
+        <div className="rounded-xl border border-border bg-muted p-6">
           <LoadingBubble />
         </div>
-        <p className="mt-3 text-small text-text-subtle">
+        <p className="mt-3 text-small text-muted-foreground">
           No props. Render <code className="font-mono">LoadingBubble</code> while{" "}
           <code className="font-mono">loading === true</code> and remove it when
           the reply arrives.
         </p>
         <CodeBlock
           code={loadingBubbleCode}
-          className="mt-4 rounded-lg border border-border-default bg-background-subtle"
+          className="mt-4 rounded-xl border border-border bg-muted"
         />
 
-        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-text-default">
+        <h4 className="mt-10 mb-1 font-mono text-base font-semibold text-foreground">
           EmptyState
         </h4>
         <p className="mb-4 text-description">
@@ -376,31 +376,31 @@ export default function ConversationalUIPage() {
         <PropsTable rows={emptyStateProps} />
         <CodeBlock
           code={emptyStateCode}
-          className="mt-4 rounded-lg border border-border-default bg-background-subtle"
+          className="mt-4 rounded-xl border border-border bg-muted"
         />
       </section>
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t render ChatShell inside a Dialog or Sheet. It is a panel
               or inline surface -- it does not block the canvas behind it.
               Don&apos;t hardcode a system prompt in the call site -- pass it as
               the systemPrompt prop so each context owns its own behaviour.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -412,23 +412,23 @@ export default function ConversationalUIPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         Distyl-specific -- no fe-distillery counterpart yet. API route lives at{" "}
-        <code className="font-mono text-text-default">
+        <code className="font-mono text-foreground">
           app/api/chat/route.ts
         </code>{" "}
         and requires{" "}
-        <code className="font-mono text-text-default">ANTHROPIC_API_KEY</code> in
+        <code className="font-mono text-foreground">ANTHROPIC_API_KEY</code> in
         the environment. Model is{" "}
-        <code className="font-mono text-text-default">
+        <code className="font-mono text-foreground">
           claude-sonnet-4-6
         </code>{" "}
         with a 1000-token max. Override the API call entirely via the{" "}
-        <code className="font-mono text-text-default">onSend</code> prop.
+        <code className="font-mono text-foreground">onSend</code> prop.
       </footer>
     </div>
   );

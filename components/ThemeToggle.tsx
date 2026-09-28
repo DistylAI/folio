@@ -20,7 +20,7 @@ export function ThemeToggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     try {
-      localStorage.setItem("cognition-theme", next);
+      localStorage.setItem("folio-theme", next);
     } catch {}
     setTheme(next);
   }
@@ -37,7 +37,7 @@ export function ThemeToggle() {
           : "Toggle color theme"
       }
       title="Toggle theme"
-      className="flex size-8 shrink-0 items-center justify-center rounded-md text-text-subtle transition-colors hover:bg-background-secondary hover:text-text-default focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-border-primary [&>svg]:size-4"
+      className="flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring [&>svg]:size-4"
     >
       {/* Shows the current theme: sun in light, moon in dark. */}
       {isDark ? <Moon /> : <Sun />}

@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import { type DateRange } from "react-day-picker";
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from "@/components/shadcn/calendar";
 
 // Interactive calendars hold their own selection state, so they live in a client
 // component. None auto-focus on mount, so the demos stay inert at rest.
 const JUNE_2026 = new Date(2026, 5, 1);
 const cardClass =
-  "rounded-md border border-border-default bg-background-default";
+  "rounded-lg border border-border bg-background";
 
 export function CalendarSingle() {
   const [date, setDate] = React.useState<Date | undefined>(

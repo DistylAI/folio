@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { Markdown } from "@/components/Markdown";
 import { loadContent } from "@/lib/content";
 
-const semanticsDoCode = `className="bg-background-subtle text-text-subtle"
+const semanticsDoCode = `className="bg-muted text-muted-foreground"
 <Tag>Engineering</Tag>
 className="p-3"
-className="bg-background-default text-text-default"`;
+className="bg-background text-foreground"`;
 
 export const metadata: Metadata = {
   title: "Guidelines",
   description:
-    "Cognition component semantics, anti-patterns, the legacy migration map, and the dark mode contract.",
+    "Folio component semantics, anti-patterns, the legacy migration map, and the dark mode contract.",
 };
 
 const componentRules = [
@@ -22,17 +22,17 @@ const componentRules = [
 ];
 
 export default async function GuidelinesPage() {
-  const spec = await loadContent("cognition-spec.md");
+  const spec = await loadContent("folio-spec.md");
 
   return (
     <div>
       <p className="mb-2 text-caption">
         Foundations
       </p>
-      <h1 className="text-lead text-text-default">
+      <h1 className="text-lead text-foreground">
         Guidelines
       </h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         The rules every Distyl frontend follows. Use the semantic token for
         intent, the correct component for the job, and let the token layer handle
         dark mode.
@@ -41,7 +41,7 @@ export default async function GuidelinesPage() {
       {/* Component quick-reference */}
       <h3
         id="component-semantics"
-        className="mt-12 mb-4 scroll-mt-8 border-b border-border-default pb-2 text-title text-text-default"
+        className="mt-12 mb-4 scroll-mt-8 border-b border-border pb-2 text-title text-foreground"
       >
         Component semantics
       </h3>
@@ -49,15 +49,15 @@ export default async function GuidelinesPage() {
         Every interactive element must be the semantically correct component.
         Using the wrong element is a bug, not a style choice.
       </p>
-      <div className="overflow-x-auto rounded-lg border border-border-default">
+      <div className="overflow-x-auto rounded-xl border border-border">
         <table className="w-full border-collapse text-sm">
-          <thead className="bg-background-secondary">
+          <thead className="bg-secondary">
             <tr>
               {["Component", "Interactive", "Triggers action", "Use for"].map(
                 (h) => (
                   <th
                     key={h}
-                    className="border-b border-border-default px-4 py-2.5 text-left text-caption font-semibold text-text-default"
+                    className="border-b border-border px-4 py-2.5 text-left text-caption font-semibold text-foreground"
                   >
                     {h}
                   </th>
@@ -69,14 +69,14 @@ export default async function GuidelinesPage() {
             {componentRules.map((r) => (
               <tr key={r.c}>
                 <td className="border-b border-border-subtle px-4 py-2.5 text-xs">
-                  <span className="font-mono text-caption font-semibold text-text-default">
+                  <span className="font-mono text-caption font-semibold text-foreground">
                     {r.c}
                   </span>
                 </td>
-                <td className="border-b border-border-subtle px-4 py-2.5 text-caption text-text-default">
+                <td className="border-b border-border-subtle px-4 py-2.5 text-caption text-foreground">
                   {r.interactive}
                 </td>
-                <td className="border-b border-border-subtle px-4 py-2.5 text-caption text-text-default">
+                <td className="border-b border-border-subtle px-4 py-2.5 text-caption text-foreground">
                   {r.action}
                 </td>
                 <td className="border-b border-border-subtle px-4 py-2.5 text-caption">
@@ -90,17 +90,17 @@ export default async function GuidelinesPage() {
 
       {/* Don't / Do */}
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-          <div className="mb-2 text-sm font-bold text-text-danger">Don&apos;t</div>
-          <p className="text-small text-text-default">
+        <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+          <div className="mb-2 text-sm font-bold text-destructive">Don&apos;t</div>
+          <p className="text-small text-foreground">
             Don&apos;t bypass the system with hardcoded colors, raw Tailwind
             palette utilities, off-scale spacing, dark-mode classes, or a button
             used as a label.
           </p>
         </div>
-        <div className="rounded-lg border border-border-success bg-background-success p-5">
-          <div className="mb-2 text-sm font-bold text-text-success">Do</div>
-          <pre className="overflow-x-auto font-mono text-caption leading-6 text-text-default">
+        <div className="rounded-xl border border-success bg-success-subtle p-5">
+          <div className="mb-2 text-sm font-bold text-success">Do</div>
+          <pre className="overflow-x-auto font-mono text-caption leading-6 text-foreground">
             {semanticsDoCode}
           </pre>
         </div>
@@ -109,7 +109,7 @@ export default async function GuidelinesPage() {
       {/* Full spec */}
       <h3
         id="full-specification"
-        className="mt-14 mb-4 scroll-mt-8 border-b border-border-default pb-2 text-title text-text-default"
+        className="mt-14 mb-4 scroll-mt-8 border-b border-border pb-2 text-title text-foreground"
       >
         Full specification
       </h3>

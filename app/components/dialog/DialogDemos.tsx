@@ -9,9 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+} from "@/components/shadcn/dialog";
+import { Button } from "@/components/shadcn/button";
+import { Input } from "@/components/shadcn/input";
 
 // Body content sits between DialogHeader and DialogFooter, wrapped in px-4 pb-4
 // -- the header and footer own their padding so the footer can be full-bleed.
@@ -59,20 +59,20 @@ export function FormDialog() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="dialog-name"
-              className="text-sm font-medium text-text-default"
+              className="text-sm font-medium text-foreground"
             >
               Name
             </label>
-            <Input id="dialog-name" defaultValue="Tony Yates" />
+            <Input id="dialog-name" placeholder="Name" />
           </div>
           <div className="flex flex-col gap-2">
             <label
               htmlFor="dialog-username"
-              className="text-sm font-medium text-text-default"
+              className="text-sm font-medium text-foreground"
             >
               Username
             </label>
-            <Input id="dialog-username" defaultValue="@tony" />
+            <Input id="dialog-username" placeholder="@username" />
           </div>
         </div>
         <DialogFooter>
@@ -101,7 +101,7 @@ export function TextDialog() {
             Please review the terms before continuing.
           </DialogDescription>
         </DialogHeader>
-        <div className="max-h-[50vh] space-y-4 overflow-y-auto px-4 pb-4 text-sm text-text-default">
+        <div className="max-h-[50vh] space-y-4 overflow-y-auto px-4 pb-4 text-sm text-foreground">
           <p>
             By using the Distyl platform you agree to these terms. Access is
             granted to authorized users within your organization for internal

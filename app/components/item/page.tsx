@@ -18,73 +18,93 @@ import { CodeBlock } from "@/components/CodeBlock";
 export const metadata: Metadata = {
   title: "Item",
   description:
-    "Item component -- a single structured row with a leading element, a primary and optional secondary label, and a trailing element.",
+    "Item component -- a single structured row built from parts: ItemMedia, ItemContent with ItemTitle and ItemDescription, and ItemActions.",
 };
 
 const props = [
   {
-    name: "label",
-    type: "string",
-    def: "required",
-    desc: "The primary text of the row.",
+    name: "Item",
+    type: "variant, size, asChild",
+    def: 'variant="default" size="default"',
+    desc: "The row. variant is default, outline, or muted. size is default or sm. Use asChild to render a button or link.",
   },
   {
-    name: "secondaryLabel",
-    type: "string",
-    def: "undefined",
-    desc: "A secondary line below the label.",
+    name: "ItemMedia",
+    type: "variant",
+    def: 'variant="default"',
+    desc: "Leading element: an icon, avatar, or checkbox. variant is default, icon, or image.",
   },
   {
-    name: "leading",
-    type: "ReactNode",
-    def: "undefined",
-    desc: "Leading element: an icon, avatar, or checkbox.",
+    name: "ItemContent",
+    type: "div props",
+    def: "--",
+    desc: "Holds the title and the description in one column.",
   },
   {
-    name: "trailing",
-    type: "ReactNode",
-    def: "undefined",
+    name: "ItemTitle",
+    type: "variant",
+    def: 'variant="default"',
+    desc: "The primary text of the row. variant mono is for identifiers.",
+  },
+  {
+    name: "ItemDescription",
+    type: "size",
+    def: 'size="default"',
+    desc: "A secondary line below the title. size xs gives a one-line meta row.",
+  },
+  {
+    name: "ItemActions",
+    type: "div props",
+    def: "--",
     desc: "Trailing element: an action, badge, or status.",
   },
   {
-    name: "selected",
-    type: "boolean",
-    def: "false",
-    desc: "Marks the row as selected with the accent surface.",
+    name: "ItemHeader / ItemFooter",
+    type: "div props",
+    def: "--",
+    desc: "Full-width rows above or below the main row.",
   },
   {
-    name: "disabled",
-    type: "boolean",
-    def: "false",
-    desc: "Dims the row and blocks interaction.",
-  },
-  {
-    name: "onClick",
-    type: "() => void",
-    def: "undefined",
-    desc: "When set, the row renders as a button with hover and focus.",
+    name: "ItemGroup / ItemSeparator",
+    type: "div props",
+    def: "--",
+    desc: "A list of items, and a line between two items.",
   },
 ] as const;
 
-const doCode = `<Item
-  label="Derek Ho"
-  secondaryLabel="derek@distyl.ai"
-  leading={<Avatar>…</Avatar>}
-  trailing={<Badge>Owner</Badge>}
-  onClick={open}
-/>`;
+const doCode = `<Item asChild>
+  <button type="button" onClick={open}>
+    <ItemMedia><Avatar>…</Avatar></ItemMedia>
+    <ItemContent>
+      <ItemTitle>Derek Ho</ItemTitle>
+      <ItemDescription>derek@distyl.ai</ItemDescription>
+    </ItemContent>
+    <ItemActions><Badge>Owner</Badge></ItemActions>
+  </button>
+</Item>`;
 
-const installCode = `import { Item } from "@/components/ui/item";
+const installCode = `import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/shadcn/item";
 import { Folder } from "lucide-react";
 
 export function ProjectRow() {
   return (
-    <Item
-      label="Projects"
-      secondaryLabel="14 active"
-      leading={<Folder />}
-      onClick={openProjects}
-    />
+    <Item asChild>
+      <button type="button" onClick={openProjects}>
+        <ItemMedia>
+          <Folder />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Projects</ItemTitle>
+          <ItemDescription>14 active</ItemDescription>
+        </ItemContent>
+      </button>
+    </Item>
   );
 }`;
 
@@ -92,186 +112,189 @@ export default function ItemPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Item</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
-        A single structured row: a leading element, a primary label with an
-        optional secondary line, and a trailing element. It gives lists and rows
-        a consistent shape.
+      <h1 className="text-lead text-foreground">Item</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
+        A single structured row: a leading ItemMedia, an ItemContent with a
+        title and an optional description, and trailing ItemActions. It gives
+        lists and rows a consistent shape.
       </p>
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <ItemListPreview />
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Hover and click the rows, no{" "}
+          Rendered with live Folio tokens. Hover and click the rows, no{" "}
           <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemDefault />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Item label="Overview" />`}
+                code={`<Item><ItemContent><ItemTitle>Overview</ItemTitle></ItemContent></Item>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemWithIcon />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Item leading={<Folder />} trailing={<ChevronRight />} />`}
+                code={`<ItemMedia><Folder /></ItemMedia> … <ItemActions><ChevronRight /></ItemActions>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemWithAvatar />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Item leading={<Avatar />} secondaryLabel="…" />`}
+                code={`<ItemMedia><Avatar /></ItemMedia> … <ItemDescription>…</ItemDescription>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemWithCheckbox />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Item leading={<Checkbox />} />`}
+                code={`<ItemMedia><Checkbox /></ItemMedia>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemWithBadge />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Item trailing={<Badge>Pro</Badge>} />`}
+                code={`<ItemActions><Badge>Pro</Badge></ItemActions>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemWithAction />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Item trailing={<Button size="icon-sm">…</Button>} />`}
+                code={`<ItemActions><Button size="icon-sm">…</Button></ItemActions>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default lg:col-span-2">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border lg:col-span-2">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemWithSecondary />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
-                code={`<Item label="Billing" secondaryLabel="Invoices, payment method, and plan" />`}
+                code={`<ItemTitle>Billing</ItemTitle>\n<ItemDescription>Invoices, payment method, and plan</ItemDescription>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
         </div>
         <p className="mt-2 text-small">
-          Leading icons, avatars, or checkboxes; trailing badges or actions; and
-          an optional secondary label all compose into the same row.
+          Leading icons, avatars, or checkboxes in ItemMedia; trailing badges or
+          actions in ItemActions; and an optional ItemDescription all compose
+          into the same row.
         </p>
       </section>
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemStateDefault />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">Default. Resting row.</p>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemStateHover />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Hover. The secondary surface fills in (shown statically).
               </p>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemStateSelected />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
-                Selected. Accent surface; click to toggle.
+                Selected. Set aria-current on the row; click to toggle.
               </p>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ItemStateDisabled />
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">Disabled. Dimmed, inert.</p>
             </div>
           </div>
         </div>
         <p className="mt-2 text-small">
-          Hover and focus apply only when the row is interactive (has an{" "}
-          <code className="font-mono">onClick</code>). Selected and disabled read
-          on the row itself.
+          Hover and focus apply only when the row is interactive (rendered as a{" "}
+          <code className="font-mono">button</code> or link with{" "}
+          <code className="font-mono">asChild</code>). Selected (
+          <code className="font-mono">aria-current</code>) and disabled read on
+          the row itself.
         </p>
       </section>
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
-              <div>Prop</div>
-              <div>Type</div>
+            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
+              <div>Part</div>
+              <div>Props</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -290,25 +313,25 @@ export default function ItemPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t use an Item as a navigation link. Moving between pages or
               sections is the job of a Sidebar nav item or a Navigation Menu link,
               which carry the right semantics and active states. An Item is a row
               of content or actions, not a destination.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -325,28 +348,12 @@ export default function ItemPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

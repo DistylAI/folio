@@ -9,7 +9,7 @@ import {
 export const metadata: Metadata = {
   title: "Popover",
   description:
-    "Popover component -- displays rich content in a portal, triggered by a button. API matches fe-distillery components/ui/popover.tsx.",
+    "Popover component -- displays rich content in a portal, triggered by a button. API matches @distylai/toolkit-ui components/shadcn/popover.",
 };
 
 const props = [
@@ -85,7 +85,7 @@ const installCode = `import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/components/shadcn/popover";
 
 export function DimensionsPopover() {
   return (
@@ -109,15 +109,15 @@ function Cell({
   code: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-border-default">
-      <div className="flex items-center justify-center bg-background-subtle p-8">
+    <div className="overflow-hidden rounded-xl border border-border">
+      <div className="flex items-center justify-center bg-muted p-8">
         {children}
       </div>
-      <div className="border-t border-border-default p-3">
+      <div className="border-t border-border p-3">
         <CodeBlock
           code={code}
           size="sm"
-          className="rounded-md border border-border-subtle bg-background-subtle"
+          className="rounded-lg border border-border-subtle bg-muted"
         />
       </div>
     </div>
@@ -128,8 +128,8 @@ export default function PopoverDocsPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Popover</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Popover</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         Displays rich content in a portal, triggered by a button. Use it for
         secondary controls -- a form, a detail panel, a set of options -- that
         should float above the page and dismiss on outside click or Escape.
@@ -137,12 +137,12 @@ export default function PopoverDocsPage() {
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
           <DimensionsPopover />
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens -- the panel surface, border, and
+          Rendered with live Folio tokens -- the panel surface, border, and
           text remap on theme change, no{" "}
           <code className="font-mono">dark:</code> classes. Trigger it to float
           the content over the page.
@@ -151,7 +151,7 @@ export default function PopoverDocsPage() {
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Cell code={dimensionsCode}>
             <DimensionsPopover />
@@ -170,7 +170,7 @@ export default function PopoverDocsPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Alignment</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Alignment</h3>
         <div className="grid grid-cols-1 gap-4">
           <Cell code={alignCode}>
             <div className="flex w-full max-w-2xl flex-wrap items-center justify-between gap-6">
@@ -190,22 +190,22 @@ export default function PopoverDocsPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.6fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.6fr_1.8fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.6fr_1.8fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -224,13 +224,13 @@ export default function PopoverDocsPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Don&apos;t and Do</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Don&apos;t and Do</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t use a popover for a simple menu of actions -- that&apos;s{" "}
               <code className="font-mono">Dropdown Menu</code> -- or for a flat
               text hint, which is a <code className="font-mono">Tooltip</code>.
@@ -238,10 +238,10 @@ export default function PopoverDocsPage() {
               dismisses on any outside click.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {`<Popover>
   <PopoverTrigger asChild>
     <Button variant="outline">Open</Button>
@@ -258,20 +258,21 @@ export default function PopoverDocsPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
+      <footer className="mt-16 border-t border-border pt-6 text-small">
         API matches{" "}
-        <code className="font-mono text-text-default">
-          fe-distillery/components/ui/popover.tsx
+        <code className="font-mono text-foreground">
+          @distylai/toolkit-ui components/shadcn/popover
         </code>{" "}
-        -- <code className="font-mono text-text-default">Popover</code>,{" "}
-        <code className="font-mono text-text-default">PopoverTrigger</code>,{" "}
-        <code className="font-mono text-text-default">PopoverAnchor</code>,{" "}
-        <code className="font-mono text-text-default">PopoverContent</code>. The
-        raw popover surface and foreground are replaced with Cognition tokens,
+        -- <code className="font-mono text-foreground">Popover</code>,{" "}
+        <code className="font-mono text-foreground">PopoverTrigger</code>,{" "}
+        <code className="font-mono text-foreground">PopoverAnchor</code>,{" "}
+        <code className="font-mono text-foreground">PopoverContent</code>,{" "}
+        <code className="font-mono text-foreground">PopoverPortal</code>. The
+        raw popover surface and foreground are replaced with Folio tokens,
         matching the Dropdown Menu and Dialog content.
       </footer>
     </div>

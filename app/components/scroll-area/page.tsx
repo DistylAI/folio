@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/components/shadcn/scroll-area";
 import { CodeBlock } from "@/components/CodeBlock";
 
 export const metadata: Metadata = {
   title: "Scroll Area",
   description:
-    "Scroll Area component -- a bounded container that replaces native browser scrollbars with custom Cognition-styled ones.",
+    "Scroll Area component -- a bounded container that replaces native browser scrollbars with custom Folio-styled ones.",
 };
 
 const tags = Array.from({ length: 24 }, (_, i) => `v1.2.0-beta.${50 - i}`);
@@ -40,7 +40,7 @@ const props = [
   },
 ] as const;
 
-const doCode = `<ScrollArea className="h-72 w-48 rounded-md border">
+const doCode = `<ScrollArea className="h-72 w-48 rounded-lg border">
   <div className="p-4">
     {tags.map((tag) => (
       <div key={tag} className="py-2 text-sm">
@@ -50,14 +50,14 @@ const doCode = `<ScrollArea className="h-72 w-48 rounded-md border">
   </div>
 </ScrollArea>`;
 
-const installCode = `import { ScrollArea } from "@/components/ui/scroll-area";
+const installCode = `import { ScrollArea } from "@/components/shadcn/scroll-area";
 
 export function TagList({ tags }: { tags: string[] }) {
   return (
-    <ScrollArea className="h-72 w-48 rounded-md border border-border-default">
-      <div className="divide-y divide-border-default p-4">
+    <ScrollArea className="h-72 w-48 rounded-lg border border-border">
+      <div className="divide-y divide-border p-4">
         {tags.map((tag) => (
-          <div key={tag} className="py-2 text-sm text-text-default">
+          <div key={tag} className="py-2 text-sm text-foreground">
             {tag}
           </div>
         ))}
@@ -70,24 +70,24 @@ export default function ScrollAreaPage() {
   return (
     <div>
       <p className="mb-2 text-caption">Components</p>
-      <h1 className="text-lead text-text-default">Scroll Area</h1>
-      <p className="mt-3 max-w-2xl text-body text-text-default">
+      <h1 className="text-lead text-foreground">Scroll Area</h1>
+      <p className="mt-3 max-w-2xl text-body text-foreground">
         A bounded container that replaces native browser scrollbars with custom
-        Cognition-styled ones. Use it when content can exceed the space it has.
+        Folio-styled ones. Use it when content can exceed the space it has.
       </p>
 
       {/* Preview */}
       <section id="preview" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Preview</h3>
-        <div className="flex items-center justify-center rounded-lg border border-border-default bg-background-subtle p-10">
-          <ScrollArea className="h-72 w-48 rounded-md border border-border-default bg-background-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Preview</h3>
+        <div className="flex items-center justify-center rounded-xl border border-border bg-muted p-10">
+          <ScrollArea className="h-72 w-48 rounded-lg border border-border bg-background">
             <div className="p-4">
-              <h4 className="mb-3 text-sm font-medium leading-none text-text-default">
+              <h4 className="mb-3 text-sm font-medium leading-none text-foreground">
                 Tags
               </h4>
-              <div className="divide-y divide-border-default">
+              <div className="divide-y divide-border">
                 {tags.map((tag) => (
-                  <div key={tag} className="py-2 text-sm text-text-default">
+                  <div key={tag} className="py-2 text-sm text-foreground">
                     {tag}
                   </div>
                 ))}
@@ -96,45 +96,45 @@ export default function ScrollAreaPage() {
           </ScrollArea>
         </div>
         <p className="mt-2 text-small">
-          Rendered with live Cognition tokens. Toggle the theme and it remaps,
+          Rendered with live Folio tokens. Toggle the theme and it remaps,
           no <code className="font-mono">dark:</code> classes.
         </p>
       </section>
 
       {/* Variants */}
       <section id="variants" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">Variants</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">Variants</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {/* Vertical */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
-              <ScrollArea className="h-44 w-40 rounded-md border border-border-default bg-background-default">
-                <div className="divide-y divide-border-default p-3">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
+              <ScrollArea className="h-44 w-40 rounded-lg border border-border bg-background">
+                <div className="divide-y divide-border p-3">
                   {tags.map((tag) => (
-                    <div key={tag} className="py-1.5 text-sm text-text-default">
+                    <div key={tag} className="py-1.5 text-sm text-foreground">
                       {tag}
                     </div>
                   ))}
                 </div>
               </ScrollArea>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<ScrollArea className="h-44 w-40" />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* Horizontal */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
-              <ScrollArea className="w-44 whitespace-nowrap rounded-md border border-border-default bg-background-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
+              <ScrollArea className="w-44 whitespace-nowrap rounded-lg border border-border bg-background">
                 <div className="flex w-max gap-3 p-3">
                   {savedViews.map((view) => (
                     <div
                       key={view}
-                      className="flex h-24 w-28 shrink-0 items-end rounded-md bg-background-secondary p-2 text-caption text-text-default"
+                      className="flex h-24 w-28 shrink-0 items-end rounded-lg bg-secondary p-2 text-caption text-foreground"
                     >
                       {view}
                     </div>
@@ -143,29 +143,29 @@ export default function ScrollAreaPage() {
                 <ScrollBar orientation="horizontal" />
               </ScrollArea>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<ScrollArea>
   <ScrollBar orientation="horizontal" />
 </ScrollArea>`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* Both axes */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
-              <ScrollArea className="h-44 w-44 rounded-md border border-border-default bg-background-default">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
+              <ScrollArea className="h-44 w-44 rounded-lg border border-border bg-background">
                 <div className="w-[420px] p-3">
-                  <div className="divide-y divide-border-default">
+                  <div className="divide-y divide-border">
                     {tags.slice(0, 14).map((tag) => (
                       <div
                         key={tag}
-                        className="flex justify-between gap-8 py-1.5 text-sm whitespace-nowrap text-text-default"
+                        className="flex justify-between gap-8 py-1.5 text-sm whitespace-nowrap text-foreground"
                       >
                         <span>{tag}</span>
-                        <span className="text-text-subtle">
+                        <span className="text-muted-foreground">
                           released to staging on June 6, 2026
                         </span>
                       </div>
@@ -175,11 +175,11 @@ export default function ScrollAreaPage() {
                 <ScrollBar orientation="horizontal" />
               </ScrollArea>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<ScrollArea className="h-44 w-44" />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
@@ -192,65 +192,65 @@ export default function ScrollAreaPage() {
 
       {/* States */}
       <section id="states" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">States</h3>
+        <h3 className="mt-12 mb-4 text-lead text-foreground">States</h3>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {/* Default - content fits */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
-              <ScrollArea className="h-44 w-40 rounded-md border border-border-default bg-background-default">
-                <div className="divide-y divide-border-default p-3">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
+              <ScrollArea className="h-44 w-40 rounded-lg border border-border bg-background">
+                <div className="divide-y divide-border p-3">
                   {tags.slice(0, 4).map((tag) => (
-                    <div key={tag} className="py-1.5 text-sm text-text-default">
+                    <div key={tag} className="py-1.5 text-sm text-foreground">
                       {tag}
                     </div>
                   ))}
                 </div>
               </ScrollArea>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Default. Content fits, so no scrollbar appears.
               </p>
             </div>
           </div>
           {/* Thumb visible */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
               <ScrollArea
                 type="always"
-                className="h-44 w-40 rounded-md border border-border-default bg-background-default"
+                className="h-44 w-40 rounded-lg border border-border bg-background"
               >
-                <div className="divide-y divide-border-default p-3">
+                <div className="divide-y divide-border p-3">
                   {tags.map((tag) => (
-                    <div key={tag} className="py-1.5 text-sm text-text-default">
+                    <div key={tag} className="py-1.5 text-sm text-foreground">
                       {tag}
                     </div>
                   ))}
                 </div>
               </ScrollArea>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <CodeBlock
                 code={`<ScrollArea type="always" />`}
                 size="sm"
-                className="rounded-md border border-border-subtle bg-background-subtle"
+                className="rounded-lg border border-border-subtle bg-muted"
               />
             </div>
           </div>
           {/* Overflow */}
-          <div className="overflow-hidden rounded-lg border border-border-default">
-            <div className="flex items-center justify-center bg-background-subtle p-8">
-              <ScrollArea className="h-44 w-40 rounded-md border border-border-default bg-background-default">
-                <div className="divide-y divide-border-default p-3">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-center bg-muted p-8">
+              <ScrollArea className="h-44 w-40 rounded-lg border border-border bg-background">
+                <div className="divide-y divide-border p-3">
                   {tags.map((tag) => (
-                    <div key={tag} className="py-1.5 text-sm text-text-default">
+                    <div key={tag} className="py-1.5 text-sm text-foreground">
                       {tag}
                     </div>
                   ))}
                 </div>
               </ScrollArea>
             </div>
-            <div className="border-t border-border-default p-3">
+            <div className="border-t border-border p-3">
               <p className="text-caption">
                 Overflow. Content exceeds the container; the bar shows on hover
                 or scroll.
@@ -268,22 +268,22 @@ export default function ScrollAreaPage() {
 
       {/* API */}
       <section id="api" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">API</h3>
-        <div className="overflow-x-auto rounded-lg border border-border-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">API</h3>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <div className="min-w-[640px]">
-            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border-default bg-background-subtle px-4 py-2 text-caption font-medium">
+            <div className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 border-b border-border bg-muted px-4 py-2 text-caption font-medium">
               <div>Prop</div>
               <div>Type</div>
               <div>Default</div>
               <div>Description</div>
             </div>
-            <div className="divide-y divide-border-default">
+            <div className="divide-y divide-border">
               {props.map((p) => (
                 <div
                   key={p.name}
                   className="grid grid-cols-[1.4fr_1.8fr_1fr_3fr] gap-4 px-4 py-3"
                 >
-                  <div className="font-mono text-sm text-text-default">
+                  <div className="font-mono text-sm text-foreground">
                     {p.name}
                   </div>
                   <div className="font-mono text-caption">
@@ -307,25 +307,25 @@ export default function ScrollAreaPage() {
 
       {/* Don't and Do */}
       <section id="do-dont" className="scroll-mt-8">
-        <h3 className="mt-12 mb-4 text-lead text-text-default">
+        <h3 className="mt-12 mb-4 text-lead text-foreground">
           Don&apos;t and Do
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-border-danger bg-background-danger p-5">
-            <div className="mb-2 text-sm font-bold text-text-danger">
+          <div className="rounded-xl border border-destructive bg-destructive-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-destructive">
               Don&apos;t
             </div>
-            <p className="text-small text-text-default">
+            <p className="text-small text-foreground">
               Don&apos;t wrap content that already fits its container. A Scroll
               Area earns its place only when content can exceed the space it has.
               Around content that never overflows it adds a control the reader
               never needs.
             </p>
           </div>
-          <div className="rounded-lg border border-border-success bg-background-success p-5">
-            <div className="mb-2 text-sm font-bold text-text-success">Do</div>
+          <div className="rounded-xl border border-success bg-success-subtle p-5">
+            <div className="mb-2 text-sm font-bold text-success">Do</div>
             <pre className="overflow-x-auto">
-              <code className="font-mono text-caption leading-6 text-text-default">
+              <code className="font-mono text-caption leading-6 text-foreground">
                 {doCode}
               </code>
             </pre>
@@ -341,28 +341,12 @@ export default function ScrollAreaPage() {
       <section id="copy-paste" className="mt-12 scroll-mt-8">
         <CodeBlock
           code={installCode}
-          className="rounded-lg border border-border-default bg-background-subtle"
+          className="rounded-xl border border-border bg-muted"
         />
       </section>
 
-      <footer className="mt-16 border-t border-border-default pt-6 text-small">
-        Cognition v1.2 · June 2026 · Questions? Ask{" "}
-        <a
-          href="https://distylai.slack.com/team/U07KY4SEFH7"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          Tony Yates
-        </a>{" "}
-        <a
-          href="https://distylai.slack.com/archives/C0A22RR2N6P"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-text-primary underline-offset-4 hover:underline"
-        >
-          #research-and-design
-        </a>
+      <footer className="mt-16 border-t border-border pt-6 text-small">
+        Folio v1.2 · June 2026
       </footer>
     </div>
   );

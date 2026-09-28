@@ -8,13 +8,13 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from "@/components/shadcn/breadcrumb";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/shadcn/dropdown-menu";
 
 // Collapsed path -- when there are too many levels to show, hide the middle
 // ones behind an ellipsis that opens a menu. The trigger wraps
@@ -30,7 +30,7 @@ export function BreadcrumbCollapsed() {
         <BreadcrumbItem>
           <DropdownMenu>
             <DropdownMenuTrigger
-              className="flex items-center gap-1 hover:text-text-default"
+              className="flex items-center gap-1 hover:text-foreground"
               aria-label="Toggle menu"
             >
               <BreadcrumbEllipsis />
