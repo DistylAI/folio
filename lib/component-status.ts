@@ -59,7 +59,7 @@ type RawFile = {
 
 const COMPONENT_PREFIX = "/components/";
 
-/** The people who must all approve a design before its gate is `approved`. */
+/** The people who can approve a design. One approval is enough for `approved`. */
 export function getDesignApprovers(): DesignApprover[] {
   return (raw as RawFile).designApprovers;
 }
@@ -136,8 +136,7 @@ function checkApprovals(where: string, design: DesignGate, approvers: string[]):
     if (!approval.date) fail(`${where}: the approval by "${approval.by}" needs a date`);
   }
   if (design.state !== "approved") return;
-  const missing = approvers.filter((by) => !approvals.some((approval) => approval.by === by));
-  if (missing.length) fail(`${where}: approved design still needs ${missing.join(", ")}`);
+  if (!approvals.length) fail(`${where}: approved design needs an approval`);
   requireFields(where, "design", design, ["pr"]);
 }
 

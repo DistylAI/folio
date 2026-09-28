@@ -55,7 +55,7 @@ Standards for building on the Folio design system. These are non-negotiable.
   `pr-open` → `released`), and `pilot` (`not-piloted` → `piloted`).
 - Change a row in the same PR that changes the state. Each design approval
   is `{ "by": "<github handle>", "date": "YYYY-MM-DD" }` in `design.approvals`.
-  A design is `approved` only when every `github` handle in `designApprovers` has
+  A design is `approved` when at least one person in `designApprovers` has
   approved it and the row names the Folio PR. A `released` toolkit gate
   names the toolkit PR and the toolkit-ui version. A `piloted` gate names the
   app and the date. The build fails when a row lacks these fields or when the

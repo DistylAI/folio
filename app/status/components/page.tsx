@@ -57,7 +57,7 @@ const FEEDBACK_LABEL: Record<FeedbackVerdict, string> = {
 const GATES = [
   {
     title: "1. Design approved",
-    body: "Every design approver reviewed the component in Folio and approved it. The approval is a merged Folio PR with a changelog entry. The row names each approver, the date, and the PR.",
+    body: "A design approver reviewed the component in Folio and approved it. The approval is a merged Folio PR with a changelog entry. The row names the approver, the date, and the PR.",
   },
   {
     title: "2. Released in toolkit-ui",
