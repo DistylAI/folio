@@ -145,7 +145,7 @@ export const nav: NavGroup[] = [
     section: "Status",
     items: [
       { href: "/status/changelog", label: "Changelog" },
-      { href: "/status/roadmap", label: "Roadmap" },
+      { href: "/status/components", label: "Component status" },
       {
         href: "/audit",
         label: "Codebase Audit",
