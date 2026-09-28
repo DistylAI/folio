@@ -50,14 +50,14 @@ Standards for building on the Folio design system. These are non-negotiable.
 ## Component status
 
 - `content/component-status.json` holds one row for each component page, and
-  `/status/components` shows it. Each row has three gates: `design`
-  (`not-reviewed`, `changes-requested`, `in-review`, `approved`), `toolkit` (`not-started` →
-  `pr-open` → `released`), and `pilot` (`not-piloted` → `piloted`).
+  `/status/components` shows it. Each row has two gates: `design`
+  (`not-reviewed`, `changes-requested`, `in-review`, `approved`) and `toolkit`
+  (`not-started` → `pr-open` → `released`).
 - Change a row in the same PR that changes the state. Each design approval
   is `{ "by": "<github handle>", "date": "YYYY-MM-DD" }` in `design.approvals`,
   with `"pr"` (the Folio PR) or `"source"` (a `feedbackSources` id). A design
-  is `approved` when at least one person in `designApprovers` has approved it. A `released` toolkit gate
-  names the toolkit PR and the toolkit-ui version. A `piloted` gate names the
-  app and the date. The build fails when a row lacks these fields or when the
+  is `approved` when at least one person in `designApprovers` has approved it.
+  A `released` toolkit gate names the toolkit PR and the toolkit-ui version.
+  The build fails when a row lacks these fields or when the
   rows and the component pages in `lib/nav.ts` do not match.
 - Do not copy a component into toolkit-ui before its design gate is `approved`.

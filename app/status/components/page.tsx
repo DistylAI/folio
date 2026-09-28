@@ -18,14 +18,13 @@ import {
   type ComponentStatus,
   type DesignState,
   type FeedbackVerdict,
-  type PilotState,
   type ToolkitState,
 } from "@/lib/component-status";
 
 export const metadata: Metadata = {
   title: "Component status",
   description:
-    "For each component: is the design approved in Folio, is it released in toolkit-ui, and did a pilot app use it?",
+    "For each component: is the design approved in Folio, and is it released in toolkit-ui?",
 };
 
 type BadgeColor = "default" | "success" | "warning" | "info";
@@ -44,11 +43,6 @@ const TOOLKIT_BADGE: Record<ToolkitState, StateBadge> = {
   released: { label: "Released", color: "success" },
 };
 
-const PILOT_BADGE: Record<PilotState, StateBadge> = {
-  "not-piloted": { label: "Not piloted", color: "default" },
-  piloted: { label: "Piloted", color: "success" },
-};
-
 const FEEDBACK_LABEL: Record<FeedbackVerdict, string> = {
   good: "Good",
   changes: "Changes",
@@ -63,10 +57,6 @@ const GATES = [
   {
     title: "2. Released in toolkit-ui",
     body: "The approved Folio code is copied into @distylai/toolkit-ui and published. The row names the toolkit PR and the toolkit-ui version.",
-  },
-  {
-    title: "3. Piloted",
-    body: "Proposed, waiting for design sign-off: the component runs in the pilot workflow (streams) on vanilla-dev, design signs off in the app, and no visual change occurs outside the approved normalizations.",
   },
 ];
 
@@ -149,25 +139,23 @@ export default function ComponentStatusPage() {
   const sources = Object.values(getFeedbackSources());
   const approved = rows.filter((row) => row.design.state === "approved").length;
   const released = rows.filter((row) => row.toolkit.state === "released").length;
-  const piloted = rows.filter((row) => row.pilot.state === "piloted").length;
 
   return (
     <div>
       <p className="mb-2 text-caption">Status</p>
       <h1 className="text-lead text-foreground">Component status</h1>
       <p className="mt-3 max-w-2xl text-body text-foreground">
-        Each component passes three gates in order. Folio is where design
+        Each component passes two gates in order. Folio is where design
         happens, so a component moves to toolkit-ui only after design approves
         it here.
       </p>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <SummaryCard label="Design approved" count={approved} total={rows.length} />
         <SummaryCard label="Released in toolkit-ui" count={released} total={rows.length} />
-        <SummaryCard label="Piloted" count={piloted} total={rows.length} />
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
         {GATES.map((gate) => (
           <Card key={gate.title}>
             <CardHeader>
@@ -207,7 +195,6 @@ export default function ComponentStatusPage() {
               <TableHead>Design</TableHead>
               <TableHead>Approved by</TableHead>
               <TableHead>toolkit-ui</TableHead>
-              <TableHead>Pilot</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -234,12 +221,6 @@ export default function ComponentStatusPage() {
                   <StateCell
                     badge={TOOLKIT_BADGE[row.toolkit.state]}
                     detail={joinDetail(row.toolkit.version, row.toolkit.pr, row.toolkit.note)}
-                  />
-                </TableCell>
-                <TableCell>
-                  <StateCell
-                    badge={PILOT_BADGE[row.pilot.state]}
-                    detail={joinDetail(row.pilot.app, row.pilot.date, row.pilot.note)}
                   />
                 </TableCell>
               </TableRow>

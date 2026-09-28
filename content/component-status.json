@@ -40,9 +40,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -57,9 +54,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -85,9 +79,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -116,9 +107,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -133,9 +121,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -153,9 +138,6 @@
         "state": "pr-open",
         "pr": "toolkit#5299",
         "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -176,9 +158,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -202,9 +181,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -221,9 +197,6 @@
         "state": "pr-open",
         "pr": "toolkit#5299",
         "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -250,9 +223,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -275,9 +245,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -294,9 +261,6 @@
         "state": "pr-open",
         "pr": "toolkit#5299",
         "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -318,9 +282,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -335,9 +296,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -354,9 +312,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -371,9 +326,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -390,9 +342,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -407,9 +356,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -426,9 +372,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -443,9 +386,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -469,9 +409,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -487,9 +424,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -504,9 +438,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -530,9 +461,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -547,9 +475,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -566,9 +491,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -584,9 +506,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -601,9 +520,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -621,9 +537,6 @@
         "state": "pr-open",
         "pr": "toolkit#5299",
         "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -655,9 +568,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -672,9 +582,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -696,9 +603,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -713,9 +617,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -737,9 +638,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -755,9 +653,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -772,9 +667,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -798,9 +690,6 @@
         "pr": "toolkit#5299",
         "note": "Matches Cognition v1.4.0 sizes. Held until design approves this component."
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -821,9 +710,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -839,9 +725,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -856,9 +739,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -882,9 +762,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -899,9 +776,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -923,9 +797,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -940,9 +811,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -966,9 +834,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -991,9 +856,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1008,9 +870,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       }
     },
     {
@@ -1020,9 +879,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       }
     },
     {
@@ -1032,9 +888,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1058,9 +911,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1075,9 +925,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1106,9 +953,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1124,9 +968,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1141,9 +982,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1177,9 +1015,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1202,9 +1037,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1219,9 +1051,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1242,9 +1071,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1268,9 +1094,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1285,9 +1108,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1304,9 +1124,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1328,9 +1145,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1351,9 +1165,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1368,9 +1179,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       },
       "feedback": [
         {
@@ -1387,9 +1195,6 @@
       "toolkit": {
         "state": "not-started"
       },
-      "pilot": {
-        "state": "not-piloted"
-      },
       "feedback": [
         {
           "source": "edward-v1",
@@ -1404,9 +1209,6 @@
       },
       "toolkit": {
         "state": "not-started"
-      },
-      "pilot": {
-        "state": "not-piloted"
       }
     }
   ]

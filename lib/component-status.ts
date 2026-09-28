@@ -3,12 +3,10 @@ import { nav, type NavItem } from "@/lib/nav";
 
 export const DESIGN_STATES = ["not-reviewed", "changes-requested", "in-review", "approved"] as const;
 export const TOOLKIT_STATES = ["not-started", "pr-open", "released"] as const;
-export const PILOT_STATES = ["not-piloted", "piloted"] as const;
 export const FEEDBACK_VERDICTS = ["good", "changes", "skipped"] as const;
 
 export type DesignState = (typeof DESIGN_STATES)[number];
 export type ToolkitState = (typeof TOOLKIT_STATES)[number];
-export type PilotState = (typeof PILOT_STATES)[number];
 export type FeedbackVerdict = (typeof FEEDBACK_VERDICTS)[number];
 
 /** One approval. `pr` is the Folio PR it was given on; `source` is a feedback document id. One of the two is required. */
@@ -26,12 +24,6 @@ export type ToolkitGate = {
   version?: string;
   note?: string;
 };
-export type PilotGate = {
-  state: PilotState;
-  app?: string;
-  date?: string;
-  note?: string;
-};
 export type Feedback = { source: string; verdict: FeedbackVerdict; note?: string };
 export type FeedbackSource = { label: string; title: string; url: string };
 
@@ -41,7 +33,6 @@ export type ComponentStatus = {
   href: string;
   design: DesignGate;
   toolkit: ToolkitGate;
-  pilot: PilotGate;
   feedback: Feedback[];
 };
 
@@ -49,7 +40,6 @@ type RawRow = {
   slug: string;
   design: DesignGate;
   toolkit: ToolkitGate;
-  pilot: PilotGate;
   feedback?: Feedback[];
 };
 type RawFile = {
@@ -72,7 +62,7 @@ export function getFeedbackSources(): Record<string, FeedbackSource> {
 
 /**
  * Every component page in the site nav with its three gates: design approval
- * in Folio, release in toolkit-ui, and a pilot in a real app. Throws when
+ * in Folio and release in toolkit-ui. Throws when
  * `content/component-status.json` and the nav disagree, or when a gate is
  * missing the evidence its state needs, so a bad edit fails the build.
  */
@@ -114,13 +104,11 @@ function checkRow(row: RawRow, file: RawFile): void {
   const where = `"${row.slug}"`;
   checkState(where, "design", row.design.state, DESIGN_STATES);
   checkState(where, "toolkit", row.toolkit.state, TOOLKIT_STATES);
-  checkState(where, "pilot", row.pilot.state, PILOT_STATES);
   checkApprovals(where, row.design, file);
   if (row.toolkit.state === "pr-open") requireFields(where, "toolkit", row.toolkit, ["pr"]);
   if (row.toolkit.state === "released") {
     requireFields(where, "toolkit", row.toolkit, ["pr", "version"]);
   }
-  if (row.pilot.state === "piloted") requireFields(where, "pilot", row.pilot, ["app", "date"]);
   for (const item of row.feedback ?? []) {
     if (!file.feedbackSources[item.source]) fail(`${where}: unknown feedback source "${item.source}"`);
     checkState(where, "feedback", item.verdict, FEEDBACK_VERDICTS);
