@@ -27,8 +27,8 @@ pr: "#34"
   intended width.
 - The design system is renamed from Cognition to Folio in all site text. The
   token file is now `content/folio-tokens.css` and the spec is
-  `content/folio-spec.md`. The repo name and `cognition.distyl.net` stay the
-  same.
+  `content/folio-spec.md`. The repo is now `DistylAI/folio`. The site still
+  serves from `cognition.distyl.net` until `folio.distyl.net` is added in Vercel.
 - Personal contact links and "Questions?" lines are removed from the site.
   Demo data no longer uses a real person's name.
 - Component code now matches `@distylai/toolkit-ui` main. Each component in

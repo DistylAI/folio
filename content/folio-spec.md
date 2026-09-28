@@ -184,11 +184,14 @@ If a pattern exists in the library, use it. If it needs modification, extend it.
 
 ## 4. Radix UI / shadcn Rules
 
-All Radix UI usage must go through shadcn wrappers in `components/ui/`. Never import directly from `@radix-ui/*` in feature files.
+All Radix UI usage must go through the components in `components/shadcn/`. Never import directly from `@radix-ui/*` in feature files. Components that toolkit-ui does not have yet live in `components/folio/`.
+
+These paths are Folio's, and they match `@distylai/toolkit-ui` (`shared/ui/src/components/shadcn/`). The codebase audit names `components/ui/` because it describes `fe-distillery`, which is a different repository.
 
 ```tsx
 // ✅ Correct
-import { Collapsible } from "@/components/ui/collapsible";
+import { Collapsible } from "@/components/shadcn/collapsible";
+import { Stack } from "@/components/folio/stack";
 
 // ❌ Wrong
 import * as Collapsible from "@radix-ui/react-collapsible";

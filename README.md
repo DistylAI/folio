@@ -53,10 +53,10 @@ npm run build                # production build
 
 ## Deploy
 
-Deployed on Vercel (project `design-dot-distyl`, team `distyl`) from `DistylAI/cognition`. Pushes to main ship to
+Deployed on Vercel (project `design-dot-distyl`, team `distyl`) from `DistylAI/folio`. Pushes to main ship to
 production; pull requests get preview URLs.
 
-Public url: https://cognition.distyl.net/
+Public URL: https://cognition.distyl.net/ (`folio.distyl.net` points at Vercel, but the domain is not added to the Vercel project yet.)
 
 ---
 

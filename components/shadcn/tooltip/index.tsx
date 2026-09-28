@@ -57,7 +57,8 @@ const TooltipTrigger = React.forwardRef<
     onFocus={event => {
       onFocus?.(event);
       // Open on keyboard focus only, not programmatic focus (e.g. dialog autofocus).
-      if (!event.defaultPrevented && !event.currentTarget.matches(':focus-visible')) {
+      // Check the focused element: an asChild trigger can wrap it (Button tooltips).
+      if (!event.defaultPrevented && !event.target.matches(':focus-visible')) {
         event.preventDefault();
       }
     }}

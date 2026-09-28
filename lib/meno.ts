@@ -65,7 +65,8 @@ Dark mode remaps at the semantic layer only. Implemented via
 - Never hardcode hex, rgb(), or hsl() in components
 - Never use raw Tailwind color utilities (text-gray-500, bg-blue-200)
 - Never add dark: classes — tokens handle this automatically
-- Never import Radix directly — use shadcn wrappers in components/ui/
+- Never import Radix directly — use the components in components/shadcn/
+  (Folio-only components are in components/folio/)
 - Button, Tag, Badge, Chip, Link are semantically distinct. Never interchangeable.
 - 4px spacing scale only. No arbitrary px values.
 - Radius: none / sm(4px) / md(8px) / lg(12px) / xl(16px) / full
